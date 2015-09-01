@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Eric Chen. All rights reserved.
 //
 
-import CSStickyHeaderFlowLayout
 import YouTubePlayer
 
 class VideoHeaderView: UIView {

@@ -11,8 +11,6 @@
 #import "SocketIOTransportWebsocket.h"
 #import "SocketIOTransportXHR.h"
 
-/* FUI */
-#import <FlatUIKit/FUIButton.h>
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
