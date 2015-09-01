@@ -1,0 +1,35 @@
+PODS:
+  - Alamofire (1.3.0)
+  - PureLayout (3.0.0)
+  - Realm (0.93.2):
+    - Realm/Headers (= 0.93.2)
+  - Realm/Headers (0.93.2)
+  - RealmSwift (0.93.2):
+    - Realm (= 0.93.2)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
+  - SocketRocket (0.4)
+  - VGParallaxHeader (0.0.6):
+    - PureLayout
+  - YouTubePlayer (0.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 1.3)
+  - RealmSwift
+  - SDWebImage (~> 3.7)
+  - SocketRocket
+  - VGParallaxHeader
+  - YouTubePlayer
+
+SPEC CHECKSUMS:
+  Alamofire: 220403a8d5840e0b4c946a6fbaf209dbca124282
+  PureLayout: 270dfee2236f697ab1d5e2771c2e5c248495fa0d
+  Realm: 2fdd0ae74f730e190384e0338d8a0d3654df8220
+  RealmSwift: 231b064da9f98b1c4f325fe1f1cb8756aae2b8d6
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  SocketRocket: 01443933b7bc362621325f4607b80b4286a99707
+  VGParallaxHeader: 1213aba58c9b0aea84f9e81ad526fde57aa4fe48
+  YouTubePlayer: f0afebef31a1793cce734220a5a311ba29ca4a7f
+
+COCOAPODS: 0.38.2

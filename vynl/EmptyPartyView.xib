@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D2134" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K1N-Hj-clv" userLabel="Container">
+                    <rect key="frame" x="0.0" y="160" width="600" height="280"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Your Party" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REe-V2-zTy">
+                            <rect key="frame" x="167" y="0.0" width="266" height="33"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="24"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_note.png" translatesAutoresizingMaskIntoConstraints="NO" id="jU0-qN-mxw">
+                            <rect key="frame" x="250" y="70" width="100" height="92"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="WEi-Qz-gz4"/>
+                                <constraint firstAttribute="height" constant="92" id="n5t-ku-Q6o"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no songs currently" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naX-w7-P5Q">
+                            <rect key="frame" x="218" y="178" width="166" height="16"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell your friends to join this party and add songs!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U84-9h-qc7">
+                            <rect key="frame" x="160" y="248" width="282" height="16"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a song by pressing the &quot;+&quot; above" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUF-YE-5xB">
+                            <rect key="frame" x="194" y="224" width="213" height="16"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="280" id="77d-Ie-Hmh"/>
+                        <constraint firstItem="jU0-qN-mxw" firstAttribute="top" secondItem="REe-V2-zTy" secondAttribute="bottom" constant="37.5" id="7Qd-vC-2UN"/>
+                        <constraint firstAttribute="centerX" secondItem="U84-9h-qc7" secondAttribute="centerX" id="8Ud-11-Bj2"/>
+                        <constraint firstItem="hUF-YE-5xB" firstAttribute="top" secondItem="naX-w7-P5Q" secondAttribute="bottom" constant="29" id="9Dy-5K-Ua6"/>
+                        <constraint firstAttribute="centerX" secondItem="jU0-qN-mxw" secondAttribute="centerX" id="BR4-M2-btJ"/>
+                        <constraint firstAttribute="centerX" secondItem="REe-V2-zTy" secondAttribute="centerX" id="CYh-lN-jAx"/>
+                        <constraint firstItem="U84-9h-qc7" firstAttribute="top" secondItem="hUF-YE-5xB" secondAttribute="bottom" constant="8" id="I87-On-gZd"/>
+                        <constraint firstAttribute="centerX" secondItem="naX-w7-P5Q" secondAttribute="centerX" id="LV3-4i-vjL"/>
+                        <constraint firstItem="REe-V2-zTy" firstAttribute="top" secondItem="K1N-Hj-clv" secondAttribute="top" id="Wc2-gk-Kr6"/>
+                        <constraint firstAttribute="centerX" secondItem="hUF-YE-5xB" secondAttribute="centerX" id="eFZ-HF-ZWt"/>
+                        <constraint firstAttribute="centerX" secondItem="REe-V2-zTy" secondAttribute="centerX" id="hRH-VY-byK"/>
+                        <constraint firstAttribute="bottom" secondItem="U84-9h-qc7" secondAttribute="bottom" constant="15" id="uap-L1-rOr"/>
+                        <constraint firstItem="U84-9h-qc7" firstAttribute="top" secondItem="naX-w7-P5Q" secondAttribute="bottom" constant="20" id="xIm-Pf-D4x"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="xIm-Pf-D4x"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="K1N-Hj-clv" secondAttribute="trailing" id="OYu-0Q-OBx"/>
+                <constraint firstItem="K1N-Hj-clv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="eND-2L-BCw"/>
+                <constraint firstAttribute="centerY" secondItem="K1N-Hj-clv" secondAttribute="centerY" id="t7t-wR-86U"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="music_note.png" width="94" height="93"/>
+    </resources>
+</document>
