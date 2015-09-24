@@ -10,7 +10,7 @@ import Foundation
 
 protocol SocketHelperDelegate {
     func socketDidConnect(#socketHelper: SocketHelper!);
-    func socketDidDisconnect(#socketHelper:SocketHelper!);
+    func socketDidDisconnect(#socketHelper:SocketHelper!, disconnectedWithError error:NSError!)
     func socketHelper(#socketHelper: SocketHelper!, onError error: NSError!);
     func socketHelper(#socketHelper: SocketHelper!, didReceiveMessage data: [String: AnyObject]);
     func socketHelper(#socketHelper: SocketHelper!, didReceiveJSON data: [String: AnyObject]);
@@ -24,6 +24,7 @@ protocol SocketHelperDelegate {
     func socketHelper(#socketHelper: SocketHelper!, didUpdateSongs data: [String: AnyObject]);
     func socketHelper(#socketHelper: SocketHelper!, didStartPlayingSong data: [String: AnyObject]);
     func socketHelper(#socketHelper: SocketHelper!, didJoin data: [String: AnyObject]);
+    func socketHelper(#socketHelper: SocketHelper!, playSong data: [String: AnyObject]);
 }
 
 class SocketHelper: NSObject {
@@ -137,6 +138,12 @@ class SocketHelper: NSObject {
             withData: data);
     }
     
+    func playSong(#partyID: String, song: [String: AnyObject], sessionID: String) {
+        socketIO.sendEvent("playSong", withData: ["room": partyID,
+                                                "song": song,
+                                                "sessionid": sessionID])
+    }
+    
     /* not sure yet */
     func playingSong() {
         
@@ -146,6 +153,16 @@ class SocketHelper: NSObject {
 extension SocketHelper: SocketIODelegate {
     func socketIODidConnect(socket: SocketIO!) {
         socketHelperDelegate.socketDidConnect(socketHelper: self);
+    }
+    
+    func socketIODidDisconnect(socket: SocketIO!, disconnectedWithError error: NSError!) {
+        socketHelperDelegate.socketDidDisconnect(socketHelper: self, disconnectedWithError: error)
+        println("\n\n disconnectedWithError: ", error.code)
+    }
+    
+    func socketIO(socket: SocketIO!, onError error: NSError!) {
+        println("\n\n onError: ", error.code)
+        socketHelperDelegate.socketHelper(socketHelper: self, onError: error)
     }
     
     func socketIO(socket: SocketIO!, didReceiveEvent packet: SocketIOPacket!) {
@@ -189,6 +206,11 @@ extension SocketHelper: SocketIODelegate {
             println("socketHelper: calling didUpdateSongs on socketHelperDelegate")
             println()
             socketHelperDelegate.socketHelper(socketHelper: self, didUpdateSongs: args as! Dictionary)
+        case "playSong":
+            println()
+            println("socketHelper: calling playSong on socketHelperDelegate")
+            println()
+            socketHelperDelegate.socketHelper(socketHelper: self, playSong: args as! Dictionary)
         default:
             println()
             println("socketHelper: default exhaustive used! MAKE EVENT HANDLER IN SWITCH CASE")

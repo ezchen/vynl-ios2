@@ -12,6 +12,8 @@ class VideoHeaderView: UIView {
 
     @IBOutlet var playerView: YTPlayerView!
     var songManager: SongManager!
+    
+    var state: YTPlayerState!
         
     var playerVars = ["controls": 0,
     "autoplay": 1,
@@ -23,13 +25,18 @@ class VideoHeaderView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.playerView.delegate = self
+        state = YTPlayerState.Unknown
     }
 }
 
 extension VideoHeaderView {
     func loadVideo() {
         if (songManager.songs.count > 0) {
-            self.playerView.loadWithVideoId(songManager.songs[0]["songID"] as! String, playerVars: playerVars)
+            if (state == YTPlayerState.Playing || state == YTPlayerState.Paused) {
+                
+            } else {
+                self.playerView.loadWithVideoId(songManager.songs[0]["songID"] as! String, playerVars: playerVars)
+            }
         }
     }
     
@@ -48,17 +55,33 @@ extension VideoHeaderView {
 
 extension VideoHeaderView: YTPlayerViewDelegate {
     func playerView(playerView: YTPlayerView!, didChangeToState state: YTPlayerState) {
+        
         switch (state) {
             case YTPlayerState.Playing:
+                println("videoHeaderView video is Playing")
+                if (self.state != YTPlayerState.Paused) {
+                    // notify server that dj has started playing a new song
+                    self.songManager.playSong()
+                }
                 break
             case YTPlayerState.Ended:
-                self.playerView.cueVideoById(self.songManager.songs[0]["songID"] as! String, startSeconds: 0, suggestedQuality: YTPlaybackQuality.Default)
+                if (self.songManager.songs.count > 0) {
+                    self.playerView.cueVideoById(self.songManager.songs[0]["songID"] as! String, startSeconds: 0, suggestedQuality: YTPlaybackQuality.Default)
+                }
                 println("ended")
                 break
             case YTPlayerState.Paused:
+                println("video is paused")
+                break
+            case YTPlayerState.Queued:
+                println("video queued")
+                self.playerView.playVideo()
                 break
             default:
+                println(state)
                 break
         }
+        
+        self.state = state
     }
 }

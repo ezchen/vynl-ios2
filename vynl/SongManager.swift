@@ -13,6 +13,9 @@ import RealmSwift
     optional func songManager(didMakeParty data:[String: AnyObject])
     optional func songManager(songsDidUpdate data:[String: AnyObject])
     optional func songManager(didJoin data:[String: AnyObject])
+    optional func songManager(didDisconnect data:[String: AnyObject])
+    optional func songManager(didConnect data:[String: AnyObject])
+    optional func songManager(onError data:[String: AnyObject])
 }
 
 class SongManager {
@@ -21,7 +24,7 @@ class SongManager {
     var socketHelper: SocketHelper!
     var isConnected: Bool!
     var isJoined: Bool!
-    var delegate: SongManagerDelegate!
+    var delegate: SongManagerDelegate?
     var partyID: String!
     var songs: Array<[String: AnyObject]>!
     var dj: Bool!
@@ -72,6 +75,10 @@ class SongManager {
         socketHelper.voteOnSong(partyID: self.partyID, song: song, vote: vote, sessionID: user.sessionid)
     }
     
+    func playSong() {
+        socketHelper.playSong(partyID: self.partyID, song: self.songs[0], sessionID: user.sessionid)
+    }
+    
     private func randomStringWithLength(length: Int) -> String {
         let alphabet = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         let upperBound = UInt32(count(alphabet))
@@ -85,6 +92,7 @@ class SongManager {
 extension SongManager: SocketHelperDelegate {
     func socketDidConnect(#socketHelper: SocketHelper!) {
         self.isConnected = true
+        self.delegate?.songManager!(didConnect: ["data": "connected"])
         
         if (count(user.sessionid) == 0) {
             socketHelper.getID()
@@ -93,13 +101,14 @@ extension SongManager: SocketHelperDelegate {
         }
     }
     
-    func socketDidDisconnect(#socketHelper:SocketHelper!) {
+    func socketDidDisconnect(#socketHelper: SocketHelper!, disconnectedWithError error: NSError!) {
         self.isConnected = false
         self.isJoined = false
+        self.delegate?.songManager!(didDisconnect: ["error": error])
     }
     
     func socketHelper(#socketHelper: SocketHelper!, onError error: NSError!) {
-        
+        self.delegate?.songManager!(onError: ["error": error])
     }
     
     func socketHelper(#socketHelper: SocketHelper!, didReceiveMessage data: [String: AnyObject]) {
@@ -120,8 +129,9 @@ extension SongManager: SocketHelperDelegate {
     }
     
     func socketHelper(#socketHelper: SocketHelper!, didMakeParty data: [String : AnyObject]) {
-        self.delegate.songManager!(didMakeParty: data)
+        self.delegate?.songManager!(didMakeParty: data)
         self.socketHelper.joinParty(self.partyID, sessionID: self.user.sessionid)
+        self.dj = true
     }
     
     func socketHelper(#socketHelper: SocketHelper!, didGetID data: [String: AnyObject]) {
@@ -139,7 +149,7 @@ extension SongManager: SocketHelperDelegate {
     
     func socketHelper(#socketHelper: SocketHelper!, didUpdateSongs data: [String: AnyObject]) {
         self.songs = data["songs"] as! Array<[String: AnyObject]>
-        self.delegate.songManager!(songsDidUpdate: ["data": "songs"])
+        self.delegate?.songManager!(songsDidUpdate: ["data": "songs"])
     }
     
     func socketHelper(#socketHelper: SocketHelper!, didStartPlayingSong data: [String: AnyObject]) {
@@ -150,8 +160,11 @@ extension SongManager: SocketHelperDelegate {
         self.isJoined = true
         self.songs = data["songs"] as! Array<[String: AnyObject]>
         self.dj = data["dj"] as! String == self.user.sessionid
-        self.delegate.songManager?(didJoin: data)
-        self.delegate.songManager?(songsDidUpdate: data)
+        self.delegate?.songManager?(didJoin: data)
+        self.delegate?.songManager?(songsDidUpdate: data)
+    }
+    
+    func socketHelper(#socketHelper: SocketHelper!, playSong data: [String : AnyObject]) {
     }
     
 }

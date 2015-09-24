@@ -7,6 +7,7 @@ target 'vynl' do
   pod 'Alamofire', '~> 1.3'
   pod 'YouTubePlayer'
   pod 'VGParallaxHeader'
+  pod 'CRToast', '~> 0.0.7'
 end
 
 target 'vynlTests' do

@@ -115,7 +115,7 @@ extension SocketHelperTest: SocketHelperDelegate {
     func socketDidConnect(#socketHelper: SocketHelper!) {
     }
     
-    func socketDidDisconnect(#socketHelper:SocketHelper!) {
+    func socketDidDisconnect(#socketHelper: SocketHelper!, disconnectedWithError error: NSError!) {
         if (self.testingDisconnectAssertion) {
             XCTAssert(true, "socket disconnected")
             self.expectation.fulfill()
@@ -123,7 +123,6 @@ extension SocketHelperTest: SocketHelperDelegate {
     }
     
     func socketHelper(#socketHelper: SocketHelper!, onError error: NSError!) {
-        
     }
     
     func socketHelper(#socketHelper: SocketHelper!, didReceiveMessage data: [String: AnyObject]) {
@@ -202,5 +201,8 @@ extension SocketHelperTest: SocketHelperDelegate {
             var song = ["songID": "testID", "albumarturl": "testArtURL", "songname": "testSongName", "songartist": "testSongArtist"]
             socketHelper.addSong(partyID: "TESTTEST", song: song)
         }
+    }
+    
+    func socketHelper(#socketHelper: SocketHelper!, playSong data: [String : AnyObject]) {
     }
 }

@@ -76,6 +76,7 @@
 		07A4FA3E1B4EDD9C004D3FBF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A4FA3C1B4EDD9C004D3FBF /* LaunchScreen.xib */; };
 		07A4FA4A1B4EDD9C004D3FBF /* vynlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A4FA491B4EDD9C004D3FBF /* vynlTests.swift */; };
 		07A4FA541B4EDF60004D3FBF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A4FA531B4EDF60004D3FBF /* HomeViewController.swift */; };
+		07CA34791BB34C4000DCB8E5 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CA34781BB34C4000DCB8E5 /* SweetAlert.swift */; };
 		07D2FDE21B51ACE400B40899 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDD81B51ACE400B40899 /* SocketIO.m */; };
 		07D2FDE31B51ACE400B40899 /* SocketIOJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDDA1B51ACE400B40899 /* SocketIOJSONSerialization.m */; };
 		07D2FDE41B51ACE400B40899 /* SocketIOPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDDC1B51ACE400B40899 /* SocketIOPacket.m */; };
@@ -170,6 +171,7 @@
 		07A4FA491B4EDD9C004D3FBF /* vynlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vynlTests.swift; sourceTree = "<group>"; };
 		07A4FA531B4EDF60004D3FBF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		07A4FA561B4EF6F7004D3FBF /* vynl-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "vynl-Bridging-Header.h"; path = "vynl/vynl-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		07CA34781BB34C4000DCB8E5 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SweetAlert.swift; path = "../../iOS-libraries/SweetAlert-iOS/SweetAlert/SweetAlert.swift"; sourceTree = "<group>"; };
 		07D2FDD71B51ACE400B40899 /* SocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIO.h; sourceTree = "<group>"; };
 		07D2FDD81B51ACE400B40899 /* SocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIO.m; sourceTree = "<group>"; };
 		07D2FDD91B51ACE400B40899 /* SocketIOJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOJSONSerialization.h; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 		079AED161B88DBF4009807B7 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				07CA34771BB34C0000DCB8E5 /* SweetAlert */,
 				07D1AF7E1B69728C0046C118 /* youtube-ios-player-helper */,
 				07D2FDE71B51ACF800B40899 /* Library-SocketIO-objc */,
 			);
@@ -410,6 +413,14 @@
 				07A4FA481B4EDD9C004D3FBF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		07CA34771BB34C0000DCB8E5 /* SweetAlert */ = {
+			isa = PBXGroup;
+			children = (
+				07CA34781BB34C4000DCB8E5 /* SweetAlert.swift */,
+			);
+			name = SweetAlert;
 			sourceTree = "<group>";
 		};
 		07D1AF7E1B69728C0046C118 /* youtube-ios-player-helper */ = {
@@ -511,6 +522,7 @@
 		07A4FA261B4EDD9C004D3FBF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Eric Chen";
 				TargetAttributes = {
@@ -720,6 +732,7 @@
 				077D98DB1B6421FE00A44A17 /* JoinPartyViewController.swift in Sources */,
 				074AC1171B59C2A400A4B5FC /* VynlDefaultButton.swift in Sources */,
 				07715A7F1B559B5000FD28CC /* SongManager.swift in Sources */,
+				07CA34791BB34C4000DCB8E5 /* SweetAlert.swift in Sources */,
 				077D98E81B64351C00A44A17 /* YoutubeDataHelper.swift in Sources */,
 				07715A811B559F1500FD28CC /* User.swift in Sources */,
 				0763F7651B646A2600489945 /* SearchViewController.swift in Sources */,

@@ -23,21 +23,18 @@ class PartyViewController: VynlDefaultViewController {
         self.title = songManager.getPartyID()
         self.songManager.delegate = self
         
-        self.videoHeaderView = NSBundle.mainBundle().loadNibNamed("VideoHeaderView", owner: self, options: nil)[0] as! VideoHeaderView
-        self.videoHeaderView.songManager = self.songManager
-        videoView.addSubview(videoHeaderView)
-        
-        
-        if (songManager.songs.count == 0) {
-            var view = NSBundle.mainBundle().loadNibNamed("EmptyPartyView", owner: self, options: nil)[0] as? UIView
-            self.partyCollectionView.backgroundView = view
-            self.partyCollectionView.separatorStyle = UITableViewCellSeparatorStyle.None
+        /* Only Show Video View if User is DJ */
+        if (self.songManager.dj!) {
+            self.videoHeaderView = NSBundle.mainBundle().loadNibNamed("VideoHeaderView", owner: self, options: nil)[0] as! VideoHeaderView
+            self.videoHeaderView.songManager = self.songManager
+            videoView.addSubview(videoHeaderView)
         } else {
-            self.partyCollectionView.backgroundView = nil
-            self.videoHeaderView.loadVideo()
-            self.partyCollectionView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-            self.partyCollectionView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+            videoView.hidden = true
         }
+        
+        
+        /* if no songs are present show empty view */
+        self.toggleEmptyView(songManager.songs.count == 0);
     }
     
     override func loadView() {
@@ -57,19 +54,41 @@ class PartyViewController: VynlDefaultViewController {
             var viewController = navigationController.viewControllers[0] as! SearchViewController
             
             viewController.songManager = self.songManager
+            self.songManager.delegate = nil;
             viewController.delegate = self;
         }
     }
     
-
     @IBAction func backCalled(sender: AnyObject) {
         self.delegate?.dismissCalled()
+    }
+    
+    func toggleEmptyView(isEmpty: Bool) {
+        if (isEmpty) {
+            var view = NSBundle.mainBundle().loadNibNamed("EmptyPartyView", owner: self, options: nil)[0] as? UIView
+            self.partyCollectionView.backgroundView = view
+            self.partyCollectionView.separatorStyle = UITableViewCellSeparatorStyle.None
+        } else {
+            self.partyCollectionView.backgroundView = nil;
+            
+            if (self.songManager.dj!) {
+                videoHeaderView.loadVideo()
+            }
+            self.partyCollectionView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+            self.partyCollectionView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        }
     }
 }
 
 extension PartyViewController: DefaultModalDelegate {
+    /* perform actions after dismissing modals
+     * 
+     * search modal is dismissed */
     func dismissCalled() {
+        self.songManager.delegate = self;
         self.dismissViewControllerAnimated(true, completion: nil)
+        self.partyCollectionView.reloadData()
+        toggleEmptyView(songManager.songs.count == 0)
     }
 }
 
@@ -101,33 +120,19 @@ extension PartyViewController: UITableViewDelegate {
     
 }
 
-extension PartyViewController: YTPlayerViewDelegate {
-    func playerView(playerView: YTPlayerView!, didChangeToState state: YTPlayerState) {
-        switch (state) {
-            case YTPlayerState.Ended:
-                break
-            case YTPlayerState.Playing:
-                break
-            default:
-                break
-        }
-    }
-}
-
 extension PartyViewController {
     func songManager(songsDidUpdate data: [String : AnyObject]) {
         print("SongManager's songs: ")
         print(songManager.songs)
-        if (songManager.songs.count == 0) {
-            var view = NSBundle.mainBundle().loadNibNamed("EmptyPartyView", owner: self, options: nil)[0] as? UIView
-            self.partyCollectionView.backgroundView = view
-            self.partyCollectionView.separatorStyle = UITableViewCellSeparatorStyle.None
-        } else {
-            self.partyCollectionView.backgroundView = nil;
-            videoHeaderView.loadVideo()
-            self.partyCollectionView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-            self.partyCollectionView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        }
+        self.toggleEmptyView(songManager.songs.count == 0)
         self.partyCollectionView.reloadData()
+    }
+    
+    override func songManager(didConnect data: [String : AnyObject]) {
+        /* super class creates toast message */
+        super.songManager(didConnect: data)
+        
+        /* rejoin the party */
+        self.songManager.joinParty(songManager.partyID)
     }
 }
