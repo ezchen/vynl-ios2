@@ -95,6 +95,10 @@
 		07D2FDF81B5218D600B40899 /* SocketIOPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDDC1B51ACE400B40899 /* SocketIOPacket.m */; };
 		07D2FDF91B5218DB00B40899 /* SocketIOTransportWebsocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDDF1B51ACE400B40899 /* SocketIOTransportWebsocket.m */; };
 		07D2FDFA1B5218DE00B40899 /* SocketIOTransportXHR.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDE11B51ACE400B40899 /* SocketIOTransportXHR.m */; };
+		07F0CD741BB489A900AED6CA /* skip.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD701BB489A900AED6CA /* skip.png */; settings = {ASSET_TAGS = (); }; };
+		07F0CD751BB489A900AED6CA /* skip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD711BB489A900AED6CA /* skip@2x.png */; settings = {ASSET_TAGS = (); }; };
+		07F0CD761BB489A900AED6CA /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD721BB489A900AED6CA /* pause.png */; settings = {ASSET_TAGS = (); }; };
+		07F0CD771BB489A900AED6CA /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD731BB489A900AED6CA /* pause@2x.png */; settings = {ASSET_TAGS = (); }; };
 		587740ED53D989D1742F8F5E /* Pods_vynlTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A6C9588430EA08B742B22D /* Pods_vynlTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DE793A4927B52D8E94A51A8C /* Pods_vynl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F59BB5B49780DBBB1F6CD3EE /* Pods_vynl.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -188,6 +192,10 @@
 		07D2FDEC1B51CD4200B40899 /* SocketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
 		07D2FDEE1B51DC9A00B40899 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		07D2FDF01B520E2500B40899 /* SocketHelperTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketHelperTest.swift; sourceTree = "<group>"; };
+		07F0CD701BB489A900AED6CA /* skip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skip.png; sourceTree = "<group>"; };
+		07F0CD711BB489A900AED6CA /* skip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "skip@2x.png"; sourceTree = "<group>"; };
+		07F0CD721BB489A900AED6CA /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		07F0CD731BB489A900AED6CA /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause@2x.png"; sourceTree = "<group>"; };
 		270FE4FF68F58ED2244BABF7 /* Pods-vynlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vynlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vynlTests/Pods-vynlTests.debug.xcconfig"; sourceTree = "<group>"; };
 		553A17D8256268863A2C7CFA /* Pods-vynlTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vynlTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-vynlTests/Pods-vynlTests.release.xcconfig"; sourceTree = "<group>"; };
 		578EB90B607245E5EB61A8CE /* Pods-vynl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vynl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vynl/Pods-vynl.debug.xcconfig"; sourceTree = "<group>"; };
@@ -233,6 +241,10 @@
 		074AC1071B59C15500A4B5FC /* images */ = {
 			isa = PBXGroup;
 			children = (
+				07F0CD701BB489A900AED6CA /* skip.png */,
+				07F0CD711BB489A900AED6CA /* skip@2x.png */,
+				07F0CD721BB489A900AED6CA /* pause.png */,
+				07F0CD731BB489A900AED6CA /* pause@2x.png */,
 				079C70361B9641FE008B88DF /* fa-thumbs-down@2x.png */,
 				079C70371B9641FE008B88DF /* fa-thumbs-down.png */,
 				079C70381B9641FE008B88DF /* fa-thumbs-up@2x.png */,
@@ -563,6 +575,7 @@
 			files = (
 				079C703D1B9641FE008B88DF /* fa-thumbs-up.png in Resources */,
 				070A58E71B603CA500DD47A7 /* button_whiteoutline.png in Resources */,
+				07F0CD761BB489A900AED6CA /* pause.png in Resources */,
 				074D70481B681EC800EA64AB /* YTPlayerView-iframe-player.html in Resources */,
 				079C703A1B9641FE008B88DF /* fa-thumbs-down@2x.png in Resources */,
 				077D98E51B64291000A44A17 /* search@2x.png in Resources */,
@@ -573,9 +586,11 @@
 				0743780D1B66C2CE006A6B32 /* EmptyPartyView.xib in Resources */,
 				070A58E61B603CA500DD47A7 /* button_whiteoutline@2x.png in Resources */,
 				079C703B1B9641FE008B88DF /* fa-thumbs-down.png in Resources */,
+				07F0CD741BB489A900AED6CA /* skip.png in Resources */,
 				070A58EB1B603CA500DD47A7 /* button_green_rounded.png in Resources */,
 				07A4FA3E1B4EDD9C004D3FBF /* LaunchScreen.xib in Resources */,
 				079C70341B9641EC008B88DF /* fa-thumbs-down-on@2x.png in Resources */,
+				07F0CD771BB489A900AED6CA /* pause@2x.png in Resources */,
 				077D98E31B6428ED00A44A17 /* OpenSans-Semibold.ttf in Resources */,
 				079C70351B9641EC008B88DF /* fa-thumbs-up-on@2x.png in Resources */,
 				079C70321B9641EC008B88DF /* fa-thumbs-down-on.png in Resources */,
@@ -597,6 +612,7 @@
 				07846CB11B61878700AA26E1 /* back.png in Resources */,
 				0788B6A31B67FCBD004BF104 /* YTPlayer.html in Resources */,
 				079C70331B9641EC008B88DF /* fa-thumbs-up-on.png in Resources */,
+				07F0CD751BB489A900AED6CA /* skip@2x.png in Resources */,
 				070A58DE1B603CA500DD47A7 /* close@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
