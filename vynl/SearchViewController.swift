@@ -38,7 +38,7 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("searchCell") as! UISearchTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("searchCell") as! UISearchTableViewCell
         cell.configureCell(songs[indexPath.row])
         cell.songManager = self.songManager
         return cell
@@ -56,9 +56,9 @@ extension SearchViewController: UISearchBarDelegate {
         func success(json: AnyObject) {
             self.songs = json as! [[String: AnyObject]]
             self.tableView.reloadData()
-            println(self.songs)
+            print(self.songs)
         }
-        youtubeHelper.search(searchBar.text, pageToken: nil, resultsPerPage: 10, success: success)
+        youtubeHelper.search(searchBar.text!, pageToken: nil, resultsPerPage: 10, success: success)
         searchBar.resignFirstResponder()
     }
 }

@@ -9,22 +9,22 @@
 import Foundation
 
 protocol SocketHelperDelegate {
-    func socketDidConnect(#socketHelper: SocketHelper!);
-    func socketDidDisconnect(#socketHelper:SocketHelper!, disconnectedWithError error:NSError!)
-    func socketHelper(#socketHelper: SocketHelper!, onError error: NSError!);
-    func socketHelper(#socketHelper: SocketHelper!, didReceiveMessage data: [String: AnyObject]);
-    func socketHelper(#socketHelper: SocketHelper!, didReceiveJSON data: [String: AnyObject]);
-    func socketHelper(#socketHelper: SocketHelper!, didSendMessage data: [String: AnyObject]);
+    func socketDidConnect(socketHelper socketHelper: SocketHelper!);
+    func socketDidDisconnect(socketHelper socketHelper:SocketHelper!, disconnectedWithError error:NSError!)
+    func socketHelper(socketHelper socketHelper: SocketHelper!, onError error: NSError!);
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didReceiveMessage data: [String: AnyObject]);
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didReceiveJSON data: [String: AnyObject]);
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didSendMessage data: [String: AnyObject]);
     
-    func socketHelper(#socketHelper: SocketHelper!, didConnect data: [String: AnyObject]);
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didConnect data: [String: AnyObject]);
     
-    func socketHelper(#socketHelper: SocketHelper!, didMakeParty data: [String: AnyObject]);
-    func socketHelper(#socketHelper: SocketHelper!, didGetID data: [String: AnyObject]);
-    func socketHelper(#socketHelper: SocketHelper!, didNotifySongUpdate data: [String: AnyObject]);
-    func socketHelper(#socketHelper: SocketHelper!, didUpdateSongs data: [String: AnyObject]);
-    func socketHelper(#socketHelper: SocketHelper!, didStartPlayingSong data: [String: AnyObject]);
-    func socketHelper(#socketHelper: SocketHelper!, didJoin data: [String: AnyObject]);
-    func socketHelper(#socketHelper: SocketHelper!, playSong data: [String: AnyObject]);
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didMakeParty data: [String: AnyObject]);
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didGetID data: [String: AnyObject]);
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didNotifySongUpdate data: [String: AnyObject]);
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didUpdateSongs data: [String: AnyObject]);
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didStartPlayingSong data: [String: AnyObject]);
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didJoin data: [String: AnyObject]);
+    func socketHelper(socketHelper socketHelper: SocketHelper!, playSong data: [String: AnyObject]);
 }
 
 class SocketHelper: NSObject {
@@ -78,7 +78,7 @@ class SocketHelper: NSObject {
     }
     
     /* leave party room (unsubscribe from notifications) */
-    func leaveParty(#partyID: String) {
+    func leaveParty(partyID partyID: String) {
         socketIO.sendEvent(
             Constants.SocketAPI.leavePartyEventString,
             withData: ["room": partyID]);
@@ -101,8 +101,8 @@ class SocketHelper: NSObject {
     }
     
     /* add a song to current party room */
-    func addSong(#partyID: String, song: [String: AnyObject]) {
-        var data = ["room": partyID,
+    func addSong(partyID partyID: String, song: [String: AnyObject]) {
+        let data = ["room": partyID,
             "song": song];
         socketIO.sendEvent(
             Constants.SocketAPI.addSongEventString,
@@ -111,7 +111,7 @@ class SocketHelper: NSObject {
     }
     
     /* get all songs from current party room */
-    func getSongs(#partyID: String, sessionID: String) {
+    func getSongs(partyID partyID: String, sessionID: String) {
         socketIO.sendEvent(
             Constants.SocketAPI.getSongsEventString,
             withData: ["room": partyID,
@@ -119,8 +119,8 @@ class SocketHelper: NSObject {
     }
     
     /* vote on a song */
-    func voteOnSong(#partyID: String, song: [String: AnyObject], vote: Int, sessionID: String) {
-        var data = ["room": partyID,
+    func voteOnSong(partyID partyID: String, song: [String: AnyObject], vote: Int, sessionID: String) {
+        let data = ["room": partyID,
             "song": song,
             "vote": vote,
             "sessionid": sessionID];
@@ -130,15 +130,15 @@ class SocketHelper: NSObject {
     }
     
     /* delete a song */
-    func deleteSong(#partyID: String, song: [String: AnyObject]) {
-        var data = ["room": partyID,
+    func deleteSong(partyID partyID: String, song: [String: AnyObject]) {
+        let data = ["room": partyID,
             "song": song];
         socketIO.sendEvent(
             Constants.SocketAPI.deleteSongEventString,
             withData: data);
     }
     
-    func playSong(#partyID: String, song: [String: AnyObject], sessionID: String) {
+    func playSong(partyID partyID: String, song: [String: AnyObject], sessionID: String) {
         socketIO.sendEvent("playSong", withData: ["room": partyID,
                                                 "song": song,
                                                 "sessionid": sessionID])
@@ -157,66 +157,66 @@ extension SocketHelper: SocketIODelegate {
     
     func socketIODidDisconnect(socket: SocketIO!, disconnectedWithError error: NSError!) {
         socketHelperDelegate.socketDidDisconnect(socketHelper: self, disconnectedWithError: error)
-        println("\n\n disconnectedWithError: ", error.code)
+        print("\n\n disconnectedWithError: ", error.code)
     }
     
     func socketIO(socket: SocketIO!, onError error: NSError!) {
-        println("\n\n onError: ", error.code)
+        print("\n\n onError: ", error.code)
         socketHelperDelegate.socketHelper(socketHelper: self, onError: error)
     }
     
     func socketIO(socket: SocketIO!, didReceiveEvent packet: SocketIOPacket!) {
         /* filter through events and call proper method in delegate */
-        print("received event with data %@", packet.dataAsJSON());
-        var dictionary: AnyObject! = packet.dataAsJSON();
-        var name: String! = dictionary.objectForKey("name") as! String;
-        var argsArray: NSArray! = dictionary.objectForKey("args") as! NSArray;
-        var args: NSDictionary! = argsArray.objectAtIndex(0) as! NSDictionary;
+        print("received event with data %@", packet.dataAsJSON(), terminator: "");
+        let dictionary: AnyObject! = packet.dataAsJSON();
+        let name: String! = dictionary.objectForKey("name") as! String;
+        let argsArray: NSArray! = dictionary.objectForKey("args") as! NSArray;
+        let args: NSDictionary! = argsArray.objectAtIndex(0) as! NSDictionary;
         
         switch name {
         case "connect":
-            println("socketHelper: calling didConnect on socketHelperDelegate")
+            print("socketHelper: calling didConnect on socketHelperDelegate")
             socketHelperDelegate.socketHelper(socketHelper: self, didConnect: args as! Dictionary)
             break
         case "getID":
-            println()
-            println("socketHelper: calling didGetID on socketHelperDelegate")
-            println()
+            print("")
+            print("socketHelper: calling didGetID on socketHelperDelegate")
+            print("")
             self.sessionID = args.objectForKey("id") as! String
-            println(socketHelperDelegate)
+            print(socketHelperDelegate)
             socketHelperDelegate.socketHelper(socketHelper: self, didGetID: args as! Dictionary)
         case "makeParty":
-            println()
-            println("socketHelper: calling didMakeParty on socketHelperDelegate")
-            println()
+            print("")
+            print("socketHelper: calling didMakeParty on socketHelperDelegate")
+            print("")
             self.sessionID = args.objectForKey("id") as! String
             socketHelperDelegate.socketHelper(socketHelper: self, didMakeParty: args as! Dictionary)
         case "join":
-            println()
-            println("socketHelper: calling didJoin on socketHelperDelegate")
-            println()
+            print("")
+            print("socketHelper: calling didJoin on socketHelperDelegate")
+            print("")
             socketHelperDelegate.socketHelper(socketHelper: self, didJoin: args as! Dictionary)
         case "notifySongUpdate":
-            println()
-            println("socketHelper: calling notifySongUpdate on socketHelperDelegate")
-            println()
+            print("")
+            print("socketHelper: calling notifySongUpdate on socketHelperDelegate")
+            print("")
             socketHelperDelegate.socketHelper(socketHelper: self, didNotifySongUpdate: args as! Dictionary)
         case "updateSongs":
-            println()
-            println("socketHelper: calling didUpdateSongs on socketHelperDelegate")
-            println()
+            print("")
+            print("socketHelper: calling didUpdateSongs on socketHelperDelegate")
+            print("")
             socketHelperDelegate.socketHelper(socketHelper: self, didUpdateSongs: args as! Dictionary)
         case "playSong":
-            println()
-            println("socketHelper: calling playSong on socketHelperDelegate")
-            println()
+            print("")
+            print("socketHelper: calling playSong on socketHelperDelegate")
+            print("")
             socketHelperDelegate.socketHelper(socketHelper: self, playSong: args as! Dictionary)
         default:
-            println()
-            println("socketHelper: default exhaustive used! MAKE EVENT HANDLER IN SWITCH CASE")
-            println()
+            print("")
+            print("socketHelper: default exhaustive used! MAKE EVENT HANDLER IN SWITCH CASE")
+            print("")
             break
         }
-        println(args)
+        print(args)
     }
 }

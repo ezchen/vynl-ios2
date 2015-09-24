@@ -23,9 +23,9 @@ class youtubedatatest: XCTestCase {
     func testSearch() {
         var datahelper = YoutubeDataHelper()
         var expectation = expectationWithDescription("makeParty")
-        println("hello")
+        print("hello")
         func success(json: AnyObject) {
-            println(json)
+            print(json)
             expectation.fulfill()
             XCTAssertNotNil(json, "search worked!")
         }

@@ -69,7 +69,7 @@ class SocketHelperTest: XCTestCase {
     
     func testDidGetIDWithExistingSession() {
         self.testingDidGetIDWithExistingSession = true;
-        var sessionID = "ASDF"
+        let sessionID = "ASDF"
         socketHelper.getIDWithExistingSessionWithString(sessionID)
         self.expectation = expectationWithDescription("didGetIDWIthExistingSession")
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
@@ -112,67 +112,67 @@ class SocketHelperTest: XCTestCase {
 }
 
 extension SocketHelperTest: SocketHelperDelegate {
-    func socketDidConnect(#socketHelper: SocketHelper!) {
+    func socketDidConnect(socketHelper socketHelper: SocketHelper!) {
     }
     
-    func socketDidDisconnect(#socketHelper: SocketHelper!, disconnectedWithError error: NSError!) {
+    func socketDidDisconnect(socketHelper socketHelper: SocketHelper!, disconnectedWithError error: NSError!) {
         if (self.testingDisconnectAssertion) {
             XCTAssert(true, "socket disconnected")
             self.expectation.fulfill()
         }
     }
     
-    func socketHelper(#socketHelper: SocketHelper!, onError error: NSError!) {
+    func socketHelper(socketHelper socketHelper: SocketHelper!, onError error: NSError!) {
     }
     
-    func socketHelper(#socketHelper: SocketHelper!, didReceiveMessage data: [String: AnyObject]) {
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didReceiveMessage data: [String: AnyObject]) {
         
     }
     
-    func socketHelper(#socketHelper: SocketHelper!, didReceiveJSON data: [String: AnyObject]) {
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didReceiveJSON data: [String: AnyObject]) {
     }
     
-    func socketHelper(#socketHelper: SocketHelper!, didSendMessage data: [String: AnyObject]) {
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didSendMessage data: [String: AnyObject]) {
         
     }
     
-    func socketHelper(#socketHelper: SocketHelper!, didConnect data: [String : AnyObject]) {
-        print(data)
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didConnect data: [String : AnyObject]) {
+        print(data, terminator: "")
         if (self.testingConnectAssertion) {
             XCTAssert(self.socketHelper.sessionID != nil, "socket connected")
             self.expectation.fulfill()
         }
     }
     
-    func socketHelper(#socketHelper: SocketHelper!, didGetID data: [String: AnyObject]) {
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didGetID data: [String: AnyObject]) {
         if (self.testingDidGetID) {
             self.expectation.fulfill()
-            var sessionID = data["id"] as! String;
+            let sessionID = data["id"] as! String;
             XCTAssertNotNil(socketHelper.sessionID, "socketHelper.sessionID is not nil")
             XCTAssertNotNil(sessionID, "sessionID is not nil")
         } else if (self.testingDidGetIDWithExistingSession) {
             self.expectation.fulfill()
-            var sessionID = data["id"] as! String;
+            let sessionID = data["id"] as! String;
             XCTAssertEqual(sessionID, "ASDF", "sessionID is equal to initial session: ASDF")
         }
     }
     
-    func socketHelper(#socketHelper: SocketHelper!, didMakeParty data: [String : AnyObject]) {
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didMakeParty data: [String : AnyObject]) {
         if (self.testingMakeParty) {
             self.expectation.fulfill()
-            var sessionID = data["id"] as! String
+            let sessionID = data["id"] as! String
             XCTAssertNotNil(sessionID, "didMakeParty: sessionID is not nil")
         }
     }
     
-    func socketHelper(#socketHelper: SocketHelper!, didNotifySongUpdate data: [String: AnyObject]) {
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didNotifySongUpdate data: [String: AnyObject]) {
         if (self.testingAddSong) {
             self.expectation.fulfill()
             XCTAssert(true, "didNotifySongUpdate: add Song notified")
         }
     }
     
-    func socketHelper(#socketHelper: SocketHelper!, didUpdateSongs data: [String: AnyObject]) {
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didUpdateSongs data: [String: AnyObject]) {
         if (self.testingUpdateSongs) {
             self.expectation.fulfill()
             XCTAssert(true, "songs updated")
@@ -185,24 +185,24 @@ extension SocketHelperTest: SocketHelperDelegate {
         }
     }
     
-    func socketHelper(#socketHelper: SocketHelper!, didStartPlayingSong data: [String: AnyObject]) {
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didStartPlayingSong data: [String: AnyObject]) {
         
     }
     
-    func socketHelper(#socketHelper: SocketHelper!, didJoin data: [String: AnyObject]) {
+    func socketHelper(socketHelper socketHelper: SocketHelper!, didJoin data: [String: AnyObject]) {
         if (self.testingJoin) {
             self.expectation.fulfill()
-            var songs: NSArray = data["songs"] as! NSArray
-            var djID = data["dj"] as! String
+            let songs: NSArray = data["songs"] as! NSArray
+            let djID = data["dj"] as! String
             XCTAssertNotNil(songs, "didJoin songs not nil")
             XCTAssertNotNil(djID, "didJoin djID not nil")
         }
         if (self.testingAddSong) {
-            var song = ["songID": "testID", "albumarturl": "testArtURL", "songname": "testSongName", "songartist": "testSongArtist"]
+            let song = ["songID": "testID", "albumarturl": "testArtURL", "songname": "testSongName", "songartist": "testSongArtist"]
             socketHelper.addSong(partyID: "TESTTEST", song: song)
         }
     }
     
-    func socketHelper(#socketHelper: SocketHelper!, playSong data: [String : AnyObject]) {
+    func socketHelper(socketHelper socketHelper: SocketHelper!, playSong data: [String : AnyObject]) {
     }
 }

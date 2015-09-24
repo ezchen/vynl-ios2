@@ -1,12 +1,12 @@
 PODS:
-  - Alamofire (1.3.0)
+  - Alamofire (2.0.2)
   - CRToast (0.0.7)
   - PureLayout (3.0.0)
-  - Realm (0.93.2):
-    - Realm/Headers (= 0.93.2)
-  - Realm/Headers (0.93.2)
-  - RealmSwift (0.93.2):
-    - Realm (= 0.93.2)
+  - Realm (0.95.1):
+    - Realm/Headers (= 0.95.1)
+  - Realm/Headers (0.95.1)
+  - RealmSwift (0.95.1):
+    - Realm (= 0.95.1)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
@@ -16,20 +16,37 @@ PODS:
   - YouTubePlayer (0.2)
 
 DEPENDENCIES:
-  - Alamofire (~> 1.3)
+  - Alamofire (~> 2.0)
   - CRToast (~> 0.0.7)
-  - RealmSwift
+  - Realm (from `https://github.com/realm/realm-cocoa.git`, branch `swift-2.0`)
+  - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `swift-2.0`)
   - SDWebImage (~> 3.7)
   - SocketRocket
   - VGParallaxHeader
   - YouTubePlayer
 
+EXTERNAL SOURCES:
+  Realm:
+    :branch: swift-2.0
+    :git: https://github.com/realm/realm-cocoa.git
+  RealmSwift:
+    :branch: swift-2.0
+    :git: https://github.com/realm/realm-cocoa.git
+
+CHECKOUT OPTIONS:
+  Realm:
+    :commit: f317909cc16e34b42545e849afe81686b3863b24
+    :git: https://github.com/realm/realm-cocoa.git
+  RealmSwift:
+    :commit: f317909cc16e34b42545e849afe81686b3863b24
+    :git: https://github.com/realm/realm-cocoa.git
+
 SPEC CHECKSUMS:
-  Alamofire: 220403a8d5840e0b4c946a6fbaf209dbca124282
+  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
   CRToast: 99a28f4387def43b439ad88f957ce31357ff7373
   PureLayout: 270dfee2236f697ab1d5e2771c2e5c248495fa0d
-  Realm: 2fdd0ae74f730e190384e0338d8a0d3654df8220
-  RealmSwift: 231b064da9f98b1c4f325fe1f1cb8756aae2b8d6
+  Realm: 6888430917b197eed845dcce9a1f99c9c4bd9cd1
+  RealmSwift: 01ecf1cd1a6cc7cd05eed53c6bfaec21b0db6bf8
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SocketRocket: 01443933b7bc362621325f4607b80b4286a99707
   VGParallaxHeader: 1213aba58c9b0aea84f9e81ad526fde57aa4fe48

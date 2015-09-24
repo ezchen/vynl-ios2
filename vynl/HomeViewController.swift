@@ -33,13 +33,13 @@ class HomeViewController: VynlDefaultViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "startAParty") {
-            var navigationController = segue.destinationViewController as! UINavigationController
-            var controller = navigationController.viewControllers[0] as! VynlDefaultViewController
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let controller = navigationController.viewControllers[0] as! VynlDefaultViewController
             controller.songManager = self.songManager
             controller.delegate = self
         } else if (segue.identifier == "join") {
-            var navigationController = segue.destinationViewController as! UINavigationController
-            var controller = navigationController.viewControllers[0] as! VynlDefaultViewController
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let controller = navigationController.viewControllers[0] as! VynlDefaultViewController
             controller.songManager = self.songManager
             controller.delegate = self
         }

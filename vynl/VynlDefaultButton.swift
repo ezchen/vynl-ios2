@@ -8,7 +8,7 @@
 
 class VynlDefaultButton: UIButton {
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Highlighted)
     }

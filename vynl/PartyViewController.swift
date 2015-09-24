@@ -50,8 +50,8 @@ class PartyViewController: VynlDefaultViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "search") {
-            var navigationController = segue.destinationViewController as! UINavigationController
-            var viewController = navigationController.viewControllers[0] as! SearchViewController
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let viewController = navigationController.viewControllers[0] as! SearchViewController
             
             viewController.songManager = self.songManager
             self.songManager.delegate = nil;
@@ -65,7 +65,7 @@ class PartyViewController: VynlDefaultViewController {
     
     func toggleEmptyView(isEmpty: Bool) {
         if (isEmpty) {
-            var view = NSBundle.mainBundle().loadNibNamed("EmptyPartyView", owner: self, options: nil)[0] as? UIView
+            let view = NSBundle.mainBundle().loadNibNamed("EmptyPartyView", owner: self, options: nil)[0] as? UIView
             self.partyCollectionView.backgroundView = view
             self.partyCollectionView.separatorStyle = UITableViewCellSeparatorStyle.None
         } else {
@@ -122,8 +122,8 @@ extension PartyViewController: UITableViewDelegate {
 
 extension PartyViewController {
     func songManager(songsDidUpdate data: [String : AnyObject]) {
-        print("SongManager's songs: ")
-        print(songManager.songs)
+        print("SongManager's songs: ", terminator: "")
+        print(songManager.songs, terminator: "")
         self.toggleEmptyView(songManager.songs.count == 0)
         self.partyCollectionView.reloadData()
     }

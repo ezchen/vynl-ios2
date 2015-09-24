@@ -20,7 +20,7 @@ class UISingleLineTextField: UITextField {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        var bottomBorder = CALayer()
+        let bottomBorder = CALayer()
         bottomBorder.frame = CGRectMake(0, self.frame.size.height - 1, self.frame.size.width, 0.5)
         bottomBorder.backgroundColor = UIColor(red: 192/255.0, green: 192/255.0, blue: 192/255.0, alpha: 1.0).CGColor
         self.layer.addSublayer(bottomBorder)

@@ -15,7 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil);
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        } catch _ {
+        };
         return true
     }
 
@@ -41,8 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    override func remoteControlReceivedWithEvent(event: UIEvent) {
-        switch (event.subtype) {
+    override func remoteControlReceivedWithEvent(event: UIEvent?) {
+        switch (event!.subtype) {
             default:
                 break;
         }

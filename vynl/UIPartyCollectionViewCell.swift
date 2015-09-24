@@ -26,16 +26,16 @@ class UIPartyCollectionViewCell: UITableViewCell {
     func configureCell(song: [String: AnyObject]) {
         self.song = song
         
-        var url = NSURL(string: self.song["albumarturl"] as! String)
+        let url = NSURL(string: self.song["albumarturl"] as! String)
         albumImage.sd_setImageWithURL(url)
         
         self.songName.text = self.song["songname"] as? String
         
         self.artistName.text = self.song["songartist"] as? String
         
-        var numUpVotes = self.song["upvotes"] as? Int
-        var numDownVotes = self.song["downvotes"] as? Int
-        var numVotesInt = numUpVotes! - numDownVotes!
+        let numUpVotes = self.song["upvotes"] as? Int
+        let numDownVotes = self.song["downvotes"] as? Int
+        let numVotesInt = numUpVotes! - numDownVotes!
         self.numVotes.text = String(format: "%li votes", numVotesInt)
         
         self.downVoteButton.selected = (self.song["downvoted"] as? Int == 1)

@@ -23,15 +23,15 @@ class JoinPartyViewController: VynlDefaultViewController {
     }
 
     @IBAction func joinPartypressed(sender: AnyObject) {
-        if (count(partyIDTextField.text) == 8) {
-            self.songManager.joinParty(partyIDTextField.text)
+        if (partyIDTextField.text!.characters.count == 8) {
+            self.songManager.joinParty(partyIDTextField.text!)
         } else {
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "joinParty") {
-            var viewController = segue.destinationViewController as! VynlDefaultViewController
+            let viewController = segue.destinationViewController as! VynlDefaultViewController
             viewController.songManager = self.songManager
             viewController.delegate = self.delegate
         }

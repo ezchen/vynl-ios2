@@ -58,7 +58,7 @@ extension VideoHeaderView: YTPlayerViewDelegate {
         
         switch (state) {
             case YTPlayerState.Playing:
-                println("videoHeaderView video is Playing")
+                print("videoHeaderView video is Playing")
                 if (self.state != YTPlayerState.Paused) {
                     // notify server that dj has started playing a new song
                     self.songManager.playSong()
@@ -68,17 +68,17 @@ extension VideoHeaderView: YTPlayerViewDelegate {
                 if (self.songManager.songs.count > 0) {
                     self.playerView.cueVideoById(self.songManager.songs[0]["songID"] as! String, startSeconds: 0, suggestedQuality: YTPlaybackQuality.Default)
                 }
-                println("ended")
+                print("ended")
                 break
             case YTPlayerState.Paused:
-                println("video is paused")
+                print("video is paused")
                 break
             case YTPlayerState.Queued:
-                println("video queued")
+                print("video queued")
                 self.playerView.playVideo()
                 break
             default:
-                println(state)
+                print(state)
                 break
         }
         

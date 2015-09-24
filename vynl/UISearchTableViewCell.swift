@@ -19,7 +19,7 @@ class UISearchTableViewCell: UITableViewCell {
     func configureCell(song: [String: AnyObject]) {
         self.song = song
         
-        var url = NSURL(string: self.song["albumarturl"] as! String)
+        let url = NSURL(string: self.song["albumarturl"] as! String)
         albumArt.sd_setImageWithURL(url)
         
         songArtist.text = self.song["songartist"] as? String

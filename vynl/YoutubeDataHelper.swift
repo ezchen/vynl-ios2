@@ -24,16 +24,16 @@ class YoutubeDataHelper {
         }
         let request = Alamofire.request(.GET, YOUTUBE_API_URL, parameters: params)
             .validate()
-            .responseJSON { _, _, JSON, _ in
-                print(JSON)
-                success(self.formatYoutubeJSON(JSON!))
+            .responseJSON { _, _, JSON in
+                print(JSON, terminator: "")
+                success(self.formatYoutubeJSON(JSON.value!))
         }
-        println(request)
+        print(request)
     }
     
     private func formatYoutubeJSON(json: AnyObject) -> [[String: AnyObject]] {
         var dict = json as! [String: AnyObject]
-        var songs = dict["items"] as! [[String: AnyObject]]
+        let songs = dict["items"] as! [[String: AnyObject]]
         
         var formattedSongs = [[String: AnyObject]]()
         for song in songs {
@@ -57,20 +57,20 @@ class YoutubeDataHelper {
         var snippet = dict["snippet"] as! [String: AnyObject]
         var id = dict["id"] as! [String: AnyObject]
         
-        var title = snippet["title"] as! String
-        var artist = snippet["channelTitle"] as! String
+        let title = snippet["title"] as! String
+        let artist = snippet["channelTitle"] as! String
         
         var thumbnails = snippet["thumbnails"] as! [String: AnyObject]
         var defaultURL = thumbnails["default"] as! [String: AnyObject]
-        var imageURL = defaultURL["url"] as! String
+        let imageURL = defaultURL["url"] as! String
         
-        var videoID = id["videoId"] as! String
-        var upvotes = 0
-        var downvotes = 0
-        var upvoted = false
-        var downvoted = false
+        let videoID = id["videoId"] as! String
+        let upvotes = 0
+        let downvotes = 0
+        let upvoted = false
+        let downvoted = false
         
-        var song: [String: AnyObject] = [
+        let song: [String: AnyObject] = [
             "songname": title,
             "songartist": artist,
             "albumarturl": imageURL,
