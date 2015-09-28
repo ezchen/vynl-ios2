@@ -14,6 +14,7 @@ class PartyViewController: VynlDefaultViewController {
     var videoHeaderView: VideoHeaderView!
     @IBOutlet var partyCollectionView: UITableView!
     var currentlyPlaying: Bool!
+    @IBOutlet var videoControlsView: VideoControlsView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +29,11 @@ class PartyViewController: VynlDefaultViewController {
             self.videoHeaderView = NSBundle.mainBundle().loadNibNamed("VideoHeaderView", owner: self, options: nil)[0] as! VideoHeaderView
             self.videoHeaderView.songManager = self.songManager
             videoView.addSubview(videoHeaderView)
+            self.videoControlsView.xibSetup()
+            self.videoControlsView.delegate = self
         } else {
             videoView.hidden = true
+            videoControlsView.hidden = true
         }
         
         
@@ -134,5 +138,22 @@ extension PartyViewController {
         
         /* rejoin the party */
         self.songManager.joinParty(songManager.partyID)
+    }
+}
+
+extension PartyViewController: VideoControlsDelegate {
+    func pausePressed() {
+        self.videoHeaderView.pause()
+    }
+    
+    func playPressed() {
+        self.videoHeaderView.play()
+    }
+    
+    func skipPressed() {
+        self.videoHeaderView.nextSong()
+    }
+    
+    func sliderValueChanged(sliderValue value: Float) {
     }
 }

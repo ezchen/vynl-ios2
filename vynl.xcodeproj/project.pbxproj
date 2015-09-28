@@ -51,6 +51,11 @@
 		0763F7621B645C9A00489945 /* youtubedatatest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0763F7611B645C9A00489945 /* youtubedatatest.swift */; };
 		0763F7631B645CBB00489945 /* YoutubeDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D98E71B64351C00A44A17 /* YoutubeDataHelper.swift */; };
 		0763F7651B646A2600489945 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0763F7641B646A2600489945 /* SearchViewController.swift */; };
+		076B91921BB9A8DA007B551E /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076B91911BB9A8DA007B551E /* ToggleButton.swift */; settings = {ASSET_TAGS = (); }; };
+		076B91951BB9AA4C007B551E /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 076B91931BB9AA4C007B551E /* play.png */; settings = {ASSET_TAGS = (); }; };
+		076B91961BB9AA4C007B551E /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 076B91941BB9AA4C007B551E /* play@2x.png */; settings = {ASSET_TAGS = (); }; };
+		076B91991BB9E64B007B551E /* handleRectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 076B91971BB9E64B007B551E /* handleRectangle.png */; settings = {ASSET_TAGS = (); }; };
+		076B919A1BB9E64B007B551E /* handleRectangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 076B91981BB9E64B007B551E /* handleRectangle@2x.png */; settings = {ASSET_TAGS = (); }; };
 		07715A7F1B559B5000FD28CC /* SongManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07715A7E1B559B5000FD28CC /* SongManager.swift */; };
 		07715A811B559F1500FD28CC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07715A801B559F1500FD28CC /* User.swift */; };
 		077244FC1B8FA655002466E6 /* PartyTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077244FB1B8FA655002466E6 /* PartyTableHeader.xib */; };
@@ -99,6 +104,10 @@
 		07F0CD751BB489A900AED6CA /* skip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD711BB489A900AED6CA /* skip@2x.png */; settings = {ASSET_TAGS = (); }; };
 		07F0CD761BB489A900AED6CA /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD721BB489A900AED6CA /* pause.png */; settings = {ASSET_TAGS = (); }; };
 		07F0CD771BB489A900AED6CA /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD731BB489A900AED6CA /* pause@2x.png */; settings = {ASSET_TAGS = (); }; };
+		07F0CD791BB5A63000AED6CA /* VideoControlsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD781BB5A63000AED6CA /* VideoControlsView.xib */; settings = {ASSET_TAGS = (); }; };
+		07F0CD7C1BB5A84200AED6CA /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD7A1BB5A84200AED6CA /* handle.png */; settings = {ASSET_TAGS = (); }; };
+		07F0CD7D1BB5A84200AED6CA /* handle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD7B1BB5A84200AED6CA /* handle@2x.png */; settings = {ASSET_TAGS = (); }; };
+		07F0CD7F1BB5AA3900AED6CA /* VideoControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F0CD7E1BB5AA3900AED6CA /* VideoControlsView.swift */; settings = {ASSET_TAGS = (); }; };
 		587740ED53D989D1742F8F5E /* Pods_vynlTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A6C9588430EA08B742B22D /* Pods_vynlTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DE793A4927B52D8E94A51A8C /* Pods_vynl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F59BB5B49780DBBB1F6CD3EE /* Pods_vynl.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -138,6 +147,11 @@
 		075607CB1B62C3E0000F381E /* UIPartyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPartyCollectionViewCell.swift; sourceTree = "<group>"; };
 		0763F7611B645C9A00489945 /* youtubedatatest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = youtubedatatest.swift; sourceTree = "<group>"; };
 		0763F7641B646A2600489945 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		076B91911BB9A8DA007B551E /* ToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
+		076B91931BB9AA4C007B551E /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		076B91941BB9AA4C007B551E /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
+		076B91971BB9E64B007B551E /* handleRectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handleRectangle.png; sourceTree = "<group>"; };
+		076B91981BB9E64B007B551E /* handleRectangle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handleRectangle@2x.png"; sourceTree = "<group>"; };
 		07715A7E1B559B5000FD28CC /* SongManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongManager.swift; sourceTree = "<group>"; };
 		07715A801B559F1500FD28CC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		077244FB1B8FA655002466E6 /* PartyTableHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PartyTableHeader.xib; sourceTree = "<group>"; };
@@ -196,6 +210,10 @@
 		07F0CD711BB489A900AED6CA /* skip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "skip@2x.png"; sourceTree = "<group>"; };
 		07F0CD721BB489A900AED6CA /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		07F0CD731BB489A900AED6CA /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause@2x.png"; sourceTree = "<group>"; };
+		07F0CD781BB5A63000AED6CA /* VideoControlsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoControlsView.xib; sourceTree = "<group>"; };
+		07F0CD7A1BB5A84200AED6CA /* handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handle.png; sourceTree = "<group>"; };
+		07F0CD7B1BB5A84200AED6CA /* handle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handle@2x.png"; sourceTree = "<group>"; };
+		07F0CD7E1BB5AA3900AED6CA /* VideoControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoControlsView.swift; sourceTree = "<group>"; };
 		270FE4FF68F58ED2244BABF7 /* Pods-vynlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vynlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vynlTests/Pods-vynlTests.debug.xcconfig"; sourceTree = "<group>"; };
 		553A17D8256268863A2C7CFA /* Pods-vynlTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vynlTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-vynlTests/Pods-vynlTests.release.xcconfig"; sourceTree = "<group>"; };
 		578EB90B607245E5EB61A8CE /* Pods-vynl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vynl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vynl/Pods-vynl.debug.xcconfig"; sourceTree = "<group>"; };
@@ -241,6 +259,12 @@
 		074AC1071B59C15500A4B5FC /* images */ = {
 			isa = PBXGroup;
 			children = (
+				076B91971BB9E64B007B551E /* handleRectangle.png */,
+				076B91981BB9E64B007B551E /* handleRectangle@2x.png */,
+				076B91931BB9AA4C007B551E /* play.png */,
+				076B91941BB9AA4C007B551E /* play@2x.png */,
+				07F0CD7A1BB5A84200AED6CA /* handle.png */,
+				07F0CD7B1BB5A84200AED6CA /* handle@2x.png */,
 				07F0CD701BB489A900AED6CA /* skip.png */,
 				07F0CD711BB489A900AED6CA /* skip@2x.png */,
 				07F0CD721BB489A900AED6CA /* pause.png */,
@@ -306,6 +330,9 @@
 				0749A0CF1B60226E001CC6CF /* VideoHeaderView.swift */,
 				077D98E01B6425BB00A44A17 /* UISingleLineTextField.swift */,
 				0743780C1B66C2CE006A6B32 /* EmptyPartyView.xib */,
+				07F0CD781BB5A63000AED6CA /* VideoControlsView.xib */,
+				07F0CD7E1BB5AA3900AED6CA /* VideoControlsView.swift */,
+				076B91911BB9A8DA007B551E /* ToggleButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -583,9 +610,12 @@
 				07846CB01B61878700AA26E1 /* back@2x.png in Resources */,
 				074AC1061B59A82600A4B5FC /* OpenSans-Regular.ttf in Resources */,
 				07A4FA391B4EDD9C004D3FBF /* Main.storyboard in Resources */,
+				07F0CD7D1BB5A84200AED6CA /* handle@2x.png in Resources */,
+				076B91951BB9AA4C007B551E /* play.png in Resources */,
 				0743780D1B66C2CE006A6B32 /* EmptyPartyView.xib in Resources */,
 				070A58E61B603CA500DD47A7 /* button_whiteoutline@2x.png in Resources */,
 				079C703B1B9641FE008B88DF /* fa-thumbs-down.png in Resources */,
+				076B91991BB9E64B007B551E /* handleRectangle.png in Resources */,
 				07F0CD741BB489A900AED6CA /* skip.png in Resources */,
 				070A58EB1B603CA500DD47A7 /* button_green_rounded.png in Resources */,
 				07A4FA3E1B4EDD9C004D3FBF /* LaunchScreen.xib in Resources */,
@@ -599,20 +629,24 @@
 				077244FC1B8FA655002466E6 /* PartyTableHeader.xib in Resources */,
 				074AC1051B59A82400A4B5FC /* Pacifico.ttf in Resources */,
 				07A4FA3B1B4EDD9C004D3FBF /* Images.xcassets in Resources */,
+				07F0CD791BB5A63000AED6CA /* VideoControlsView.xib in Resources */,
 				070A58E11B603CA500DD47A7 /* search.png in Resources */,
 				070A58E81B603CA500DD47A7 /* homepage_background.png in Resources */,
 				070A59091B603D1E00DD47A7 /* VideoHeaderView.xib in Resources */,
 				070A58E31B603CA500DD47A7 /* plus_circle.png in Resources */,
 				070A58E91B603CA500DD47A7 /* homepage_background@2x.png in Resources */,
 				070A58E41B603CA500DD47A7 /* plus@2x.png in Resources */,
+				076B919A1BB9E64B007B551E /* handleRectangle@2x.png in Resources */,
 				0743780A1B66C271006A6B32 /* music_note.png in Resources */,
 				0743780B1B66C271006A6B32 /* music_note@2x.png in Resources */,
 				070A58E51B603CA500DD47A7 /* plus.png in Resources */,
+				07F0CD7C1BB5A84200AED6CA /* handle.png in Resources */,
 				070A58EA1B603CA500DD47A7 /* button_green_rounded@2x.png in Resources */,
 				07846CB11B61878700AA26E1 /* back.png in Resources */,
 				0788B6A31B67FCBD004BF104 /* YTPlayer.html in Resources */,
 				079C70331B9641EC008B88DF /* fa-thumbs-up-on.png in Resources */,
 				07F0CD751BB489A900AED6CA /* skip@2x.png in Resources */,
+				076B91961BB9AA4C007B551E /* play@2x.png in Resources */,
 				070A58DE1B603CA500DD47A7 /* close@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -742,11 +776,13 @@
 				074378041B669DDA006A6B32 /* Song.swift in Sources */,
 				074378071B66A106006A6B32 /* UISearchTableViewCell.swift in Sources */,
 				077D98E11B6425BB00A44A17 /* UISingleLineTextField.swift in Sources */,
+				076B91921BB9A8DA007B551E /* ToggleButton.swift in Sources */,
 				07D2FDE61B51ACE400B40899 /* SocketIOTransportXHR.m in Sources */,
 				07D2FDE51B51ACE400B40899 /* SocketIOTransportWebsocket.m in Sources */,
 				07A4FA341B4EDD9C004D3FBF /* AppDelegate.swift in Sources */,
 				07D2FDE91B51CAA100B40899 /* PartyViewController.swift in Sources */,
 				074D70461B681EBF00EA64AB /* YTPlayerView.m in Sources */,
+				07F0CD7F1BB5AA3900AED6CA /* VideoControlsView.swift in Sources */,
 				077D98DB1B6421FE00A44A17 /* JoinPartyViewController.swift in Sources */,
 				074AC1171B59C2A400A4B5FC /* VynlDefaultButton.swift in Sources */,
 				07715A7F1B559B5000FD28CC /* SongManager.swift in Sources */,

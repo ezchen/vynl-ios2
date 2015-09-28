@@ -196,14 +196,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="29k-EQ-HGl">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="partySongCell" id="VFr-C1-dO0" customClass="UIPartyCollectionViewCell" customModule="vynl">
-                                        <rect key="frame" x="0.0" y="66" width="600" height="100"/>
+                                        <rect key="frame" x="0.0" y="22" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VFr-C1-dO0" id="zUr-iF-Dv6">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
@@ -312,23 +307,33 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bd6-S4-yPA">
-                                <rect key="frame" x="430" y="436" width="160" height="90"/>
+                                <rect key="frame" x="440" y="401" width="160" height="90"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="E1G-E0-ZNY"/>
                                     <constraint firstAttribute="width" constant="160" id="hFf-7l-WAI"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="urs-RO-Vam" customClass="VideoControlsView" customModule="vynl">
+                                <rect key="frame" x="0.0" y="494" width="600" height="42"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="9OK-x1-Amq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="zT0-vc-eDE" secondAttribute="trailing" id="2FY-bT-Scr"/>
-                            <constraint firstAttribute="trailing" secondItem="Bd6-S4-yPA" secondAttribute="trailing" constant="10" id="FnM-gZ-Jiz"/>
+                            <constraint firstAttribute="trailing" secondItem="urs-RO-Vam" secondAttribute="trailing" id="3jY-f2-Lem"/>
+                            <constraint firstAttribute="trailing" secondItem="Bd6-S4-yPA" secondAttribute="trailing" id="FnM-gZ-Jiz"/>
                             <constraint firstItem="zT0-vc-eDE" firstAttribute="leading" secondItem="mVf-Tx-JEa" secondAttribute="leading" id="GO9-bQ-uka"/>
+                            <constraint firstItem="urs-RO-Vam" firstAttribute="leading" secondItem="mVf-Tx-JEa" secondAttribute="leading" id="Q0x-o4-e17"/>
                             <constraint firstItem="Bd6-S4-yPA" firstAttribute="top" secondItem="zT0-vc-eDE" secondAttribute="bottom" id="Tja-R8-yEd"/>
                             <constraint firstItem="zT0-vc-eDE" firstAttribute="top" secondItem="Riv-ND-vLJ" secondAttribute="bottom" id="XDc-ua-qLd"/>
+                            <constraint firstAttribute="bottom" secondItem="urs-RO-Vam" secondAttribute="bottom" id="h90-AR-ttg"/>
                             <constraint firstItem="uun-ax-UuL" firstAttribute="top" secondItem="zT0-vc-eDE" secondAttribute="bottom" id="iWE-Aq-n5E"/>
-                            <constraint firstAttribute="bottom" secondItem="Bd6-S4-yPA" secondAttribute="bottom" constant="10" id="qAi-cx-80S"/>
+                            <constraint firstAttribute="bottom" secondItem="Bd6-S4-yPA" secondAttribute="bottom" constant="45" id="qAi-cx-80S"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -350,14 +355,17 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="partyCollectionView" destination="zT0-vc-eDE" id="voT-O0-lhO"/>
+                        <outlet property="videoControlsView" destination="urs-RO-Vam" id="7lC-KJ-ckW"/>
                         <outlet property="videoView" destination="Bd6-S4-yPA" id="bpc-FL-MBh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pp5-92-7Nn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-134" y="2565"/>
+            <point key="canvasLocation" x="-142" y="2534"/>
         </scene>
         <!--Add Song-->
         <scene sceneID="umi-a4-RVn">

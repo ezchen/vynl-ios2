@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="VideoControlsView" customModule="vynl">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMr-T8-nu8">
+                    <rect key="frame" x="549" y="10" width="21" height="22"/>
+                    <state key="normal" image="skip.png"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-V1-8Tm" userLabel="Pause and Play">
+                    <rect key="frame" x="510" y="10" width="14" height="22"/>
+                    <state key="normal" image="play.png"/>
+                    <state key="selected" image="pause.png"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bvw-5r-Muu">
+                    <rect key="frame" x="6" y="11" width="42" height="21"/>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="gvt-Gl-L1Y">
+                    <rect key="frame" x="38" y="6" width="449" height="31"/>
+                    <color key="minimumTrackTintColor" red="0.12941176470588234" green="0.74901960784313726" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="maximumTrackTintColor" red="0.17254901960784313" green="0.17254901960784313" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
+                </slider>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="gvt-Gl-L1Y" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="1kK-z5-l3y"/>
+                <constraint firstAttribute="trailing" secondItem="mMr-T8-nu8" secondAttribute="trailing" constant="30" id="5Vy-qh-vZJ"/>
+                <constraint firstItem="aHV-V1-8Tm" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6tB-fb-1O1"/>
+                <constraint firstItem="mMr-T8-nu8" firstAttribute="leading" secondItem="aHV-V1-8Tm" secondAttribute="trailing" constant="25" id="ENc-64-FnI"/>
+                <constraint firstItem="gvt-Gl-L1Y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="RYG-mD-NRq"/>
+                <constraint firstItem="aHV-V1-8Tm" firstAttribute="leading" secondItem="gvt-Gl-L1Y" secondAttribute="trailing" constant="25" id="diQ-ji-Ikb"/>
+                <constraint firstItem="mMr-T8-nu8" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="hLg-sM-8eX"/>
+                <constraint firstItem="Bvw-5r-Muu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="6" id="ohR-P6-3lb"/>
+                <constraint firstItem="Bvw-5r-Muu" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ubO-2R-TG1"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="pauseButton" destination="aHV-V1-8Tm" id="gqv-dD-WTJ"/>
+                <outlet property="skipButton" destination="mMr-T8-nu8" id="RQ3-H4-XIa"/>
+                <outlet property="slider" destination="gvt-Gl-L1Y" id="PpW-15-6qf"/>
+            </connections>
+            <point key="canvasLocation" x="308" y="611"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="pause.png" width="14" height="18"/>
+        <image name="play.png" width="29" height="36"/>
+        <image name="skip.png" width="21" height="13"/>
+    </resources>
+</document>

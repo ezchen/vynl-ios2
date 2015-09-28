@@ -40,6 +40,12 @@ extension VideoHeaderView {
         }
     }
     
+    func nextSong() {
+        if (songManager.songs.count > 0) {
+            loadNextVideo(songManager.songs[0]["songID"] as! String)
+        }
+    }
+    
     func loadNextVideo(videoID: String) {
         self.playerView.cueVideoById(videoID, startSeconds: 0, suggestedQuality: YTPlaybackQuality.Default)
     }
