@@ -54,6 +54,7 @@
                 <outlet property="pauseButton" destination="aHV-V1-8Tm" id="gqv-dD-WTJ"/>
                 <outlet property="skipButton" destination="mMr-T8-nu8" id="RQ3-H4-XIa"/>
                 <outlet property="slider" destination="gvt-Gl-L1Y" id="PpW-15-6qf"/>
+                <outlet property="timeLeft" destination="Bvw-5r-Muu" id="BRH-oQ-0pH"/>
             </connections>
             <point key="canvasLocation" x="308" y="611"/>
         </view>

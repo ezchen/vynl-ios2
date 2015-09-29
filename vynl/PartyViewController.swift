@@ -13,14 +13,13 @@ class PartyViewController: VynlDefaultViewController {
     @IBOutlet var videoView: UIView!
     var videoHeaderView: VideoHeaderView!
     @IBOutlet var partyCollectionView: UITableView!
-    var currentlyPlaying: Bool!
     @IBOutlet var videoControlsView: VideoControlsView!
+    
+    var userIsSeeking: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        //currentlyPlaying = true
         self.title = songManager.getPartyID()
         self.songManager.delegate = self
         
@@ -28,6 +27,7 @@ class PartyViewController: VynlDefaultViewController {
         if (self.songManager.dj!) {
             self.videoHeaderView = NSBundle.mainBundle().loadNibNamed("VideoHeaderView", owner: self, options: nil)[0] as! VideoHeaderView
             self.videoHeaderView.songManager = self.songManager
+            self.videoHeaderView.delegate = self
             videoView.addSubview(videoHeaderView)
             self.videoControlsView.xibSetup()
             self.videoControlsView.delegate = self
@@ -81,6 +81,22 @@ class PartyViewController: VynlDefaultViewController {
             self.partyCollectionView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
             self.partyCollectionView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         }
+    }
+    
+    func convertPlayTimeToMinutes(playTime: Float) -> String {
+        let timeLeftInFloat = Float(self.videoHeaderView.playerView.duration()) - playTime
+        let timeLeftInt = round(timeLeftInFloat)
+        let timeLeftMinutes = Int(timeLeftInt/60)
+        let timeLeftSeconds = Int(timeLeftInt%60)
+        
+        var timeLeft: String!
+        if (timeLeftSeconds < 10) {
+            timeLeft = String(format: "%d:0%d", arguments: [timeLeftMinutes, timeLeftSeconds])
+        } else {
+            timeLeft = String(format: "%d:%d", arguments: [timeLeftMinutes, timeLeftSeconds])
+        }
+        
+        return timeLeft
     }
 }
 
@@ -141,6 +157,18 @@ extension PartyViewController {
     }
 }
 
+extension PartyViewController: VideoHeaderViewDelegate {
+    func didPlayTime(playTime: Float) {
+        
+        if (!userIsSeeking) {
+            let progress = playTime/Float(self.videoHeaderView.playerView.duration())
+            self.videoControlsView.slider.setValue(progress, animated: true)
+            
+            self.videoControlsView.timeLeft.text = self.convertPlayTimeToMinutes(playTime)
+        }
+    }
+}
+
 extension PartyViewController: VideoControlsDelegate {
     func pausePressed() {
         self.videoHeaderView.pause()
@@ -154,6 +182,19 @@ extension PartyViewController: VideoControlsDelegate {
         self.videoHeaderView.nextSong()
     }
     
+    func sliderValueSliding(sliderValue value: Float) {
+        userIsSeeking = true
+        let seekToTime = value * Float(self.videoHeaderView.playerView.duration())
+        self.videoControlsView.timeLeft.text = self.convertPlayTimeToMinutes(seekToTime)
+    }
+    
     func sliderValueChanged(sliderValue value: Float) {
+        let seekToTime = value * Float(self.videoHeaderView.playerView.duration())
+        self.videoHeaderView.seeking = true
+        self.videoHeaderView.playerView.seekToSeconds(seekToTime, allowSeekAhead: true)
+    }
+    
+    func doneSeeking() {
+        userIsSeeking = false
     }
 }

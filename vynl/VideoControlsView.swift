@@ -13,6 +13,8 @@ protocol VideoControlsDelegate {
     func playPressed()
     func skipPressed()
     func sliderValueChanged(sliderValue value: Float)
+    func sliderValueSliding(sliderValue value: Float)
+    func doneSeeking()
 }
 
 class VideoControlsView: UIView {
@@ -20,6 +22,7 @@ class VideoControlsView: UIView {
     @IBOutlet var skipButton: UIButton!
     @IBOutlet var pauseButton: UIButton!
     @IBOutlet var slider: UISlider!
+    @IBOutlet var timeLeft: UILabel!
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -59,9 +62,12 @@ class VideoControlsView: UIView {
             self.slider = view.slider
             self.pauseButton = view.pauseButton
             self.skipButton = view.skipButton
+            self.timeLeft = view.timeLeft
             
             self.slider.setThumbImage(UIImage(named: "handleRectangle"), forState: UIControlState.Normal)
-            self.slider.addTarget(self, action: "sliderValueChanged", forControlEvents: UIControlEvents.AllEvents)
+            self.slider.addTarget(self, action: "sliderValueChanged", forControlEvents: [UIControlEvents.TouchUpInside])
+            self.slider.addTarget(self, action: "sliderValueSeeking", forControlEvents: [UIControlEvents.TouchDragInside, UIControlEvents.TouchDragOutside])
+            self.slider.addTarget(self, action: "doneSeeking", forControlEvents: [UIControlEvents.TouchUpInside, UIControlEvents.TouchUpOutside])
             
             self.pauseButton.addTarget(self, action: "pauseButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
             
@@ -93,6 +99,14 @@ class VideoControlsView: UIView {
     func sliderValueChanged() {
         print(self.slider.value)
         self.delegate.sliderValueChanged(sliderValue: self.slider.value)
+    }
+    
+    func sliderValueSeeking() {
+        self.delegate.sliderValueSliding(sliderValue: self.slider.value)
+    }
+    
+    func doneSeeking() {
+        self.delegate.doneSeeking()
     }
     
     func loadViewFromNib() -> VideoControlsView {
