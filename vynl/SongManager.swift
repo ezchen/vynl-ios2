@@ -90,7 +90,7 @@ class SongManager {
     }
     
     func deleteSong(index: Int) {
-        socketHelper.deleteSong(partyID: self.partyID, song: self.songs[index])
+        socketHelper.deleteSong(partyID: self.partyID, song: self.songs[index], sessionID: user.sessionid)
     }
     
     private func randomStringWithLength(length: Int) -> String {

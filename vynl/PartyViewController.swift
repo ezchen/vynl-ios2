@@ -92,6 +92,7 @@ class PartyViewController: VynlDefaultViewController {
                     SweetAlert().showAlert("Welcome Back!", subTitle: "keep on partying!", style: AlertStyle.Success)
                 } else {
                     SweetAlert().showAlert("You Left Your Party :(", subTitle: "you can always rejoin using the 8 digit code", style: AlertStyle.None)
+                    self.videoHeaderView.playerView.pauseVideo()
                     self.videoHeaderView.playerView.clearVideo()
                     self.delegate?.dismissCalled()
                 }
@@ -173,11 +174,7 @@ extension PartyViewController: UITableViewDelegate {
             self.songManager.deleteSong(indexPath.row)
         })
         
-        if (self.songManager.dj!) {
-            return [deleteAction]
-        } else {
-            return nil
-        }
+        return [deleteAction]
     }
     
     func tableView(tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
@@ -191,6 +188,10 @@ extension PartyViewController {
         print(songManager.songs, terminator: "")
         self.toggleEmptyView(songManager.songs.count == 0)
         self.partyCollectionView.reloadData()
+        
+        if (videoHeaderView.state == YTPlayerState.Ended) {
+            videoHeaderView.nextSong()
+        }
     }
     
     override func songManager(didConnect data: [String : AnyObject]) {

@@ -130,9 +130,10 @@ class SocketHelper: NSObject {
     }
     
     /* delete a song */
-    func deleteSong(partyID partyID: String, song: [String: AnyObject]) {
+    func deleteSong(partyID partyID: String, song: [String: AnyObject], sessionID: String) {
         let data = ["room": partyID,
-            "song": song];
+            "song": song,
+            "sessionid": sessionID];
         socketIO.sendEvent(
             Constants.SocketAPI.deleteSongEventString,
             withData: data);
