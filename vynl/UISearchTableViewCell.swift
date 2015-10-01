@@ -28,5 +28,6 @@ class UISearchTableViewCell: UITableViewCell {
     
     @IBAction func addSong(sender: AnyObject) {
         songManager?.addSong(self.song)
+        self.addSongPressed.selected = true
     }
 }

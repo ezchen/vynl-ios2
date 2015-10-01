@@ -81,6 +81,8 @@
 		07A4FA3E1B4EDD9C004D3FBF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A4FA3C1B4EDD9C004D3FBF /* LaunchScreen.xib */; };
 		07A4FA4A1B4EDD9C004D3FBF /* vynlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A4FA491B4EDD9C004D3FBF /* vynlTests.swift */; };
 		07A4FA541B4EDF60004D3FBF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A4FA531B4EDF60004D3FBF /* HomeViewController.swift */; };
+		07C207541BBA4F8000C9BC5A /* plus_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C207521BBA4F8000C9BC5A /* plus_green.png */; settings = {ASSET_TAGS = (); }; };
+		07C207551BBA4F8000C9BC5A /* plus_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C207531BBA4F8000C9BC5A /* plus_green@2x.png */; settings = {ASSET_TAGS = (); }; };
 		07CA34791BB34C4000DCB8E5 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CA34781BB34C4000DCB8E5 /* SweetAlert.swift */; };
 		07D2FDE21B51ACE400B40899 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDD81B51ACE400B40899 /* SocketIO.m */; };
 		07D2FDE31B51ACE400B40899 /* SocketIOJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDDA1B51ACE400B40899 /* SocketIOJSONSerialization.m */; };
@@ -189,6 +191,8 @@
 		07A4FA491B4EDD9C004D3FBF /* vynlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vynlTests.swift; sourceTree = "<group>"; };
 		07A4FA531B4EDF60004D3FBF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		07A4FA561B4EF6F7004D3FBF /* vynl-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "vynl-Bridging-Header.h"; path = "vynl/vynl-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		07C207521BBA4F8000C9BC5A /* plus_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus_green.png; sourceTree = "<group>"; };
+		07C207531BBA4F8000C9BC5A /* plus_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus_green@2x.png"; sourceTree = "<group>"; };
 		07CA34781BB34C4000DCB8E5 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SweetAlert.swift; path = "../../iOS-libraries/SweetAlert-iOS/SweetAlert/SweetAlert.swift"; sourceTree = "<group>"; };
 		07D2FDD71B51ACE400B40899 /* SocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIO.h; sourceTree = "<group>"; };
 		07D2FDD81B51ACE400B40899 /* SocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIO.m; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 		074AC1071B59C15500A4B5FC /* images */ = {
 			isa = PBXGroup;
 			children = (
+				07C207521BBA4F8000C9BC5A /* plus_green.png */,
+				07C207531BBA4F8000C9BC5A /* plus_green@2x.png */,
 				076B91971BB9E64B007B551E /* handleRectangle.png */,
 				076B91981BB9E64B007B551E /* handleRectangle@2x.png */,
 				076B91931BB9AA4C007B551E /* play.png */,
@@ -606,6 +612,7 @@
 				074D70481B681EC800EA64AB /* YTPlayerView-iframe-player.html in Resources */,
 				079C703A1B9641FE008B88DF /* fa-thumbs-down@2x.png in Resources */,
 				077D98E51B64291000A44A17 /* search@2x.png in Resources */,
+				07C207541BBA4F8000C9BC5A /* plus_green.png in Resources */,
 				070A58DF1B603CA500DD47A7 /* close.png in Resources */,
 				07846CB01B61878700AA26E1 /* back@2x.png in Resources */,
 				074AC1061B59A82600A4B5FC /* OpenSans-Regular.ttf in Resources */,
@@ -627,6 +634,7 @@
 				079C703C1B9641FE008B88DF /* fa-thumbs-up@2x.png in Resources */,
 				070A58E21B603CA500DD47A7 /* plus_circle@2x.png in Resources */,
 				077244FC1B8FA655002466E6 /* PartyTableHeader.xib in Resources */,
+				07C207551BBA4F8000C9BC5A /* plus_green@2x.png in Resources */,
 				074AC1051B59A82400A4B5FC /* Pacifico.ttf in Resources */,
 				07A4FA3B1B4EDD9C004D3FBF /* Images.xcassets in Resources */,
 				07F0CD791BB5A63000AED6CA /* VideoControlsView.xib in Resources */,

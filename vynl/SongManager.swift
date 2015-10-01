@@ -89,6 +89,10 @@ class SongManager {
         socketHelper.playSong(partyID: self.partyID, song: self.songs[0], sessionID: user.sessionid)
     }
     
+    func deleteSong(index: Int) {
+        socketHelper.deleteSong(partyID: self.partyID, song: self.songs[index])
+    }
+    
     private func randomStringWithLength(length: Int) -> String {
         let alphabet = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         let upperBound = UInt32(alphabet.characters.count)

@@ -79,7 +79,7 @@ extension VideoHeaderView: YTPlayerViewDelegate {
         switch (state) {
             case YTPlayerState.Playing:
                 print("videoHeaderView video is Playing")
-                if (self.state != YTPlayerState.Paused && self.newVideo) {
+                if (self.newVideo) {
                     // notify server that dj has started playing a new song
                     self.songManager.playSong()
                     self.newVideo = false

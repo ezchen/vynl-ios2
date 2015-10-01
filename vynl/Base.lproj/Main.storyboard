@@ -306,7 +306,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bd6-S4-yPA">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bd6-S4-yPA">
                                 <rect key="frame" x="440" y="401" width="160" height="90"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -395,7 +395,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="searchCell" id="yc8-MN-dRB" customClass="UISearchTableViewCell" customModule="vynl">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="searchCell" id="yc8-MN-dRB" customClass="UISearchTableViewCell" customModule="vynl">
                                         <rect key="frame" x="0.0" y="22" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yc8-MN-dRB" id="fQ1-rh-qhw">
@@ -410,26 +410,29 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJJ-Wt-VZJ">
-                                                    <rect key="frame" x="68" y="10" width="464" height="19.5"/>
+                                                    <rect key="frame" x="68" y="10" width="452" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OX8-ln-6aL">
-                                                    <rect key="frame" x="552" y="21" width="28" height="28"/>
+                                                    <rect key="frame" x="540" y="15" width="40" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="28" id="9Hi-sB-mqI"/>
-                                                        <constraint firstAttribute="height" constant="28" id="c21-lA-GXA"/>
+                                                        <constraint firstAttribute="width" constant="40" id="9Hi-sB-mqI"/>
+                                                        <constraint firstAttribute="height" constant="40" id="c21-lA-GXA"/>
                                                     </constraints>
+                                                    <inset key="contentEdgeInsets" minX="6" minY="6" maxX="6" maxY="6"/>
                                                     <state key="normal" image="plus_circle.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <state key="selected" image="plus_green.png"/>
+                                                    <state key="highlighted" image="plus_green.png"/>
                                                     <connections>
                                                         <action selector="addSong:" destination="yc8-MN-dRB" eventType="touchUpInside" id="6RU-gz-lKY"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36L-X9-HxX">
-                                                    <rect key="frame" x="68" y="28" width="464" height="19.5"/>
+                                                    <rect key="frame" x="68" y="28" width="452" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                     <color key="textColor" red="0.52941176470588236" green="0.52941176470588236" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -623,6 +626,7 @@
         <image name="homepage_background.png" width="320" height="568"/>
         <image name="plus.png" width="31" height="30"/>
         <image name="plus_circle.png" width="56" height="56"/>
+        <image name="plus_green.png" width="56" height="56"/>
         <image name="search.png" width="14" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>

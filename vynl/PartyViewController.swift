@@ -10,22 +10,36 @@ import UIKit
 
 class PartyViewController: VynlDefaultViewController {
 
+    /* Container for the actual videoHeaderView */
     @IBOutlet var videoView: UIView!
+    
+    /* Container for the YTPlayerView */
     var videoHeaderView: VideoHeaderView!
-    @IBOutlet var partyCollectionView: UITableView!
+    
+    /* View with controls to change state of the video */
     @IBOutlet var videoControlsView: VideoControlsView!
     
+    /* Table View With Song Queue */
+    @IBOutlet var partyCollectionView: UITableView!
+    
+    /* True when user is dragging the video panning handle */
+    /* video controls view doesn't jump around when user is panning */
     var userIsSeeking: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /* display unique party ID for others to join */
         self.title = songManager.getPartyID()
         self.songManager.delegate = self
         
-        /* Only Show Video View if User is DJ */
+        /* Only Show Video View and VideoControls View if User is DJ */
         if (self.songManager.dj!) {
-            self.videoHeaderView = NSBundle.mainBundle().loadNibNamed("VideoHeaderView", owner: self, options: nil)[0] as! VideoHeaderView
+            self.videoHeaderView = NSBundle.mainBundle().loadNibNamed(
+                "VideoHeaderView",
+                owner: self,
+                options: nil)[0] as! VideoHeaderView
+            
             self.videoHeaderView.songManager = self.songManager
             self.videoHeaderView.delegate = self
             videoView.addSubview(videoHeaderView)
@@ -53,6 +67,7 @@ class PartyViewController: VynlDefaultViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        /* open search modal */
         if (segue.identifier == "search") {
             let navigationController = segue.destinationViewController as! UINavigationController
             let viewController = navigationController.viewControllers[0] as! SearchViewController
@@ -64,7 +79,23 @@ class PartyViewController: VynlDefaultViewController {
     }
     
     @IBAction func backCalled(sender: AnyObject) {
-        self.delegate?.dismissCalled()
+        // make sure the video stops playing when the dj leaves the party
+        
+        SweetAlert().showAlert("Are you sure?",
+            subTitle: "Your friends need your music",
+            style: AlertStyle.Warning,
+            buttonTitle: "Cancel",
+            buttonColor: UIColor.colorFromRGB(0xD0D0D0),
+            otherButtonTitle: "Leave",
+            otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+                if (isOtherButton) {
+                    SweetAlert().showAlert("Welcome Back!", subTitle: "keep on partying!", style: AlertStyle.Success)
+                } else {
+                    SweetAlert().showAlert("You Left Your Party :(", subTitle: "you can always rejoin using the 8 digit code", style: AlertStyle.None)
+                    self.videoHeaderView.playerView.clearVideo()
+                    self.delegate?.dismissCalled()
+                }
+        }
     }
     
     func toggleEmptyView(isEmpty: Bool) {
@@ -83,6 +114,7 @@ class PartyViewController: VynlDefaultViewController {
         }
     }
     
+    /* Converts Float to format Minutes:Seconds (0:00) */
     func convertPlayTimeToMinutes(playTime: Float) -> String {
         let timeLeftInFloat = Float(self.videoHeaderView.playerView.duration()) - playTime
         let timeLeftInt = round(timeLeftInFloat)
@@ -101,9 +133,8 @@ class PartyViewController: VynlDefaultViewController {
 }
 
 extension PartyViewController: DefaultModalDelegate {
-    /* perform actions after dismissing modals
-     * 
-     * search modal is dismissed */
+    /* search modal is dismissed 
+       make sure song queue is updated */
     func dismissCalled() {
         self.songManager.delegate = self;
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -137,7 +168,21 @@ extension PartyViewController: UITableViewDataSource {
 }
 
 extension PartyViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Destructive, title: "delete", handler:{action, indexpath in
+            self.songManager.deleteSong(indexPath.row)
+        })
+        
+        if (self.songManager.dj!) {
+            return [deleteAction]
+        } else {
+            return nil
+        }
+    }
     
+    func tableView(tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
+        return self.songManager.dj
+    }
 }
 
 extension PartyViewController {
@@ -149,17 +194,18 @@ extension PartyViewController {
     }
     
     override func songManager(didConnect data: [String : AnyObject]) {
-        /* super class creates toast message */
+        /* super class (VynlDefaultViewController.Swift) creates the toast message */
         super.songManager(didConnect: data)
         
-        /* rejoin the party */
+        /* rejoin the room on the sockets */
         self.songManager.joinParty(songManager.partyID)
     }
 }
 
 extension PartyViewController: VideoHeaderViewDelegate {
+    /* pass play time information to video controls to update time */
     func didPlayTime(playTime: Float) {
-        
+        /* update the slider if the user isn't panning through the video */
         if (!userIsSeeking) {
             let progress = playTime/Float(self.videoHeaderView.playerView.duration())
             self.videoControlsView.slider.setValue(progress, animated: true)
