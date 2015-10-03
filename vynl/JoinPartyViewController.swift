@@ -45,8 +45,10 @@ class JoinPartyViewController: VynlDefaultViewController {
 
 extension JoinPartyViewController {
     func songManager(didJoin data: [String : AnyObject]) {
-        print(data["dj"])
         self.activityIndicator.stopAnimating()
-        self.performSegueWithIdentifier("joinParty", sender: data)
+        if (data["error"] == nil) {
+            print(data["dj"])
+            self.performSegueWithIdentifier("joinParty", sender: data)
+        }
     }
 }

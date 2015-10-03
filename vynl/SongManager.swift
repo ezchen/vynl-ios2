@@ -183,6 +183,7 @@ extension SongManager: SocketHelperDelegate {
         print(data["error"])
         if (data["error"] != nil) {
             SweetAlert().showAlert("This Party Doesn't Exist", subTitle: "Did You Enter the Code Correctly?", style: AlertStyle.Error)
+            self.delegate?.songManager?(didJoin: data)
         } else {
             self.isJoined = true
             self.songs = data["songs"] as! Array<[String: AnyObject]>
