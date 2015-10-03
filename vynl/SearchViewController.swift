@@ -58,7 +58,10 @@ extension SearchViewController: UISearchBarDelegate {
             self.tableView.reloadData()
             print(self.songs)
         }
-        youtubeHelper.search(searchBar.text!, pageToken: nil, resultsPerPage: 10, success: success)
+        func error(error: AnyObject) {
+            SweetAlert().showAlert("Search Failed", subTitle: "Check Your Internet Connection!", style: AlertStyle.Error)
+        }
+        youtubeHelper.search(searchBar.text!, pageToken: nil, resultsPerPage: 10, success: success, error: error)
         searchBar.resignFirstResponder()
     }
 }

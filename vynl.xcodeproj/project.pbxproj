@@ -110,6 +110,8 @@
 		07F0CD7C1BB5A84200AED6CA /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD7A1BB5A84200AED6CA /* handle.png */; settings = {ASSET_TAGS = (); }; };
 		07F0CD7D1BB5A84200AED6CA /* handle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD7B1BB5A84200AED6CA /* handle@2x.png */; settings = {ASSET_TAGS = (); }; };
 		07F0CD7F1BB5AA3900AED6CA /* VideoControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F0CD7E1BB5AA3900AED6CA /* VideoControlsView.swift */; settings = {ASSET_TAGS = (); }; };
+		07F15E6E1BBF45AB0060CD49 /* vynl-ios-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F15E6C1BBF45AB0060CD49 /* vynl-ios-icon.png */; settings = {ASSET_TAGS = (); }; };
+		07F15E6F1BBF45AB0060CD49 /* vynl-ios-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F15E6D1BBF45AB0060CD49 /* vynl-ios-icon@2x.png */; settings = {ASSET_TAGS = (); }; };
 		587740ED53D989D1742F8F5E /* Pods_vynlTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A6C9588430EA08B742B22D /* Pods_vynlTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DE793A4927B52D8E94A51A8C /* Pods_vynl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F59BB5B49780DBBB1F6CD3EE /* Pods_vynl.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -218,6 +220,8 @@
 		07F0CD7A1BB5A84200AED6CA /* handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handle.png; sourceTree = "<group>"; };
 		07F0CD7B1BB5A84200AED6CA /* handle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handle@2x.png"; sourceTree = "<group>"; };
 		07F0CD7E1BB5AA3900AED6CA /* VideoControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoControlsView.swift; sourceTree = "<group>"; };
+		07F15E6C1BBF45AB0060CD49 /* vynl-ios-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vynl-ios-icon.png"; sourceTree = "<group>"; };
+		07F15E6D1BBF45AB0060CD49 /* vynl-ios-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vynl-ios-icon@2x.png"; sourceTree = "<group>"; };
 		270FE4FF68F58ED2244BABF7 /* Pods-vynlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vynlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vynlTests/Pods-vynlTests.debug.xcconfig"; sourceTree = "<group>"; };
 		553A17D8256268863A2C7CFA /* Pods-vynlTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vynlTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-vynlTests/Pods-vynlTests.release.xcconfig"; sourceTree = "<group>"; };
 		578EB90B607245E5EB61A8CE /* Pods-vynl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vynl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vynl/Pods-vynl.debug.xcconfig"; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 		074AC1071B59C15500A4B5FC /* images */ = {
 			isa = PBXGroup;
 			children = (
+				07F15E6C1BBF45AB0060CD49 /* vynl-ios-icon.png */,
+				07F15E6D1BBF45AB0060CD49 /* vynl-ios-icon@2x.png */,
 				07C207521BBA4F8000C9BC5A /* plus_green.png */,
 				07C207531BBA4F8000C9BC5A /* plus_green@2x.png */,
 				076B91971BB9E64B007B551E /* handleRectangle.png */,
@@ -574,7 +580,7 @@
 				TargetAttributes = {
 					07A4FA2D1B4EDD9C004D3FBF = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = JQU56V8BB4;
+						DevelopmentTeam = APMNCEDZV7;
 					};
 					07A4FA421B4EDD9C004D3FBF = {
 						CreatedOnToolsVersion = 6.4;
@@ -606,6 +612,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07F15E6F1BBF45AB0060CD49 /* vynl-ios-icon@2x.png in Resources */,
 				079C703D1B9641FE008B88DF /* fa-thumbs-up.png in Resources */,
 				070A58E71B603CA500DD47A7 /* button_whiteoutline.png in Resources */,
 				07F0CD761BB489A900AED6CA /* pause.png in Resources */,
@@ -626,6 +633,7 @@
 				07F0CD741BB489A900AED6CA /* skip.png in Resources */,
 				070A58EB1B603CA500DD47A7 /* button_green_rounded.png in Resources */,
 				07A4FA3E1B4EDD9C004D3FBF /* LaunchScreen.xib in Resources */,
+				07F15E6E1BBF45AB0060CD49 /* vynl-ios-icon.png in Resources */,
 				079C70341B9641EC008B88DF /* fa-thumbs-down-on@2x.png in Resources */,
 				07F0CD771BB489A900AED6CA /* pause@2x.png in Resources */,
 				077D98E31B6428ED00A44A17 /* OpenSans-Semibold.ttf in Resources */,
@@ -876,7 +884,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Chen (APMNCEDZV7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Chen (APMNCEDZV7)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -921,7 +930,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Chen (APMNCEDZV7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Chen (APMNCEDZV7)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -955,11 +965,14 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = vynl/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "party.vynl.vynl-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "vynl/vynl-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -976,10 +989,13 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = vynl/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "party.vynl.vynl-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "vynl/vynl-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

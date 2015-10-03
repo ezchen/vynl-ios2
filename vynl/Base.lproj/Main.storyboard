@@ -15,8 +15,10 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
         </mutableArray>
         <mutableArray key="Pacifico.ttf">
@@ -178,7 +180,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gLC-Yz-p7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1083" y="2565"/>
+            <point key="canvasLocation" x="-1091" y="2534"/>
         </scene>
         <!--Party View Controller-->
         <scene sceneID="k0p-DK-Typ">
@@ -568,6 +570,84 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sas-PV-fPL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="655" y="1077"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Na1-CS-Z7c">
+            <objects>
+                <viewController id="7jw-sd-4Hs" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rC6-Ra-8uV"/>
+                        <viewControllerLayoutGuide type="bottom" id="rHu-4E-7uk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="irL-5P-Ncj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Party ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ApB-rL-2Le" customClass="UISingleLineTextField" customModule="vynl" customModuleProvider="target">
+                                <rect key="frame" x="30" y="40" width="540" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="P8x-Fv-B6G"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="join"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfH-b8-TtM" customClass="VynlDefaultButton" customModule="vynl">
+                                <rect key="frame" x="223" y="140" width="155" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="e6o-x7-rrM"/>
+                                    <constraint firstAttribute="width" constant="155" id="opg-1h-ecS"/>
+                                    <constraint firstAttribute="height" constant="40" id="tOv-5P-1fS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                                <state key="normal" title="MAKE PARTY" backgroundImage="button_green_rounded.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="e6o-x7-rrM"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="joinPartypressed:" destination="7jw-sd-4Hs" eventType="touchUpInside" id="r5U-5G-4zJ"/>
+                                    <action selector="startAPartyPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8oz-Ee-2ZB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ApB-rL-2Le" firstAttribute="top" secondItem="rC6-Ra-8uV" secondAttribute="bottom" constant="40" id="KmJ-6I-sOT"/>
+                            <constraint firstAttribute="trailing" secondItem="ApB-rL-2Le" secondAttribute="trailing" constant="30" id="Vhg-a5-QgN"/>
+                            <constraint firstAttribute="centerX" secondItem="wfH-b8-TtM" secondAttribute="centerX" id="gLQ-rA-MdH"/>
+                            <constraint firstAttribute="centerX" secondItem="ApB-rL-2Le" secondAttribute="centerX" id="mEm-la-eYd"/>
+                            <constraint firstItem="ApB-rL-2Le" firstAttribute="leading" secondItem="irL-5P-Ncj" secondAttribute="leading" constant="30" id="nsS-XH-jsB"/>
+                            <constraint firstItem="wfH-b8-TtM" firstAttribute="top" secondItem="ApB-rL-2Le" secondAttribute="bottom" constant="60" id="r35-tG-Sdw"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="mEm-la-eYd"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="zVi-By-V4e">
+                        <barButtonItem key="leftBarButtonItem" image="back.png" style="plain" id="J2Z-Be-pNb" userLabel="Back">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="backCalled:" destination="7jw-sd-4Hs" id="VkG-Ul-vcH"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="search.png" style="plain" id="FyX-fK-HIi" userLabel="Search">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="partyIDTextField" destination="ApB-rL-2Le" id="y7M-BQ-kcW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C8E-w2-hVa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-672" y="970"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WWq-Gv-lbe">

@@ -23,6 +23,7 @@ class JoinPartyViewController: VynlDefaultViewController {
     }
 
     @IBAction func joinPartypressed(sender: AnyObject) {
+        self.partyIDTextField.resignFirstResponder()
         if (partyIDTextField.text!.characters.count == 8) {
             self.songManager.joinParty(partyIDTextField.text!)
         } else {
@@ -44,6 +45,7 @@ class JoinPartyViewController: VynlDefaultViewController {
 
 extension JoinPartyViewController {
     func songManager(didJoin data: [String : AnyObject]) {
+        print(data["dj"])
         self.performSegueWithIdentifier("joinParty", sender: data)
     }
 }

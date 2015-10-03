@@ -15,7 +15,7 @@ class YoutubeDataHelper {
     private let YOUTUBE_API_KEY = "AIzaSyDScuK6YCvbLjjBSg4TfsZtnzK47GZXc5I"
     
     
-    func search(query: String, pageToken: String?, resultsPerPage: UInt, success: (AnyObject) -> ()) {
+    func search(query: String, pageToken: String?, resultsPerPage: UInt, success: (AnyObject) -> (), error: (AnyObject) -> ()) {
         
         var params = ["part": "snippet", "q": query, "type": "video", "maxResults": String(resultsPerPage), "key": YOUTUBE_API_KEY]
         
@@ -26,7 +26,12 @@ class YoutubeDataHelper {
             .validate()
             .responseJSON { _, _, JSON in
                 print(JSON, terminator: "")
-                success(self.formatYoutubeJSON(JSON.value!))
+                
+                if (JSON.isFailure) {
+                    error(JSON.isFailure)
+                } else {
+                    success(self.formatYoutubeJSON(JSON.value!))
+                }
         }
         print(request)
     }

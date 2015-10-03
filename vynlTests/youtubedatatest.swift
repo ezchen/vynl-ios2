@@ -29,7 +29,10 @@ class youtubedatatest: XCTestCase {
             expectation.fulfill()
             XCTAssertNotNil(json, "search worked!")
         }
-        datahelper.search("taylor swift", pageToken: nil, resultsPerPage: 5, success: success)
+        func error(error: AnyObject) {
+            
+        }
+        datahelper.search("taylor swift", pageToken: nil, resultsPerPage: 5, success: success, error: error)
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
     }
 

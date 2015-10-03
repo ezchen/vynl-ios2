@@ -23,6 +23,7 @@ class VideoHeaderView: UIView {
     
     var newVideo = true
     var seeking = false
+    var autoplay = false
         
     var playerVars = ["controls": 0,
     "autoplay": 1,
@@ -75,12 +76,19 @@ extension VideoHeaderView: YTPlayerViewDelegate {
         self.delegate.didPlayTime(playTime)
     }
     
+    func playerViewDidBecomeReady(playerView: YTPlayerView!) {
+        print("Player View is Ready")
+        if (self.state == YTPlayerState.Ended && self.autoplay && self.songManager.songs.count > 0) {
+            self.play()
+        }
+    }
+    
     func playerView(playerView: YTPlayerView!, didChangeToState state: YTPlayerState) {
         
         switch (state) {
             case YTPlayerState.Playing:
                 print("videoHeaderView video is Playing")
-                if (self.newVideo) {
+                if (self.newVideo && self.songManager.songs.count > 0) {
                     // notify server that dj has started playing a new song
                     self.songManager.playSong()
                     self.newVideo = false
@@ -88,8 +96,8 @@ extension VideoHeaderView: YTPlayerViewDelegate {
                 self.seeking = false
                 break
             case YTPlayerState.Ended:
+                self.newVideo = true
                 if (self.songManager.songs.count > 0) {
-                    self.newVideo = true
                     self.playerView.cueVideoById(self.songManager.songs[0]["songID"] as! String, startSeconds: 0, suggestedQuality: YTPlaybackQuality.Default)
                 }
                 print("ended")

@@ -175,11 +175,16 @@ extension SongManager: SocketHelperDelegate {
     }
     
     func socketHelper(socketHelper socketHelper: SocketHelper!, didJoin data: [String: AnyObject]) {
-        self.isJoined = true
-        self.songs = data["songs"] as! Array<[String: AnyObject]>
-        self.dj = data["dj"] as! String == self.user.sessionid
-        self.delegate?.songManager?(didJoin: data)
-        self.delegate?.songManager?(songsDidUpdate: data)
+        print(data["error"])
+        if (data["error"] != nil) {
+            SweetAlert().showAlert("This Party Doesn't Exist", subTitle: "Did You Enter the Code Correctly?", style: AlertStyle.Error)
+        } else {
+            self.isJoined = true
+            self.songs = data["songs"] as! Array<[String: AnyObject]>
+            self.dj = data["dj"] as! String == self.user.sessionid
+            self.delegate?.songManager?(didJoin: data)
+            self.delegate?.songManager?(songsDidUpdate: data)
+        }
     }
     
     func socketHelper(socketHelper socketHelper: SocketHelper!, playSong data: [String : AnyObject]) {

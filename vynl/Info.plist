@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>party.vynl.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -26,16 +26,7 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-            <key>vynl.party</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTP</key>
-				<true/>
-				<key>NSExceptionMinimumTLSVersion</key>
-				<string>TLSv1.1</string>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-			</dict>
-			<key>localhost</key>
+			<key>vynl.party</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>

@@ -92,8 +92,12 @@ class PartyViewController: VynlDefaultViewController {
                     SweetAlert().showAlert("Welcome Back!", subTitle: "keep on partying!", style: AlertStyle.Success)
                 } else {
                     SweetAlert().showAlert("You Left Your Party :(", subTitle: "you can always rejoin using the 8 digit code", style: AlertStyle.None)
-                    self.videoHeaderView.playerView.pauseVideo()
-                    self.videoHeaderView.playerView.clearVideo()
+                    
+                    if (self.songManager.dj!) {
+                        self.videoHeaderView.playerView.pauseVideo()
+                        self.videoHeaderView.playerView.clearVideo()
+                    }
+                    
                     self.delegate?.dismissCalled()
                 }
         }
@@ -141,6 +145,9 @@ extension PartyViewController: DefaultModalDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
         self.partyCollectionView.reloadData()
         toggleEmptyView(songManager.songs.count == 0)
+        if (songManager.songs.count != 0 && videoHeaderView.state == YTPlayerState.Ended) {
+            videoHeaderView.nextSong()
+        }
     }
 }
 
@@ -189,8 +196,10 @@ extension PartyViewController {
         self.toggleEmptyView(songManager.songs.count == 0)
         self.partyCollectionView.reloadData()
         
-        if (videoHeaderView.state == YTPlayerState.Ended) {
-            videoHeaderView.nextSong()
+        if (songManager.dj!) {
+            if (videoHeaderView.state == YTPlayerState.Ended) {
+                videoHeaderView.nextSong()
+            }
         }
     }
     
@@ -217,11 +226,21 @@ extension PartyViewController: VideoHeaderViewDelegate {
 }
 
 extension PartyViewController: VideoControlsDelegate {
+    // Button is now in paused state
     func pausePressed() {
+        // When button is in paused state, videos should not automatically play even
+        // if queue is ended
+        self.videoHeaderView.autoplay = false
+        
         self.videoHeaderView.pause()
     }
     
+    // Button is now in play state
     func playPressed() {
+        // When button is in play state, videos should automatically play even
+        // if queue is ended
+        self.videoHeaderView.autoplay = true
+        
         self.videoHeaderView.play()
     }
     
@@ -230,12 +249,15 @@ extension PartyViewController: VideoControlsDelegate {
     }
     
     func sliderValueSliding(sliderValue value: Float) {
+        // user is currently panning for the time
+        // update the time on video controls view, but not the video yet
         userIsSeeking = true
         let seekToTime = value * Float(self.videoHeaderView.playerView.duration())
         self.videoControlsView.timeLeft.text = self.convertPlayTimeToMinutes(seekToTime)
     }
     
     func sliderValueChanged(sliderValue value: Float) {
+        // user let go of the panning tool, tell video to seek to right moment
         let seekToTime = value * Float(self.videoHeaderView.playerView.duration())
         self.videoHeaderView.seeking = true
         self.videoHeaderView.playerView.seekToSeconds(seekToTime, allowSeekAhead: true)
