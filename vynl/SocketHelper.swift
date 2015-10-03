@@ -190,7 +190,9 @@ extension SocketHelper: SocketIODelegate {
             print("")
             print("socketHelper: calling didMakeParty on socketHelperDelegate")
             print("")
-            self.sessionID = args.objectForKey("id") as! String
+            if (args.objectForKey("id") != nil) {
+                self.sessionID = args.objectForKey("id") as! String
+            }
             socketHelperDelegate.socketHelper(socketHelper: self, didMakeParty: args as! Dictionary)
         case "join":
             print("")

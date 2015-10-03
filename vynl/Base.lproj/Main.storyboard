@@ -175,12 +175,12 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="kwg-P0-O7k" kind="relationship" relationship="rootViewController" id="jcV-fT-6bQ"/>
+                        <segue destination="7jw-sd-4Hs" kind="relationship" relationship="rootViewController" id="R16-OX-YSB"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gLC-Yz-p7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1091" y="2534"/>
+            <point key="canvasLocation" x="-1383" y="1077"/>
         </scene>
         <!--Party View Controller-->
         <scene sceneID="k0p-DK-Typ">
@@ -533,15 +533,21 @@
                                     <action selector="startAPartyPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pk2-Dl-mYW"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8Vx-lv-XPs">
+                                <rect key="frame" x="2" y="50" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="b63-iY-57v" secondAttribute="trailing" constant="30" id="5T9-mh-6nh"/>
+                            <constraint firstItem="b63-iY-57v" firstAttribute="leading" secondItem="8Vx-lv-XPs" secondAttribute="trailing" constant="5" id="A8I-jc-PWW"/>
                             <constraint firstAttribute="centerX" secondItem="yQL-Xn-dbx" secondAttribute="centerX" id="Gjt-xd-W9l"/>
+                            <constraint firstItem="8Vx-lv-XPs" firstAttribute="leading" secondItem="Ccd-D7-5ls" secondAttribute="leading" constant="2" id="XuY-x3-ROQ"/>
                             <constraint firstItem="yQL-Xn-dbx" firstAttribute="top" secondItem="b63-iY-57v" secondAttribute="bottom" constant="60" id="cxF-Fx-NLU"/>
                             <constraint firstItem="b63-iY-57v" firstAttribute="leading" secondItem="Ccd-D7-5ls" secondAttribute="leading" constant="30" id="dZO-YA-4gq"/>
                             <constraint firstItem="b63-iY-57v" firstAttribute="top" secondItem="aQI-Kx-99f" secondAttribute="bottom" constant="40" id="fwm-hw-718"/>
                             <constraint firstAttribute="centerX" secondItem="b63-iY-57v" secondAttribute="centerX" id="tDW-GK-FbQ"/>
+                            <constraint firstItem="8Vx-lv-XPs" firstAttribute="top" secondItem="aQI-Kx-99f" secondAttribute="bottom" constant="53" id="tqI-I1-kLU"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -563,6 +569,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="8Vx-lv-XPs" id="dak-N7-FhB"/>
                         <outlet property="partyIDTextField" destination="b63-iY-57v" id="ppI-q6-qY5"/>
                         <segue destination="kwg-P0-O7k" kind="show" identifier="joinParty" id="Mup-df-mUB"/>
                     </connections>
@@ -571,19 +578,19 @@
             </objects>
             <point key="canvasLocation" x="655" y="1077"/>
         </scene>
-        <!--View Controller-->
+        <!--Start Party View Controller-->
         <scene sceneID="Na1-CS-Z7c">
             <objects>
-                <viewController id="7jw-sd-4Hs" sceneMemberID="viewController">
+                <viewController id="7jw-sd-4Hs" customClass="StartPartyViewController" customModule="vynl" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rC6-Ra-8uV"/>
                         <viewControllerLayoutGuide type="bottom" id="rHu-4E-7uk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="irL-5P-Ncj">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Party ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ApB-rL-2Le" customClass="UISingleLineTextField" customModule="vynl" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Party ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ApB-rL-2Le" customClass="UISingleLineTextField" customModule="vynl" customModuleProvider="target">
                                 <rect key="frame" x="30" y="40" width="540" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="P8x-Fv-B6G"/>
@@ -591,7 +598,7 @@
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="join"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfH-b8-TtM" customClass="VynlDefaultButton" customModule="vynl">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfH-b8-TtM" customClass="VynlDefaultButton" customModule="vynl">
                                 <rect key="frame" x="223" y="140" width="155" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="e6o-x7-rrM"/>
@@ -608,19 +615,24 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="joinPartypressed:" destination="7jw-sd-4Hs" eventType="touchUpInside" id="r5U-5G-4zJ"/>
-                                    <action selector="startAPartyPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8oz-Ee-2ZB"/>
+                                    <action selector="startPartyPressed:" destination="7jw-sd-4Hs" eventType="touchUpInside" id="p9N-Mw-4f6"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="agj-ay-mDd">
+                                <rect key="frame" x="2" y="53" width="23" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ApB-rL-2Le" firstAttribute="leading" secondItem="agj-ay-mDd" secondAttribute="trailing" constant="5" id="0Ba-31-Hv9"/>
                             <constraint firstItem="ApB-rL-2Le" firstAttribute="top" secondItem="rC6-Ra-8uV" secondAttribute="bottom" constant="40" id="KmJ-6I-sOT"/>
                             <constraint firstAttribute="trailing" secondItem="ApB-rL-2Le" secondAttribute="trailing" constant="30" id="Vhg-a5-QgN"/>
                             <constraint firstAttribute="centerX" secondItem="wfH-b8-TtM" secondAttribute="centerX" id="gLQ-rA-MdH"/>
                             <constraint firstAttribute="centerX" secondItem="ApB-rL-2Le" secondAttribute="centerX" id="mEm-la-eYd"/>
                             <constraint firstItem="ApB-rL-2Le" firstAttribute="leading" secondItem="irL-5P-Ncj" secondAttribute="leading" constant="30" id="nsS-XH-jsB"/>
+                            <constraint firstItem="agj-ay-mDd" firstAttribute="top" secondItem="rC6-Ra-8uV" secondAttribute="bottom" constant="53" id="p5U-4p-yJq"/>
                             <constraint firstItem="wfH-b8-TtM" firstAttribute="top" secondItem="ApB-rL-2Le" secondAttribute="bottom" constant="60" id="r35-tG-Sdw"/>
+                            <constraint firstItem="agj-ay-mDd" firstAttribute="leading" secondItem="irL-5P-Ncj" secondAttribute="leading" constant="2" id="wbK-bd-KEp"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -633,21 +645,20 @@
                         <barButtonItem key="leftBarButtonItem" image="back.png" style="plain" id="J2Z-Be-pNb" userLabel="Back">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="backCalled:" destination="7jw-sd-4Hs" id="VkG-Ul-vcH"/>
+                                <action selector="backCalled:" destination="7jw-sd-4Hs" id="Dxm-Qp-EnA"/>
                             </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="search.png" style="plain" id="FyX-fK-HIi" userLabel="Search">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="partyIDTextField" destination="ApB-rL-2Le" id="y7M-BQ-kcW"/>
+                        <outlet property="activityIndicator" destination="agj-ay-mDd" id="KmE-3E-8el"/>
+                        <outlet property="partyIDTextField" destination="ApB-rL-2Le" id="nXK-gQ-8qI"/>
+                        <segue destination="kwg-P0-O7k" kind="show" identifier="makeParty" id="lge-X2-T34"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C8E-w2-hVa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-672" y="970"/>
+            <point key="canvasLocation" x="-652" y="1077"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WWq-Gv-lbe">

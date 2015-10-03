@@ -112,6 +112,7 @@
 		07F0CD7F1BB5AA3900AED6CA /* VideoControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F0CD7E1BB5AA3900AED6CA /* VideoControlsView.swift */; settings = {ASSET_TAGS = (); }; };
 		07F15E6E1BBF45AB0060CD49 /* vynl-ios-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F15E6C1BBF45AB0060CD49 /* vynl-ios-icon.png */; settings = {ASSET_TAGS = (); }; };
 		07F15E6F1BBF45AB0060CD49 /* vynl-ios-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F15E6D1BBF45AB0060CD49 /* vynl-ios-icon@2x.png */; settings = {ASSET_TAGS = (); }; };
+		07F15E711BBF5DFD0060CD49 /* StartPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F15E701BBF5DFD0060CD49 /* StartPartyViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		587740ED53D989D1742F8F5E /* Pods_vynlTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A6C9588430EA08B742B22D /* Pods_vynlTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DE793A4927B52D8E94A51A8C /* Pods_vynl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F59BB5B49780DBBB1F6CD3EE /* Pods_vynl.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -222,6 +223,7 @@
 		07F0CD7E1BB5AA3900AED6CA /* VideoControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoControlsView.swift; sourceTree = "<group>"; };
 		07F15E6C1BBF45AB0060CD49 /* vynl-ios-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vynl-ios-icon.png"; sourceTree = "<group>"; };
 		07F15E6D1BBF45AB0060CD49 /* vynl-ios-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vynl-ios-icon@2x.png"; sourceTree = "<group>"; };
+		07F15E701BBF5DFD0060CD49 /* StartPartyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPartyViewController.swift; sourceTree = "<group>"; };
 		270FE4FF68F58ED2244BABF7 /* Pods-vynlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vynlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vynlTests/Pods-vynlTests.debug.xcconfig"; sourceTree = "<group>"; };
 		553A17D8256268863A2C7CFA /* Pods-vynlTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vynlTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-vynlTests/Pods-vynlTests.release.xcconfig"; sourceTree = "<group>"; };
 		578EB90B607245E5EB61A8CE /* Pods-vynl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vynl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vynl/Pods-vynl.debug.xcconfig"; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				07D2FDEA1B51CABE00B40899 /* VynlDefaultViewController.swift */,
 				077D98DA1B6421FE00A44A17 /* JoinPartyViewController.swift */,
 				0763F7641B646A2600489945 /* SearchViewController.swift */,
+				07F15E701BBF5DFD0060CD49 /* StartPartyViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				07D2FDE41B51ACE400B40899 /* SocketIOPacket.m in Sources */,
 				0749A0D01B60226E001CC6CF /* VideoHeaderView.swift in Sources */,
 				07D2FDE31B51ACE400B40899 /* SocketIOJSONSerialization.m in Sources */,
+				07F15E711BBF5DFD0060CD49 /* StartPartyViewController.swift in Sources */,
 				07D2FDED1B51CD4200B40899 /* SocketHelper.swift in Sources */,
 				07D2FDEB1B51CABE00B40899 /* VynlDefaultViewController.swift in Sources */,
 				07D2FDE21B51ACE400B40899 /* SocketIO.m in Sources */,

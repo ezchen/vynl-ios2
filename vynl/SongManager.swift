@@ -68,6 +68,11 @@ class SongManager {
         socketHelper.makeParty(self.partyID, sessionID: user.sessionid)
     }
     
+    func makePartyWithID(partyID: String) {
+        self.partyID = partyID
+        socketHelper.makeParty(partyID, sessionID: user.sessionid)
+    }
+    
     func joinParty(partyID: String) {
         self.partyID = partyID
         socketHelper.joinParty(self.partyID, sessionID: user.sessionid)
@@ -93,7 +98,7 @@ class SongManager {
         socketHelper.deleteSong(partyID: self.partyID, song: self.songs[index], sessionID: user.sessionid)
     }
     
-    private func randomStringWithLength(length: Int) -> String {
+    func randomStringWithLength(length: Int) -> String {
         let alphabet = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         let upperBound = UInt32(alphabet.characters.count)
         return String((0..<length).map { _ -> Character in

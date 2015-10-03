@@ -12,6 +12,8 @@ class JoinPartyViewController: VynlDefaultViewController {
 
     @IBOutlet var partyIDTextField: UISingleLineTextField!
     
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Join"
@@ -24,10 +26,8 @@ class JoinPartyViewController: VynlDefaultViewController {
 
     @IBAction func joinPartypressed(sender: AnyObject) {
         self.partyIDTextField.resignFirstResponder()
-        if (partyIDTextField.text!.characters.count == 8) {
-            self.songManager.joinParty(partyIDTextField.text!)
-        } else {
-        }
+        self.activityIndicator.startAnimating()
+        self.songManager.joinParty(partyIDTextField.text!)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -46,6 +46,7 @@ class JoinPartyViewController: VynlDefaultViewController {
 extension JoinPartyViewController {
     func songManager(didJoin data: [String : AnyObject]) {
         print(data["dj"])
+        self.activityIndicator.stopAnimating()
         self.performSegueWithIdentifier("joinParty", sender: data)
     }
 }

@@ -24,7 +24,7 @@ class HomeViewController: VynlDefaultViewController {
     }
     
     @IBAction func startAPartyPressed(sender: AnyObject) {
-        songManager.makeParty()
+        self.performSegueWithIdentifier("startAParty", sender: self)
     }
     
     @IBAction func joinAPartyPressed(sender: AnyObject) {
@@ -56,6 +56,5 @@ extension HomeViewController: DefaultModalDelegate {
 
 extension HomeViewController {
     func songManager(didMakeParty data:[String: AnyObject]) {
-        performSegueWithIdentifier("startAParty", sender: self)
     }
 }
