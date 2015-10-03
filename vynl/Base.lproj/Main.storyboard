@@ -533,7 +533,7 @@
                                     <action selector="startAPartyPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pk2-Dl-mYW"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8Vx-lv-XPs">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8Vx-lv-XPs">
                                 <rect key="frame" x="2" y="50" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
