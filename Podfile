@@ -9,6 +9,7 @@ target 'vynl' do
   pod 'YouTubePlayer'
   pod 'VGParallaxHeader'
   pod 'CRToast', '~> 0.0.7'
+  pod 'Socket.IO-Client-Swift', '~> 3.1.4'
 end
 
 target 'vynlTests' do

@@ -10,6 +10,7 @@ PODS:
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
+  - Socket.IO-Client-Swift (3.1.4)
   - SocketRocket (0.4)
   - VGParallaxHeader (0.0.6):
     - PureLayout
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - Realm (from `https://github.com/realm/realm-cocoa.git`, branch `swift-2.0`)
   - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `swift-2.0`)
   - SDWebImage (~> 3.7)
+  - Socket.IO-Client-Swift (~> 3.1.4)
   - SocketRocket
   - VGParallaxHeader
   - YouTubePlayer
@@ -48,6 +50,7 @@ SPEC CHECKSUMS:
   Realm: 6888430917b197eed845dcce9a1f99c9c4bd9cd1
   RealmSwift: 01ecf1cd1a6cc7cd05eed53c6bfaec21b0db6bf8
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  Socket.IO-Client-Swift: a0c8a6ba85ea685891d2c5f0e73b7287b89d0121
   SocketRocket: 01443933b7bc362621325f4607b80b4286a99707
   VGParallaxHeader: 1213aba58c9b0aea84f9e81ad526fde57aa4fe48
   YouTubePlayer: f0afebef31a1793cce734220a5a311ba29ca4a7f
