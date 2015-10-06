@@ -15,7 +15,7 @@ class StartPartyViewController: VynlDefaultViewController {
     
     @IBAction func startPartyPressed(sender: AnyObject) {
         var partyID: String!
-        if (self.partyIDTextField.text != nil) {
+        if (self.partyIDTextField.text != nil && self.partyIDTextField.text != "") {
             partyID = self.partyIDTextField.text!
         } else {
            // make party with provided code
