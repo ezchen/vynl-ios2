@@ -30,10 +30,6 @@ class SongManager {
     var dj: Bool!
     
     
-    private func setUpSocketHelper() {
-        
-    }
-    
     init() {
         do {
             try realm = Realm()
@@ -49,7 +45,6 @@ class SongManager {
                 self.realm.add(self.user, update: true)
             }
             
-            setUpSocketHelper()
         } catch {
             print(error)
         }

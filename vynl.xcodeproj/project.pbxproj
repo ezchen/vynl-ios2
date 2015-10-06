@@ -81,6 +81,7 @@
 		07A4FA3E1B4EDD9C004D3FBF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A4FA3C1B4EDD9C004D3FBF /* LaunchScreen.xib */; };
 		07A4FA4A1B4EDD9C004D3FBF /* vynlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A4FA491B4EDD9C004D3FBF /* vynlTests.swift */; };
 		07A4FA541B4EDF60004D3FBF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A4FA531B4EDF60004D3FBF /* HomeViewController.swift */; };
+		07BF90E01BC45EDF00F1507D /* SocketHelperTestSocketIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BF90DF1BC45EDF00F1507D /* SocketHelperTestSocketIO.swift */; settings = {ASSET_TAGS = (); }; };
 		07C207541BBA4F8000C9BC5A /* plus_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C207521BBA4F8000C9BC5A /* plus_green.png */; settings = {ASSET_TAGS = (); }; };
 		07C207551BBA4F8000C9BC5A /* plus_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C207531BBA4F8000C9BC5A /* plus_green@2x.png */; settings = {ASSET_TAGS = (); }; };
 		07CA34791BB34C4000DCB8E5 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CA34781BB34C4000DCB8E5 /* SweetAlert.swift */; };
@@ -194,6 +195,7 @@
 		07A4FA491B4EDD9C004D3FBF /* vynlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vynlTests.swift; sourceTree = "<group>"; };
 		07A4FA531B4EDF60004D3FBF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		07A4FA561B4EF6F7004D3FBF /* vynl-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "vynl-Bridging-Header.h"; path = "vynl/vynl-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		07BF90DF1BC45EDF00F1507D /* SocketHelperTestSocketIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketHelperTestSocketIO.swift; sourceTree = "<group>"; };
 		07C207521BBA4F8000C9BC5A /* plus_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus_green.png; sourceTree = "<group>"; };
 		07C207531BBA4F8000C9BC5A /* plus_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus_green@2x.png"; sourceTree = "<group>"; };
 		07CA34781BB34C4000DCB8E5 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SweetAlert.swift; path = "../../iOS-libraries/SweetAlert-iOS/SweetAlert/SweetAlert.swift"; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 			children = (
 				07A4FA491B4EDD9C004D3FBF /* vynlTests.swift */,
 				07D2FDF01B520E2500B40899 /* SocketHelperTest.swift */,
+				07BF90DF1BC45EDF00F1507D /* SocketHelperTestSocketIO.swift */,
 				0763F7611B645C9A00489945 /* youtubedatatest.swift */,
 				07A4FA471B4EDD9C004D3FBF /* Supporting Files */,
 			);
@@ -835,6 +838,7 @@
 				0763F7631B645CBB00489945 /* YoutubeDataHelper.swift in Sources */,
 				07D2FDF11B520E2500B40899 /* SocketHelperTest.swift in Sources */,
 				07D2FDF71B5218D400B40899 /* SocketIOJSONSerialization.m in Sources */,
+				07BF90E01BC45EDF00F1507D /* SocketHelperTestSocketIO.swift in Sources */,
 				07D2FDFA1B5218DE00B40899 /* SocketIOTransportXHR.m in Sources */,
 				07D2FDF91B5218DB00B40899 /* SocketIOTransportWebsocket.m in Sources */,
 				07A4FA4A1B4EDD9C004D3FBF /* vynlTests.swift in Sources */,

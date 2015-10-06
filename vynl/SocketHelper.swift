@@ -229,12 +229,9 @@ extension SocketHelper: SocketIODelegate {
 
 extension SocketHelper {
     func new_connect() {
-        let options: [String: AnyObject] = ["nsp": "/party"]
+        let options: [String: AnyObject] = ["log": true]
         if (self.socket == nil) {
-            self.socket = SocketIOClient(
-                socketURL: Constants.SocketAPI.serverURL
-                + String(Constants.SocketAPI.port),
-                opts: options)
+            self.socket = SocketIOClient(socketURL: Constants.SocketAPI.serverURL + String(Constants.SocketAPI.port), opts: options)
         }
         socket.connect()
     }
