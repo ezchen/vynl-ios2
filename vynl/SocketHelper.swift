@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Socket_IO_Client_Swift
 
 protocol SocketHelperDelegate {
     func socketDidConnect(socketHelper socketHelper: SocketHelper!);
@@ -28,6 +29,8 @@ protocol SocketHelperDelegate {
 }
 
 class SocketHelper: NSObject {
+    /* socket.io swift variables */
+    var socket: SocketIOClient!;
     
     var socketIO: SocketIO!;
     var socketHelperDelegate: SocketHelperDelegate!;
@@ -221,5 +224,91 @@ extension SocketHelper: SocketIODelegate {
             break
         }
         print(args)
+    }
+}
+
+extension SocketHelper {
+    func new_connect() {
+        let options: [String: AnyObject] = ["nsp": "/party"]
+        if (self.socket == nil) {
+            self.socket = SocketIOClient(
+                socketURL: Constants.SocketAPI.serverURL
+                + String(Constants.SocketAPI.port),
+                opts: options)
+        }
+        socket.connect()
+    }
+    
+    func new_connectWithID(id: String) {
+        let options: [String: AnyObject] = ["nsp": "/party"]
+        if (self.socket == nil) {
+            self.socket = SocketIOClient(
+                socketURL: Constants.SocketAPI.serverURL
+                + String(Constants.SocketAPI.port),
+                opts: options)
+        }
+    }
+    
+    func new_disconnect() {
+        socket.disconnect()
+    }
+    
+    func new_getID() {
+        socket.emit(Constants.SocketAPI.getIDEventString, ["data": "success", "sessionid": sessionID])
+    }
+    
+    func new_getIDWithExistingSessionWithString(sessionID: String) {
+        socket.emit(Constants.SocketAPI.getIDEventString,
+            ["data": "success",
+            "sessionid": sessionID])
+    }
+    
+    func new_leaveParty(partyID partyID: String) {
+        socket.emit(Constants.SocketAPI.leavePartyEventString,
+                    ["room": partyID])
+    }
+    
+    func new_joinParty(partyID: String, sessionID: String) {
+       socket.emit(Constants.SocketAPI.makePartyEventString,
+                    ["room": partyID, "sessionid": sessionID])
+    }
+    
+    func new_makeParty(partyID: String, sessionID: String) {
+        socket.emit(Constants.SocketAPI.makePartyEventString,
+                    ["room": partyID, "sessionid": sessionID])
+    }
+    
+    func new_addSong(partyID partyID: String, song: [String: AnyObject]) {
+        let data = ["room": partyID,
+                    "song": song]
+        socket.emit(Constants.SocketAPI.addSongEventString, data)
+    }
+    
+    func new_getSongs(partyID partyID: String, sessionID: String) {
+        let data = ["room": partyID, "sessionid": sessionID]
+        socket.emit(Constants.SocketAPI.getSongsEventString, data)
+    }
+    
+    func new_voteOnSong(partyID partyID: String, song: [String: AnyObject], vote: Int, sessionID: String) {
+        let data = ["room": partyID,
+                    "song": song,
+                    "vote": vote,
+                    "sessionid": sessionID]
+        socket.emit(Constants.SocketAPI.voteSongEventString, data)
+    }
+    
+    func new_deleteSong(partyID partyID: String, song: [String: AnyObject], sessionID: String) {
+        let data = ["room": partyID,
+                    "song": song,
+                    "sessionid": sessionID]
+        socket.emit(Constants.SocketAPI.deleteSongEventString, data)
+    }
+}
+
+extension SocketHelper {
+    func setupSocketListeners(socket: SocketIOClient) {
+        socket.on("connect") {data, ack in
+            self.socketHelperDelegate.socketHelper(socketHelper: self, didConnect: data[0] as! Dictionary)
+        }
     }
 }
