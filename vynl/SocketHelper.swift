@@ -37,6 +37,7 @@ class SocketHelper: NSObject {
     var sessionID: String!;
     
     /* connect to server */
+    /*
     func connect() {
         if (self.socketIO == nil) {
             self.socketIO = SocketIO(delegate: self);
@@ -48,6 +49,7 @@ class SocketHelper: NSObject {
             withParams: nil,
             withNamespace: Constants.SocketAPI.namespace);
     }
+*/
     
     func connectWithID(id: String) {
         if (self.socketIO == nil) {
@@ -228,10 +230,10 @@ extension SocketHelper: SocketIODelegate {
 }
 
 extension SocketHelper {
-    func new_connect() {
+    func connect() {
         let options: [String: AnyObject] = ["log": true]
         if (self.socket == nil) {
-            self.socket = SocketIOClient(socketURL: Constants.SocketAPI.serverURL + String(Constants.SocketAPI.port), opts: options)
+            self.socket = SocketIOClient(socketURL: "localhost:8000", opts: options)
         }
         socket.connect()
     }
