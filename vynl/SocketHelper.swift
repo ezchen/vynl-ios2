@@ -51,6 +51,7 @@ class SocketHelper: NSObject {
     }
 */
     
+    /*
     func connectWithID(id: String) {
         if (self.socketIO == nil) {
             self.socketIO = SocketIO(delegate: self);
@@ -63,49 +64,63 @@ class SocketHelper: NSObject {
             withParams: ["sessionid": id],
             withNamespace: Constants.SocketAPI.namespace);
     }
+*/
     
     /* disconnect from server */
+    /*
     func disconnect() {
         socketIO.disconnect();
     }
+*/
     
+    /*
     func getID() {
         socketIO.sendEvent(
             Constants.SocketAPI.getIDEventString,
             withData: ["data": "success"]);
     }
+*/
     
+    /*
     func getIDWithExistingSessionWithString(sessionID: String) {
         socketIO.sendEvent(
             Constants.SocketAPI.getIDEventString,
             withData: ["data": "success",
                     "sessionid": sessionID])
     }
+*/
     
     /* leave party room (unsubscribe from notifications) */
+    /*
     func leaveParty(partyID partyID: String) {
         socketIO.sendEvent(
             Constants.SocketAPI.leavePartyEventString,
             withData: ["room": partyID]);
     }
+*/
     
     /* join party room (subscribe to notifications) */
+    /*
     func joinParty(partyID: String, sessionID: String) {
        socketIO.sendEvent(
         Constants.SocketAPI.joinEventString,
         withData: ["room": partyID,
                     "sessionid": sessionID]);
     }
+*/
     
     /* make a party room */
+    /*
     func makeParty(partyID: String, sessionID: String) {
         socketIO.sendEvent(
             Constants.SocketAPI.makePartyEventString,
             withData: ["room": partyID,
                     "sessionid": sessionID]);
     }
+*/
     
     /* add a song to current party room */
+    /*j
     func addSong(partyID partyID: String, song: [String: AnyObject]) {
         let data = ["room": partyID,
             "song": song];
@@ -114,16 +129,20 @@ class SocketHelper: NSObject {
             withData: data)
         
     }
+*/
     
     /* get all songs from current party room */
+    /*
     func getSongs(partyID partyID: String, sessionID: String) {
         socketIO.sendEvent(
             Constants.SocketAPI.getSongsEventString,
             withData: ["room": partyID,
                     "sessionid": sessionID]);
     }
+*/
     
     /* vote on a song */
+    /*
     func voteOnSong(partyID partyID: String, song: [String: AnyObject], vote: Int, sessionID: String) {
         let data = ["room": partyID,
             "song": song,
@@ -133,8 +152,10 @@ class SocketHelper: NSObject {
             Constants.SocketAPI.voteSongEventString,
             withData: data);
     }
+*/
     
     /* delete a song */
+    /*
     func deleteSong(partyID partyID: String, song: [String: AnyObject], sessionID: String) {
         let data = ["room": partyID,
             "song": song,
@@ -143,12 +164,15 @@ class SocketHelper: NSObject {
             Constants.SocketAPI.deleteSongEventString,
             withData: data);
     }
+*/
     
+    /*
     func playSong(partyID partyID: String, song: [String: AnyObject], sessionID: String) {
         socketIO.sendEvent("playSong", withData: ["room": partyID,
                                                 "song": song,
                                                 "sessionid": sessionID])
     }
+*/
     
     /* not sure yet */
     func playingSong() {
@@ -181,7 +205,7 @@ extension SocketHelper: SocketIODelegate {
         
         switch name {
         case "connect":
-            print("socketHelper: calling didConnect on socketHelperDelegate")
+            //print("socketHelper: calling didConnect on socketHelperDelegate")
             socketHelperDelegate.socketHelper(socketHelper: self, didConnect: args as! Dictionary)
             break
         case "getID":
@@ -234,61 +258,65 @@ extension SocketHelper {
         let options: [String: AnyObject] = ["log": true]
         if (self.socket == nil) {
             self.socket = SocketIOClient(socketURL: "localhost:8000", opts: options)
+            self.setupSocketListeners(socket);
         }
         socket.connect()
     }
     
-    func new_connectWithID(id: String) {
+    func connectWithID(id: String) {
         let options: [String: AnyObject] = ["nsp": "/party"]
         if (self.socket == nil) {
             self.socket = SocketIOClient(
                 socketURL: Constants.SocketAPI.serverURL
                 + String(Constants.SocketAPI.port),
                 opts: options)
+            self.setupSocketListeners(socket);
         }
     }
     
-    func new_disconnect() {
+    func disconnect() {
         socket.disconnect()
     }
     
-    func new_getID() {
+    func getID() {
+        print("socketHelper: gettingID from server")
         socket.emit(Constants.SocketAPI.getIDEventString, ["data": "success", "sessionid": sessionID])
     }
     
-    func new_getIDWithExistingSessionWithString(sessionID: String) {
+    func getIDWithExistingSessionWithString(sessionID: String) {
         socket.emit(Constants.SocketAPI.getIDEventString,
             ["data": "success",
             "sessionid": sessionID])
     }
     
-    func new_leaveParty(partyID partyID: String) {
+    func leaveParty(partyID partyID: String) {
         socket.emit(Constants.SocketAPI.leavePartyEventString,
                     ["room": partyID])
     }
     
-    func new_joinParty(partyID: String, sessionID: String) {
-       socket.emit(Constants.SocketAPI.makePartyEventString,
+    func joinParty(partyID: String, sessionID: String) {
+       socket.emit(Constants.SocketAPI.joinEventString,
                     ["room": partyID, "sessionid": sessionID])
     }
     
-    func new_makeParty(partyID: String, sessionID: String) {
+    func makeParty(partyID: String, sessionID: String) {
+        print("socketHelper: make party called")
         socket.emit(Constants.SocketAPI.makePartyEventString,
                     ["room": partyID, "sessionid": sessionID])
     }
     
-    func new_addSong(partyID partyID: String, song: [String: AnyObject]) {
+    func addSong(partyID partyID: String, song: [String: AnyObject]) {
         let data = ["room": partyID,
                     "song": song]
         socket.emit(Constants.SocketAPI.addSongEventString, data)
     }
     
-    func new_getSongs(partyID partyID: String, sessionID: String) {
+    func getSongs(partyID partyID: String, sessionID: String) {
         let data = ["room": partyID, "sessionid": sessionID]
         socket.emit(Constants.SocketAPI.getSongsEventString, data)
     }
     
-    func new_voteOnSong(partyID partyID: String, song: [String: AnyObject], vote: Int, sessionID: String) {
+    func voteOnSong(partyID partyID: String, song: [String: AnyObject], vote: Int, sessionID: String) {
         let data = ["room": partyID,
                     "song": song,
                     "vote": vote,
@@ -296,18 +324,96 @@ extension SocketHelper {
         socket.emit(Constants.SocketAPI.voteSongEventString, data)
     }
     
-    func new_deleteSong(partyID partyID: String, song: [String: AnyObject], sessionID: String) {
+    func deleteSong(partyID partyID: String, song: [String: AnyObject], sessionID: String) {
         let data = ["room": partyID,
                     "song": song,
                     "sessionid": sessionID]
         socket.emit(Constants.SocketAPI.deleteSongEventString, data)
     }
+    
+    func playSong(partyID partyID: String, song: [String: AnyObject], sessionID: String) {
+        let data = ["room": partyID,
+                    "song": song,
+                    "sessionid": sessionID]
+        socket.emit("playSong", data)
+    }
 }
 
 extension SocketHelper {
+    private func initializeDictionary(data data: [AnyObject]) -> Dictionary<String, AnyObject> {
+        var dict: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
+        if (data.count != 0) {
+            dict = data[0] as! Dictionary
+        }
+
+        return dict
+    }
+    
     func setupSocketListeners(socket: SocketIOClient) {
         socket.on("connect") {data, ack in
-            self.socketHelperDelegate.socketHelper(socketHelper: self, didConnect: data[0] as! Dictionary)
+            print("socketHelper: calling didConnect on socketHelperDelegate")
+            
+            // let dict = self.initializeDictionary(data: data)
+            
+            self.socketHelperDelegate.socketDidConnect(socketHelper: self);
+        }
+        
+        socket.on("connected") {data, ack in
+        }
+        
+        socket.on("getID") {data, ack in
+            print("socketHelper: calling didGetID on socketHelperDelegate")
+            
+            let dict = self.initializeDictionary(data: data)
+            
+            self.sessionID = dict["id"] as! String
+            
+            self.socketHelperDelegate.socketHelper(socketHelper: self, didGetID: dict)
+        }
+        
+        socket.on("makeParty") {data, ack in
+            print("socketHelper: calling didMakeParty on socketHelperDelegate")
+            
+            let dict = self.initializeDictionary(data: data)
+            
+            if (dict["id"] != nil) {
+                self.sessionID = dict["id"] as! String
+            }
+            
+            self.socketHelperDelegate.socketHelper(socketHelper: self, didMakeParty: dict)
+            print("finished make party method")
+        }
+        
+        socket.on("join") {data, ack in
+            print("socketHelper: calling didJoin on socketHelperDelegate")
+            
+            let dict = self.initializeDictionary(data: data)
+            
+            self.socketHelperDelegate.socketHelper(socketHelper: self, didJoin: dict)
+        }
+        
+        socket.on("notifySongUpdate") {data, ack in
+            print("socketHelper: calling notifySongUpdate on socketHelperDelegate")
+            
+            let dict = self.initializeDictionary(data: data)
+            
+            self.socketHelperDelegate.socketHelper(socketHelper: self, didNotifySongUpdate: dict)
+        }
+        
+        socket.on("updateSongs") {data, ack in
+            print("socketHelper: calling didUpdateSongs on socketHelperDelegate")
+            
+            let dict = self.initializeDictionary(data: data)
+            
+            self.socketHelperDelegate.socketHelper(socketHelper: self, didUpdateSongs: dict)
+        }
+        
+        socket.on("playSong") {data, ack in
+            print("socketHelper: calling playSong on socketHelperDelegate")
+            
+            let dict = self.initializeDictionary(data: data)
+            
+            self.socketHelperDelegate.socketHelper(socketHelper: self, didNotifySongUpdate: dict)
         }
     }
 }

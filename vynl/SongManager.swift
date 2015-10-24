@@ -105,12 +105,15 @@ class SongManager {
 // Mark: - SocketHelperDelegate
 extension SongManager: SocketHelperDelegate {
     func socketDidConnect(socketHelper socketHelper: SocketHelper!) {
+        print("SongManager socketDidConnect Called")
         self.isConnected = true
         self.delegate?.songManager!(didConnect: ["data": "connected"])
         
         if (user.sessionid.characters.count == 0) {
+            print("SongManager getID called");
             socketHelper.getID()
         } else {
+            print("SongManager getIDWithExistingSession called");
             socketHelper.getIDWithExistingSessionWithString(user.sessionid)
         }
     }
