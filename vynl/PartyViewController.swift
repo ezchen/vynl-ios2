@@ -145,8 +145,10 @@ extension PartyViewController: DefaultModalDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
         self.partyCollectionView.reloadData()
         toggleEmptyView(songManager.songs.count == 0)
-        if (songManager.songs.count != 0 && videoHeaderView.state == YTPlayerState.Ended) {
-            videoHeaderView.nextSong()
+        if (self.songManager.dj!) {
+            if (songManager.songs.count != 0 && videoHeaderView.state == YTPlayerState.Ended) {
+                videoHeaderView.nextSong()
+            }
         }
     }
 }

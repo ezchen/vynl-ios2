@@ -17,7 +17,7 @@ class YoutubeDataHelper {
     
     func search(query: String, pageToken: String?, resultsPerPage: UInt, success: (AnyObject) -> (), error: (AnyObject) -> ()) {
         
-        var params = ["part": "snippet", "q": query, "type": "video", "maxResults": String(resultsPerPage), "key": YOUTUBE_API_KEY]
+        let params = ["part": "snippet", "q": query, "type": "video", "maxResults": String(resultsPerPage), "key": YOUTUBE_API_KEY]
         
         if (pageToken != nil) {
             
