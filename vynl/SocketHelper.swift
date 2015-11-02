@@ -257,7 +257,7 @@ extension SocketHelper {
     func connect() {
         let options: [String: AnyObject] = ["log": true]
         if (self.socket == nil) {
-            self.socket = SocketIOClient(socketURL: "localhost:8000", opts: options)
+            self.socket = SocketIOClient(socketURL: Constants.SocketAPI.serverURL, opts: options)
             self.setupSocketListeners(socket);
         }
         socket.connect()
@@ -280,7 +280,7 @@ extension SocketHelper {
     
     func getID() {
         print("socketHelper: gettingID from server")
-        socket.emit(Constants.SocketAPI.getIDEventString, ["data": "success", "sessionid": sessionID])
+        socket.emit(Constants.SocketAPI.getIDEventString, ["data": "success"])
     }
     
     func getIDWithExistingSessionWithString(sessionID: String) {

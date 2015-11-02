@@ -21,6 +21,7 @@ class VideoHeaderView: UIView {
     
     var delegate: VideoHeaderViewDelegate!
     
+    var pausePressed = false
     var newVideo = true
     var seeking = false
     var autoplay = false
@@ -42,7 +43,7 @@ class VideoHeaderView: UIView {
 extension VideoHeaderView {
     func loadVideo() {
         if (songManager.songs.count > 0) {
-            if (state == YTPlayerState.Playing || state == YTPlayerState.Paused) {
+            if (state == YTPlayerState.Playing || pausePressed) {
                 
             } else {
                 self.playerView.loadWithVideoId(songManager.songs[0]["songID"] as! String, playerVars: playerVars)
@@ -64,10 +65,12 @@ extension VideoHeaderView {
     
     func pause() {
         self.playerView.pauseVideo()
+        pausePressed = true
     }
     
     func play() {
         self.playerView.playVideo()
+        pausePressed = false
     }
 }
 
@@ -104,11 +107,17 @@ extension VideoHeaderView: YTPlayerViewDelegate {
                 break
             case YTPlayerState.Paused:
                 print("video is paused")
+                if (!self.pausePressed) {
+                    self.playerView.playVideo()
+                }
                 break
             case YTPlayerState.Queued:
                 print("video queued")
                 self.playerView.playVideo()
                 break
+            case YTPlayerState.Buffering:
+                print("video buffering")
+                self.playerView.playVideo()
             default:
                 print(state)
                 break

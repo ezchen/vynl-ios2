@@ -16,8 +16,9 @@ class JoinPartyViewController: VynlDefaultViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        partyIDTextField.delegate = self
         self.title = "Join"
-        self.songManager.delegate = self;
+        self.songManager.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +41,13 @@ class JoinPartyViewController: VynlDefaultViewController {
     
     @IBAction func backCalled(sender: AnyObject) {
         self.delegate?.dismissCalled()
+    }
+}
+
+extension JoinPartyViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        partyIDTextField.resignFirstResponder()
+        return false
     }
 }
 

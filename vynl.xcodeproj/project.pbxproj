@@ -34,6 +34,33 @@
 		070A59061B603CA700DD47A7 /* button_green_rounded@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 074AC0EC1B59A25C00A4B5FC /* button_green_rounded@2x.png */; };
 		070A59071B603CA700DD47A7 /* button_green_rounded.png in Resources */ = {isa = PBXBuildFile; fileRef = 074AC0EA1B59A23300A4B5FC /* button_green_rounded.png */; };
 		070A59091B603D1E00DD47A7 /* VideoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070A59081B603D1E00DD47A7 /* VideoHeaderView.xib */; };
+		073FE5491BE1613600531464 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A4FA331B4EDD9C004D3FBF /* AppDelegate.swift */; };
+		073FE54A1BE1615800531464 /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDE81B51CAA100B40899 /* PartyViewController.swift */; };
+		073FE54B1BE1617800531464 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A4FA531B4EDF60004D3FBF /* HomeViewController.swift */; };
+		073FE54C1BE1617B00531464 /* VynlDefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDEA1B51CABE00B40899 /* VynlDefaultViewController.swift */; };
+		073FE54D1BE1617D00531464 /* JoinPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D98DA1B6421FE00A44A17 /* JoinPartyViewController.swift */; };
+		073FE54E1BE1618000531464 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0763F7641B646A2600489945 /* SearchViewController.swift */; };
+		073FE54F1BE1618300531464 /* StartPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F15E701BBF5DFD0060CD49 /* StartPartyViewController.swift */; };
+		073FE5501BE1618600531464 /* SongManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07715A7E1B559B5000FD28CC /* SongManager.swift */; };
+		073FE5511BE1619100531464 /* VynlDefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074AC1161B59C2A400A4B5FC /* VynlDefaultButton.swift */; };
+		073FE5521BE1619300531464 /* VideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749A0CF1B60226E001CC6CF /* VideoHeaderView.swift */; };
+		073FE5531BE1619500531464 /* UISingleLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D98E01B6425BB00A44A17 /* UISingleLineTextField.swift */; };
+		073FE5541BE1619A00531464 /* EmptyPartyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0743780C1B66C2CE006A6B32 /* EmptyPartyView.xib */; };
+		073FE5551BE1619D00531464 /* VideoControlsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD781BB5A63000AED6CA /* VideoControlsView.xib */; };
+		073FE5561BE161A100531464 /* VideoControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F0CD7E1BB5AA3900AED6CA /* VideoControlsView.swift */; };
+		073FE5571BE161A400531464 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076B91911BB9A8DA007B551E /* ToggleButton.swift */; };
+		073FE5581BE161C400531464 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07715A801B559F1500FD28CC /* User.swift */; };
+		073FE5591BE161C600531464 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074378031B669DDA006A6B32 /* Song.swift */; };
+		073FE55A1BE161EB00531464 /* YTPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = 0788B6A21B67FCBD004BF104 /* YTPlayer.html */; };
+		073FE55B1BE161F500531464 /* UISearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074378061B66A106006A6B32 /* UISearchTableViewCell.swift */; };
+		073FE55C1BE161F800531464 /* UIPartyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075607CB1B62C3E0000F381E /* UIPartyCollectionViewCell.swift */; };
+		073FE55D1BE1620A00531464 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07A4FA371B4EDD9C004D3FBF /* Main.storyboard */; };
+		073FE55E1BE1620D00531464 /* VideoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070A59081B603D1E00DD47A7 /* VideoHeaderView.xib */; };
+		073FE55F1BE1621100531464 /* PartyTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077244FB1B8FA655002466E6 /* PartyTableHeader.xib */; };
+		073FE5601BE1621400531464 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A4FA3C1B4EDD9C004D3FBF /* LaunchScreen.xib */; };
+		073FE5611BE1622600531464 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FF8A651BC36A5800258239 /* SweetAlert.swift */; };
+		073FE5621BE1622D00531464 /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = 074D70471B681EC800EA64AB /* YTPlayerView-iframe-player.html */; };
+		073FE5631BE1623100531464 /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D70451B681EBF00EA64AB /* YTPlayerView.m */; };
 		074378041B669DDA006A6B32 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074378031B669DDA006A6B32 /* Song.swift */; };
 		074378071B66A106006A6B32 /* UISearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074378061B66A106006A6B32 /* UISearchTableViewCell.swift */; };
 		0743780A1B66C271006A6B32 /* music_note.png in Resources */ = {isa = PBXBuildFile; fileRef = 074378081B66C271006A6B32 /* music_note.png */; };
@@ -51,11 +78,11 @@
 		0763F7621B645C9A00489945 /* youtubedatatest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0763F7611B645C9A00489945 /* youtubedatatest.swift */; };
 		0763F7631B645CBB00489945 /* YoutubeDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D98E71B64351C00A44A17 /* YoutubeDataHelper.swift */; };
 		0763F7651B646A2600489945 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0763F7641B646A2600489945 /* SearchViewController.swift */; };
-		076B91921BB9A8DA007B551E /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076B91911BB9A8DA007B551E /* ToggleButton.swift */; settings = {ASSET_TAGS = (); }; };
-		076B91951BB9AA4C007B551E /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 076B91931BB9AA4C007B551E /* play.png */; settings = {ASSET_TAGS = (); }; };
-		076B91961BB9AA4C007B551E /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 076B91941BB9AA4C007B551E /* play@2x.png */; settings = {ASSET_TAGS = (); }; };
-		076B91991BB9E64B007B551E /* handleRectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 076B91971BB9E64B007B551E /* handleRectangle.png */; settings = {ASSET_TAGS = (); }; };
-		076B919A1BB9E64B007B551E /* handleRectangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 076B91981BB9E64B007B551E /* handleRectangle@2x.png */; settings = {ASSET_TAGS = (); }; };
+		076B91921BB9A8DA007B551E /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076B91911BB9A8DA007B551E /* ToggleButton.swift */; };
+		076B91951BB9AA4C007B551E /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 076B91931BB9AA4C007B551E /* play.png */; };
+		076B91961BB9AA4C007B551E /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 076B91941BB9AA4C007B551E /* play@2x.png */; };
+		076B91991BB9E64B007B551E /* handleRectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 076B91971BB9E64B007B551E /* handleRectangle.png */; };
+		076B919A1BB9E64B007B551E /* handleRectangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 076B91981BB9E64B007B551E /* handleRectangle@2x.png */; };
 		07715A7F1B559B5000FD28CC /* SongManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07715A7E1B559B5000FD28CC /* SongManager.swift */; };
 		07715A811B559F1500FD28CC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07715A801B559F1500FD28CC /* User.swift */; };
 		077244FC1B8FA655002466E6 /* PartyTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077244FB1B8FA655002466E6 /* PartyTableHeader.xib */; };
@@ -81,9 +108,9 @@
 		07A4FA3E1B4EDD9C004D3FBF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A4FA3C1B4EDD9C004D3FBF /* LaunchScreen.xib */; };
 		07A4FA4A1B4EDD9C004D3FBF /* vynlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A4FA491B4EDD9C004D3FBF /* vynlTests.swift */; };
 		07A4FA541B4EDF60004D3FBF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A4FA531B4EDF60004D3FBF /* HomeViewController.swift */; };
-		07BF90E01BC45EDF00F1507D /* SocketHelperTestSocketIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BF90DF1BC45EDF00F1507D /* SocketHelperTestSocketIO.swift */; settings = {ASSET_TAGS = (); }; };
-		07C207541BBA4F8000C9BC5A /* plus_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C207521BBA4F8000C9BC5A /* plus_green.png */; settings = {ASSET_TAGS = (); }; };
-		07C207551BBA4F8000C9BC5A /* plus_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C207531BBA4F8000C9BC5A /* plus_green@2x.png */; settings = {ASSET_TAGS = (); }; };
+		07BF90E01BC45EDF00F1507D /* SocketHelperTestSocketIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BF90DF1BC45EDF00F1507D /* SocketHelperTestSocketIO.swift */; };
+		07C207541BBA4F8000C9BC5A /* plus_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C207521BBA4F8000C9BC5A /* plus_green.png */; };
+		07C207551BBA4F8000C9BC5A /* plus_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C207531BBA4F8000C9BC5A /* plus_green@2x.png */; };
 		07D2FDE21B51ACE400B40899 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDD81B51ACE400B40899 /* SocketIO.m */; };
 		07D2FDE31B51ACE400B40899 /* SocketIOJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDDA1B51ACE400B40899 /* SocketIOJSONSerialization.m */; };
 		07D2FDE41B51ACE400B40899 /* SocketIOPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDDC1B51ACE400B40899 /* SocketIOPacket.m */; };
@@ -95,25 +122,24 @@
 		07D2FDEF1B51DC9A00B40899 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDEE1B51DC9A00B40899 /* Constants.swift */; };
 		07D2FDF11B520E2500B40899 /* SocketHelperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDF01B520E2500B40899 /* SocketHelperTest.swift */; };
 		07D2FDF31B52185800B40899 /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDEC1B51CD4200B40899 /* SocketHelper.swift */; };
-		07D2FDF41B52188400B40899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A4FA331B4EDD9C004D3FBF /* AppDelegate.swift */; };
 		07D2FDF51B52189A00B40899 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDEE1B51DC9A00B40899 /* Constants.swift */; };
 		07D2FDF61B5218CD00B40899 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDD81B51ACE400B40899 /* SocketIO.m */; };
 		07D2FDF71B5218D400B40899 /* SocketIOJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDDA1B51ACE400B40899 /* SocketIOJSONSerialization.m */; };
 		07D2FDF81B5218D600B40899 /* SocketIOPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDDC1B51ACE400B40899 /* SocketIOPacket.m */; };
 		07D2FDF91B5218DB00B40899 /* SocketIOTransportWebsocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDDF1B51ACE400B40899 /* SocketIOTransportWebsocket.m */; };
 		07D2FDFA1B5218DE00B40899 /* SocketIOTransportXHR.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDE11B51ACE400B40899 /* SocketIOTransportXHR.m */; };
-		07F0CD741BB489A900AED6CA /* skip.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD701BB489A900AED6CA /* skip.png */; settings = {ASSET_TAGS = (); }; };
-		07F0CD751BB489A900AED6CA /* skip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD711BB489A900AED6CA /* skip@2x.png */; settings = {ASSET_TAGS = (); }; };
-		07F0CD761BB489A900AED6CA /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD721BB489A900AED6CA /* pause.png */; settings = {ASSET_TAGS = (); }; };
-		07F0CD771BB489A900AED6CA /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD731BB489A900AED6CA /* pause@2x.png */; settings = {ASSET_TAGS = (); }; };
-		07F0CD791BB5A63000AED6CA /* VideoControlsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD781BB5A63000AED6CA /* VideoControlsView.xib */; settings = {ASSET_TAGS = (); }; };
-		07F0CD7C1BB5A84200AED6CA /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD7A1BB5A84200AED6CA /* handle.png */; settings = {ASSET_TAGS = (); }; };
-		07F0CD7D1BB5A84200AED6CA /* handle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD7B1BB5A84200AED6CA /* handle@2x.png */; settings = {ASSET_TAGS = (); }; };
-		07F0CD7F1BB5AA3900AED6CA /* VideoControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F0CD7E1BB5AA3900AED6CA /* VideoControlsView.swift */; settings = {ASSET_TAGS = (); }; };
-		07F15E6E1BBF45AB0060CD49 /* vynl-ios-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F15E6C1BBF45AB0060CD49 /* vynl-ios-icon.png */; settings = {ASSET_TAGS = (); }; };
-		07F15E6F1BBF45AB0060CD49 /* vynl-ios-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F15E6D1BBF45AB0060CD49 /* vynl-ios-icon@2x.png */; settings = {ASSET_TAGS = (); }; };
-		07F15E711BBF5DFD0060CD49 /* StartPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F15E701BBF5DFD0060CD49 /* StartPartyViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		07FF8A661BC36A5800258239 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FF8A651BC36A5800258239 /* SweetAlert.swift */; settings = {ASSET_TAGS = (); }; };
+		07F0CD741BB489A900AED6CA /* skip.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD701BB489A900AED6CA /* skip.png */; };
+		07F0CD751BB489A900AED6CA /* skip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD711BB489A900AED6CA /* skip@2x.png */; };
+		07F0CD761BB489A900AED6CA /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD721BB489A900AED6CA /* pause.png */; };
+		07F0CD771BB489A900AED6CA /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD731BB489A900AED6CA /* pause@2x.png */; };
+		07F0CD791BB5A63000AED6CA /* VideoControlsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD781BB5A63000AED6CA /* VideoControlsView.xib */; };
+		07F0CD7C1BB5A84200AED6CA /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD7A1BB5A84200AED6CA /* handle.png */; };
+		07F0CD7D1BB5A84200AED6CA /* handle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F0CD7B1BB5A84200AED6CA /* handle@2x.png */; };
+		07F0CD7F1BB5AA3900AED6CA /* VideoControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F0CD7E1BB5AA3900AED6CA /* VideoControlsView.swift */; };
+		07F15E6E1BBF45AB0060CD49 /* vynl-ios-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F15E6C1BBF45AB0060CD49 /* vynl-ios-icon.png */; };
+		07F15E6F1BBF45AB0060CD49 /* vynl-ios-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F15E6D1BBF45AB0060CD49 /* vynl-ios-icon@2x.png */; };
+		07F15E711BBF5DFD0060CD49 /* StartPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F15E701BBF5DFD0060CD49 /* StartPartyViewController.swift */; };
+		07FF8A661BC36A5800258239 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FF8A651BC36A5800258239 /* SweetAlert.swift */; };
 		587740ED53D989D1742F8F5E /* Pods_vynlTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A6C9588430EA08B742B22D /* Pods_vynlTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DE793A4927B52D8E94A51A8C /* Pods_vynl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F59BB5B49780DBBB1F6CD3EE /* Pods_vynl.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -454,7 +480,6 @@
 		07A4FA461B4EDD9C004D3FBF /* vynlTests */ = {
 			isa = PBXGroup;
 			children = (
-				07BF90DD1BC45E5000F1507D /* socketiotest.swift */,
 				07A4FA491B4EDD9C004D3FBF /* vynlTests.swift */,
 				07D2FDF01B520E2500B40899 /* SocketHelperTest.swift */,
 				07BF90DF1BC45EDF00F1507D /* SocketHelperTestSocketIO.swift */,
@@ -681,17 +706,25 @@
 				070A59061B603CA700DD47A7 /* button_green_rounded@2x.png in Resources */,
 				070A58FB1B603CA700DD47A7 /* close.png in Resources */,
 				070A58FA1B603CA700DD47A7 /* close@2x.png in Resources */,
+				073FE55E1BE1620D00531464 /* VideoHeaderView.xib in Resources */,
 				070A58FD1B603CA700DD47A7 /* search.png in Resources */,
 				070A59021B603CA700DD47A7 /* button_whiteoutline@2x.png in Resources */,
 				070A59031B603CA700DD47A7 /* button_whiteoutline.png in Resources */,
 				074AC0F01B59A32700A4B5FC /* OpenSans-Regular.ttf in Resources */,
 				070A59041B603CA700DD47A7 /* homepage_background.png in Resources */,
+				073FE55A1BE161EB00531464 /* YTPlayer.html in Resources */,
 				074AC0F21B59A33100A4B5FC /* Pacifico.ttf in Resources */,
+				073FE5551BE1619D00531464 /* VideoControlsView.xib in Resources */,
 				070A59071B603CA700DD47A7 /* button_green_rounded.png in Resources */,
+				073FE55F1BE1621100531464 /* PartyTableHeader.xib in Resources */,
 				070A58FE1B603CA700DD47A7 /* plus_circle@2x.png in Resources */,
 				070A59051B603CA700DD47A7 /* homepage_background@2x.png in Resources */,
 				070A59001B603CA700DD47A7 /* plus@2x.png in Resources */,
+				073FE5621BE1622D00531464 /* YTPlayerView-iframe-player.html in Resources */,
+				073FE5541BE1619A00531464 /* EmptyPartyView.xib in Resources */,
 				070A58FF1B603CA700DD47A7 /* plus_circle.png in Resources */,
+				073FE55D1BE1620A00531464 /* Main.storyboard in Resources */,
+				073FE5601BE1621400531464 /* LaunchScreen.xib in Resources */,
 				070A59011B603CA700DD47A7 /* plus.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -830,18 +863,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				073FE5581BE161C400531464 /* User.swift in Sources */,
+				073FE55B1BE161F500531464 /* UISearchTableViewCell.swift in Sources */,
 				07D2FDF61B5218CD00B40899 /* SocketIO.m in Sources */,
+				073FE5521BE1619300531464 /* VideoHeaderView.swift in Sources */,
+				073FE55C1BE161F800531464 /* UIPartyCollectionViewCell.swift in Sources */,
 				07D2FDF51B52189A00B40899 /* Constants.swift in Sources */,
-				07D2FDF41B52188400B40899 /* AppDelegate.swift in Sources */,
+				073FE5501BE1618600531464 /* SongManager.swift in Sources */,
 				0763F7621B645C9A00489945 /* youtubedatatest.swift in Sources */,
-				07BF90DE1BC45E5000F1507D /* socketiotest.swift in Sources */,
 				07D2FDF31B52185800B40899 /* SocketHelper.swift in Sources */,
 				07D2FDF81B5218D600B40899 /* SocketIOPacket.m in Sources */,
+				073FE54B1BE1617800531464 /* HomeViewController.swift in Sources */,
+				073FE5611BE1622600531464 /* SweetAlert.swift in Sources */,
+				073FE5631BE1623100531464 /* YTPlayerView.m in Sources */,
+				073FE5591BE161C600531464 /* Song.swift in Sources */,
 				0763F7631B645CBB00489945 /* YoutubeDataHelper.swift in Sources */,
+				073FE54C1BE1617B00531464 /* VynlDefaultViewController.swift in Sources */,
 				07D2FDF11B520E2500B40899 /* SocketHelperTest.swift in Sources */,
+				073FE54F1BE1618300531464 /* StartPartyViewController.swift in Sources */,
+				073FE5511BE1619100531464 /* VynlDefaultButton.swift in Sources */,
+				073FE54A1BE1615800531464 /* PartyViewController.swift in Sources */,
 				07D2FDF71B5218D400B40899 /* SocketIOJSONSerialization.m in Sources */,
+				073FE5491BE1613600531464 /* AppDelegate.swift in Sources */,
+				073FE5571BE161A400531464 /* ToggleButton.swift in Sources */,
+				073FE5561BE161A100531464 /* VideoControlsView.swift in Sources */,
+				073FE54E1BE1618000531464 /* SearchViewController.swift in Sources */,
+				073FE5531BE1619500531464 /* UISingleLineTextField.swift in Sources */,
 				07BF90E01BC45EDF00F1507D /* SocketHelperTestSocketIO.swift in Sources */,
 				07D2FDFA1B5218DE00B40899 /* SocketIOTransportXHR.m in Sources */,
+				073FE54D1BE1617D00531464 /* JoinPartyViewController.swift in Sources */,
 				07D2FDF91B5218DB00B40899 /* SocketIOTransportWebsocket.m in Sources */,
 				07A4FA4A1B4EDD9C004D3FBF /* vynlTests.swift in Sources */,
 			);

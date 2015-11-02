@@ -10,7 +10,7 @@ import Foundation
 
 struct Constants {
     struct SocketAPI {
-        static let serverURL = "localhost";
+        static let serverURL = "dev.vynl.party";
         static let port = 8000;
         
         static let namespace = "/party";

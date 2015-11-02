@@ -28,6 +28,22 @@ class StartPartyViewController: VynlDefaultViewController {
             SweetAlert().showAlert("Invalid ID", subTitle: "Please only use A-Z and 0-9", style: AlertStyle.Error)
         }
     }
+    
+    func startParty() {
+        var partyID: String!
+        if (self.partyIDTextField.text != nil && self.partyIDTextField.text != "") {
+            partyID = self.partyIDTextField.text!
+        } else {
+           // make party with provided code
+            partyID = self.partyIDTextField.placeholder!
+        }
+        if (checkAlphaNumeric(partyID)) {
+            self.activityIndicator.startAnimating()
+            self.songManager.makePartyWithID(partyID)
+        } else {
+            SweetAlert().showAlert("Invalid ID", subTitle: "Please only use A-Z and 0-9", style: AlertStyle.Error)
+        }
+    }
 
     @IBAction func backCalled(sender: AnyObject) {
         self.delegate?.dismissCalled();
@@ -49,6 +65,7 @@ class StartPartyViewController: VynlDefaultViewController {
         self.songManager.delegate = self
         self.partyIDTextField.placeholder = self.songManager.randomStringWithLength(8)
         // Do any additional setup after loading the view.
+        self.partyIDTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,6 +84,13 @@ class StartPartyViewController: VynlDefaultViewController {
         }
     }
 
+}
+
+extension StartPartyViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.partyIDTextField.resignFirstResponder()
+        return false;
+    }
 }
 
 extension StartPartyViewController {

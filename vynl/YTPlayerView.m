@@ -103,6 +103,7 @@ NSString static *const kYTPlayerStaticProxyRegexPattern = @"^https://content.goo
 }
 
 - (void)pauseVideo {
+    NSLog(@"Puase Called");
   [self notifyDelegateOfYouTubeCallbackUrl:[NSURL URLWithString:[NSString stringWithFormat:@"ytplayer://onStateChange?data=%@", kYTPlayerStatePausedCode]]];
   [self stringFromEvaluatingJavaScript:@"player.pauseVideo();"];
 }

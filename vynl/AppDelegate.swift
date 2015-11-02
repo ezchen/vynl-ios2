@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -45,7 +47,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     override func remoteControlReceivedWithEvent(event: UIEvent?) {
+        
         switch (event!.subtype) {
+            case UIEventSubtype.RemoteControlPlay:
+                break;
+            case UIEventSubtype.RemoteControlPause:
+                break;
+            case UIEventSubtype.RemoteControlNextTrack:
+                break;
+            case UIEventSubtype.RemoteControlStop:
+                break;
             default:
                 break;
         }

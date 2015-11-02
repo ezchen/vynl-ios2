@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class PartyViewController: VynlDefaultViewController {
 
@@ -45,6 +46,8 @@ class PartyViewController: VynlDefaultViewController {
             videoView.addSubview(videoHeaderView)
             self.videoControlsView.xibSetup()
             self.videoControlsView.delegate = self
+            
+            setupBackgroundPlaybackButtons()
         } else {
             videoView.hidden = true
             videoControlsView.hidden = true
@@ -94,8 +97,10 @@ class PartyViewController: VynlDefaultViewController {
                     SweetAlert().showAlert("You Left Your Party :(", subTitle: "you can always rejoin using the 8 digit code", style: AlertStyle.None)
                     
                     if (self.songManager.dj!) {
-                        self.videoHeaderView.playerView.pauseVideo()
+                        self.pausePressed()
+                        //self.videoHeaderView.removeFromSuperview()
                         self.videoHeaderView.playerView.clearVideo()
+                        
                     }
                     
                     self.delegate?.dismissCalled()
@@ -103,6 +108,7 @@ class PartyViewController: VynlDefaultViewController {
         }
     }
     
+    /* Empty Table View Toggle */
     func toggleEmptyView(isEmpty: Bool) {
         if (isEmpty) {
             let view = NSBundle.mainBundle().loadNibNamed("EmptyPartyView", owner: self, options: nil)[0] as? UIView
@@ -135,6 +141,28 @@ class PartyViewController: VynlDefaultViewController {
         
         return timeLeft
     }
+    
+    /* Registers buttons for background playback */
+    func setupBackgroundPlaybackButtons() {
+        let commandCenter = MPRemoteCommandCenter.sharedCommandCenter()
+        commandCenter.playCommand.addTarget(self, action: "playPressed")
+        commandCenter.pauseCommand.addTarget(self, action: "pausePressed")
+        commandCenter.nextTrackCommand.addTarget(self, action: "skipPressed")
+    }
+    
+    /* Unregisters buttons for background playback */
+    func deleteBackgroundPlaybackButtons() {
+        let commandCenter = MPRemoteCommandCenter.sharedCommandCenter()
+        commandCenter.playCommand.removeTarget(self, action: "playPressed")
+        commandCenter.pauseCommand.removeTarget(self, action: "pausePressed")
+        commandCenter.nextTrackCommand.removeTarget(self, action: "skipPressed")
+    }
+    
+    /* Registers Information for background playback */
+    func setupBackgroundPlaybackInfo() {
+        let info = MPNowPlayingInfoCenter.defaultCenter()
+    }
+    
 }
 
 extension PartyViewController: DefaultModalDelegate {
@@ -199,6 +227,12 @@ extension PartyViewController {
         self.partyCollectionView.reloadData()
         
         if (songManager.dj!) {
+            var songs = [String]()
+            for song in songManager.songs {
+                if let videoID = song["videoID"] as? String {
+                    songs.append(videoID)
+                }
+            }
             if (videoHeaderView.state == YTPlayerState.Ended) {
                 videoHeaderView.nextSong()
             }
@@ -242,6 +276,7 @@ extension PartyViewController: VideoControlsDelegate {
         // When button is in play state, videos should automatically play even
         // if queue is ended
         self.videoHeaderView.autoplay = true
+        setupBackgroundPlaybackInfo()
         
         self.videoHeaderView.play()
     }
