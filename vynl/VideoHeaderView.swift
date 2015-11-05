@@ -36,6 +36,7 @@ class VideoHeaderView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.playerView.delegate = self
+        self.playerView.loadWithPlayerParams(playerVars)
         state = YTPlayerState.Unknown
     }
 }
@@ -60,7 +61,10 @@ extension VideoHeaderView {
     
     func loadNextVideo(videoID: String) {
         self.newVideo = true
-        self.playerView.cueVideoById(videoID, startSeconds: 0, suggestedQuality: YTPlaybackQuality.Default)
+        if let playlist = self.playerView.playlist() as? [String] {
+            print(playlist)
+        }
+        self.playerView.nextVideo()
     }
     
     func pause() {
@@ -69,6 +73,8 @@ extension VideoHeaderView {
     }
     
     func play() {
+        var songs = [String]()
+        songs.append("zZ8_X1WcgYU")
         self.playerView.playVideo()
         pausePressed = false
     }
@@ -79,8 +85,13 @@ extension VideoHeaderView: YTPlayerViewDelegate {
         self.delegate.didPlayTime(playTime)
     }
     
+    func playerView(playerView: YTPlayerView!, receivedError error: YTPlayerError) {
+        print(error)
+    }
+    
     func playerViewDidBecomeReady(playerView: YTPlayerView!) {
         print("Player View is Ready")
+        self.playerView.cuePlaylistByVideos(["zZ8_X1WcgYU", "ad7mcmCgZIg"], index: 0, startSeconds: 0, suggestedQuality: YTPlaybackQuality.Default)
         if (self.state == YTPlayerState.Ended && self.autoplay && self.songManager.songs.count > 0) {
             self.play()
         }
