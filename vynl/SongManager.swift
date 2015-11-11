@@ -83,12 +83,14 @@ class SongManager {
         socketHelper.addSong(partyID: self.partyID, song: song)
     }
     
-    func addSong(song: [String: AnyObject], success: () -> ()) {
-        socketHelper.addSong(partyID: self.partyID, song: song)
+    func addSong(song: [String: AnyObject], success: () -> (), error: () -> ()) {
+        socketHelper.addSongWithAck(partyID: self.partyID, song: song,
+            success: success, error: error)
     }
     
     func vote(song: [String: AnyObject], vote: Int) {
-        socketHelper.voteOnSong(partyID: self.partyID, song: song, vote: vote, sessionID: user.sessionid)
+        socketHelper.voteOnSong(partyID: self.partyID, song: song, vote: vote,
+            sessionID: user.sessionid)
     }
     
     func playSong() {

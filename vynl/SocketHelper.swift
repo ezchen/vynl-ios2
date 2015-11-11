@@ -94,10 +94,20 @@ extension SocketHelper {
         socket.emit(Constants.SocketAPI.addSongEventString, data)
     }
     
-    func addSongWithAck(partyID partyID: String, song: [String: AnyObject]) {
+    func addSongWithAck(partyID partyID: String, song: [String: AnyObject],
+        success: () -> (), error: () -> ()) {
         let data = ["room": partyID,
                     "song": song]
         socket.emitWithAck(Constants.SocketAPI.addSongEventString, data)(timeoutAfter: 0) {data in
+            if data.count > 0 {
+                if let songAdded = data[0] as? Bool {
+                    if songAdded {
+                        success()
+                    } else {
+                        error()
+                    }
+                }
+            }
         }
     }
     

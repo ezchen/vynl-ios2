@@ -31,7 +31,13 @@ class UISearchTableViewCell: UITableViewCell {
     }
     
     @IBAction func addSong(sender: AnyObject) {
-        songManager?.addSong(self.song)
+        func success() {
+            print("success")
+        }
+        func error() {
+            print("error")
+        }
+        songManager?.addSong(self.song, success: success, error: error)
         self.addSongPressed.selected = true
     }
 }

@@ -39,8 +39,8 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("searchCell") as! UISearchTableViewCell
-        cell.configureCell(songs[indexPath.row])
         cell.songManager = self.songManager
+        cell.configureCell(songs[indexPath.row])
         return cell
     }
 }
