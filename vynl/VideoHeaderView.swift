@@ -25,64 +25,101 @@ class VideoHeaderView: UIView {
     var newVideo = true
     var seeking = false
     var autoplay = false
+    
+    /** Set to true when YTPlayerView calls playerViewDidBecomeReady */
+    var playerViewIsReady = false
+    
+    /** list of videoID's that is loaded into YTPlayerView currently */
+    var currentPlaylist: [String]?
         
-    var playerVars = ["controls": 0,
-    "autoplay": 1,
-    "showinfo": 0,
-    "playsinline": 1,
-    "modestbranding": 1,
-    "origin": "http://vynl.party"]
+    private var playerVars = ["controls": 0,
+                              "autoplay": 1,
+                              "showinfo": 0,
+                              "playsinline": 1,
+                              "modestbranding": 1,
+                              "origin": "http://vynl.party"]
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.playerView.delegate = self
-        self.playerView.loadWithPlayerParams(playerVars)
         state = YTPlayerState.Unknown
     }
 }
 
 extension VideoHeaderView {
+    /** Should only be called once to load the YTPlayerView */
+    func initYTPlayerViewWithVideo(videoId: String) {
+        self.playerView.loadWithVideoId(videoId, playerVars: playerVars)
+    }
+    
+    /** Loads videos from SongManager into ytPlayerView as a playlist.
+        Should only be called when app is in foreground and between videos for
+        continuous playback. */
+    func loadVideos() {
+        if UIApplication.sharedApplication().applicationState == UIApplicationState.Active {
+            var songs = [String]()
+            for song in songManager.songs {
+                songs.append(song["songID"] as! String)
+            }
+            currentPlaylist = songs
+            self.playerView.loadPlaylistByVideos(songs, index: 0, startSeconds: 0, suggestedQuality: YTPlaybackQuality.Default)
+        }
+    }
+    
     func loadVideo() {
         if (songManager.songs.count > 0) {
             if (state == YTPlayerState.Playing || pausePressed) {
                 
             } else {
-                self.playerView.loadWithVideoId(songManager.songs[0]["songID"] as! String, playerVars: playerVars)
+                if !playerViewIsReady {
+                    self.playerView.loadWithVideoId(songManager.songs[0]["songID"] as! String, playerVars: playerVars)
+                }
             }
         }
     }
     
     func nextSong() {
-        if (songManager.songs.count > 0) {
-            loadNextVideo(songManager.songs[0]["songID"] as! String)
-            self.play()
+        if currentPlaylist!.count > 0 {
+            loadNextVideo()
+            play()
+        } else if songManager.songs.count > 0 {
+            loadVideos()
         }
     }
     
-    func loadNextVideo(videoID: String) {
+    func loadNextVideo() {
         self.newVideo = true
-        if let playlist = self.playerView.playlist() as? [String] {
-            print(playlist)
-        }
         self.playerView.nextVideo()
     }
     
     func pause() {
-        self.playerView.pauseVideo()
-        pausePressed = true
+        // pause should not do anything if ytplayer isn't initialized yet
+        if self.playerViewIsReady {
+            self.playerView.pauseVideo()
+            pausePressed = true
+        }
     }
     
     func play() {
-        var songs = [String]()
-        songs.append("zZ8_X1WcgYU")
-        self.playerView.playVideo()
-        pausePressed = false
+        // play should not do anything if ytplayer isn't initialized yet
+        if self.playerViewIsReady {
+            self.playerView.playVideo()
+            pausePressed = false
+            if self.state == YTPlayerState.Unknown || self.state == YTPlayerState.Ended {
+                loadVideos()
+            }
+        }
     }
 }
 
 extension VideoHeaderView: YTPlayerViewDelegate {
     func playerView(playerView: YTPlayerView!, didPlayTime playTime: Float) {
         self.delegate.didPlayTime(playTime)
+        
+        // Video Ended
+        if Int(playTime) == Int(playerView.duration()) {
+            self.newVideo = true
+        }
     }
     
     func playerView(playerView: YTPlayerView!, receivedError error: YTPlayerError) {
@@ -90,8 +127,7 @@ extension VideoHeaderView: YTPlayerViewDelegate {
     }
     
     func playerViewDidBecomeReady(playerView: YTPlayerView!) {
-        print("Player View is Ready")
-        self.playerView.cuePlaylistByVideos(["zZ8_X1WcgYU", "ad7mcmCgZIg"], index: 0, startSeconds: 0, suggestedQuality: YTPlaybackQuality.Default)
+        self.playerViewIsReady = true
         if (self.state == YTPlayerState.Ended && self.autoplay && self.songManager.songs.count > 0) {
             self.play()
         }
@@ -102,17 +138,20 @@ extension VideoHeaderView: YTPlayerViewDelegate {
         switch (state) {
             case YTPlayerState.Playing:
                 print("videoHeaderView video is Playing")
-                if (self.newVideo && self.songManager.songs.count > 0) {
+                if (self.newVideo && self.currentPlaylist?.count > 0) {
                     // notify server that dj has started playing a new song
-                    self.songManager.playSong()
-                    self.newVideo = false
+                    if let songID = currentPlaylist?.removeAtIndex(0) {
+                        self.songManager.playSong(["songID": songID])
+                        self.newVideo = false
+                    }
                 }
                 self.seeking = false
                 break
             case YTPlayerState.Ended:
+                // Playlist is over, not just the video
                 self.newVideo = true
                 if (self.songManager.songs.count > 0) {
-                    self.playerView.cueVideoById(self.songManager.songs[0]["songID"] as! String, startSeconds: 0, suggestedQuality: YTPlaybackQuality.Default)
+                    loadVideos()
                 }
                 print("ended")
                 break
@@ -124,7 +163,7 @@ extension VideoHeaderView: YTPlayerViewDelegate {
                 break
             case YTPlayerState.Queued:
                 print("video queued")
-                self.playerView.playVideo()
+                //self.playerView.playVideo()
                 break
             case YTPlayerState.Buffering:
                 print("video buffering")

@@ -11,28 +11,30 @@ import MediaPlayer
 
 class PartyViewController: VynlDefaultViewController {
 
-    /* Container for the actual videoHeaderView */
+    /** Container for the actual videoHeaderView */
     @IBOutlet var videoView: UIView!
     
-    /* Container for the YTPlayerView */
+    /** Parent View for the YTPlayerView */
     var videoHeaderView: VideoHeaderView!
     
-    /* View with controls to change state of the video */
+    /** View with controls to change state of the video */
     @IBOutlet var videoControlsView: VideoControlsView!
     
-    /* Table View With Song Queue */
+    /** Table View With list of Song Queue */
     @IBOutlet var partyCollectionView: UITableView!
     
-    /* True when user is dragging the video panning handle */
-    /* video controls view doesn't jump around when user is panning */
+    /** True when user is dragging the video panning handle. Used so that the
+    video controls view doesn't jump around when user is panning */
     var userIsSeeking: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         /* display unique party ID for others to join */
         self.title = songManager.getPartyID()
         self.songManager.delegate = self
+        
         
         /* Only Show Video View and VideoControls View if User is DJ */
         if (self.songManager.dj!) {
@@ -108,7 +110,7 @@ class PartyViewController: VynlDefaultViewController {
         }
     }
     
-    /* Empty Table View Toggle */
+    /** Shows empty background view if isEmpty is true */
     func toggleEmptyView(isEmpty: Bool) {
         if (isEmpty) {
             let view = NSBundle.mainBundle().loadNibNamed("EmptyPartyView", owner: self, options: nil)[0] as? UIView
@@ -125,7 +127,7 @@ class PartyViewController: VynlDefaultViewController {
         }
     }
     
-    /* Converts Float to format Minutes:Seconds (0:00) */
+    /** Converts Float to format Minutes:Seconds (0:00) */
     func convertPlayTimeToMinutes(playTime: Float) -> String {
         let timeLeftInFloat = Float(self.videoHeaderView.playerView.duration()) - playTime
         let timeLeftInt = round(timeLeftInFloat)
@@ -142,27 +144,21 @@ class PartyViewController: VynlDefaultViewController {
         return timeLeft
     }
     
-    /* Registers buttons for background playback */
-    func setupBackgroundPlaybackButtons() {
+    /** Registers buttons for background playback */
+    private func setupBackgroundPlaybackButtons() {
         let commandCenter = MPRemoteCommandCenter.sharedCommandCenter()
         commandCenter.playCommand.addTarget(self, action: "playPressed")
         commandCenter.pauseCommand.addTarget(self, action: "pausePressed")
         commandCenter.nextTrackCommand.addTarget(self, action: "skipPressed")
     }
     
-    /* Unregisters buttons for background playback */
-    func deleteBackgroundPlaybackButtons() {
+    /** Unregisters buttons for background playback */
+    private func deleteBackgroundPlaybackButtons() {
         let commandCenter = MPRemoteCommandCenter.sharedCommandCenter()
         commandCenter.playCommand.removeTarget(self, action: "playPressed")
         commandCenter.pauseCommand.removeTarget(self, action: "pausePressed")
         commandCenter.nextTrackCommand.removeTarget(self, action: "skipPressed")
     }
-    
-    /* Registers Information for background playback */
-    func setupBackgroundPlaybackInfo() {
-        let info = MPNowPlayingInfoCenter.defaultCenter()
-    }
-    
 }
 
 extension PartyViewController: DefaultModalDelegate {
@@ -223,6 +219,13 @@ extension PartyViewController {
     func songManager(songsDidUpdate data: [String : AnyObject]) {
         print("SongManager's songs: ", terminator: "")
         print(songManager.songs, terminator: "")
+        
+        if UIApplication.sharedApplication().applicationState != UIApplicationState.Active {
+            let notification = UILocalNotification()
+            notification.alertTitle = "Keep Vynl open to update the song queue!"
+            notification.fireDate = NSDate.init(timeIntervalSinceNow: 5)
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        }
         self.toggleEmptyView(songManager.songs.count == 0)
         self.partyCollectionView.reloadData()
         
@@ -276,7 +279,6 @@ extension PartyViewController: VideoControlsDelegate {
         // When button is in play state, videos should automatically play even
         // if queue is ended
         self.videoHeaderView.autoplay = true
-        setupBackgroundPlaybackInfo()
         
         self.videoHeaderView.play()
     }

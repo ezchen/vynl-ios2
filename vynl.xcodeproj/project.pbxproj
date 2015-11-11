@@ -34,6 +34,7 @@
 		070A59061B603CA700DD47A7 /* button_green_rounded@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 074AC0EC1B59A25C00A4B5FC /* button_green_rounded@2x.png */; };
 		070A59071B603CA700DD47A7 /* button_green_rounded.png in Resources */ = {isa = PBXBuildFile; fileRef = 074AC0EA1B59A23300A4B5FC /* button_green_rounded.png */; };
 		070A59091B603D1E00DD47A7 /* VideoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070A59081B603D1E00DD47A7 /* VideoHeaderView.xib */; };
+		0717FC391BF03A71009F3C2A /* ProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717FC381BF03A71009F3C2A /* ProgressButton.swift */; };
 		073FE5491BE1613600531464 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A4FA331B4EDD9C004D3FBF /* AppDelegate.swift */; };
 		073FE54A1BE1615800531464 /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D2FDE81B51CAA100B40899 /* PartyViewController.swift */; };
 		073FE54B1BE1617800531464 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A4FA531B4EDF60004D3FBF /* HomeViewController.swift */; };
@@ -158,6 +159,7 @@
 		070A58D61B6038F000DD47A7 /* YouTubePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubePlayer.framework; path = "Pods/../build/Debug-iphoneos/YouTubePlayer.framework"; sourceTree = "<group>"; };
 		070A59081B603D1E00DD47A7 /* VideoHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoHeaderView.xib; sourceTree = "<group>"; };
 		071252F3BADA4E9D48FF9F32 /* Pods-vynl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vynl.release.xcconfig"; path = "Pods/Target Support Files/Pods-vynl/Pods-vynl.release.xcconfig"; sourceTree = "<group>"; };
+		0717FC381BF03A71009F3C2A /* ProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressButton.swift; sourceTree = "<group>"; };
 		074378031B669DDA006A6B32 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		074378061B66A106006A6B32 /* UISearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISearchTableViewCell.swift; sourceTree = "<group>"; };
 		074378081B66C271006A6B32 /* music_note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_note.png; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				07F0CD781BB5A63000AED6CA /* VideoControlsView.xib */,
 				07F0CD7E1BB5AA3900AED6CA /* VideoControlsView.swift */,
 				076B91911BB9A8DA007B551E /* ToggleButton.swift */,
+				0717FC381BF03A71009F3C2A /* ProgressButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -837,6 +840,7 @@
 				07D2FDE51B51ACE400B40899 /* SocketIOTransportWebsocket.m in Sources */,
 				07A4FA341B4EDD9C004D3FBF /* AppDelegate.swift in Sources */,
 				07D2FDE91B51CAA100B40899 /* PartyViewController.swift in Sources */,
+				0717FC391BF03A71009F3C2A /* ProgressButton.swift in Sources */,
 				074D70461B681EBF00EA64AB /* YTPlayerView.m in Sources */,
 				07F0CD7F1BB5AA3900AED6CA /* VideoControlsView.swift in Sources */,
 				077D98DB1B6421FE00A44A17 /* JoinPartyViewController.swift in Sources */,

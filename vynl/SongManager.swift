@@ -27,6 +27,7 @@ class SongManager {
     var delegate: SongManagerDelegate?
     var partyID: String!
     var songs: Array<[String: AnyObject]>!
+    var songIDs: Set<String>!
     var dj: Bool!
     
     
@@ -50,6 +51,7 @@ class SongManager {
         }
         
         songs = []
+        songIDs = Set<String>()
         
         socketHelper = SocketHelper()
         socketHelper.socketHelperDelegate = self;
@@ -74,10 +76,14 @@ class SongManager {
     }
     
     func getPartyID() -> String {
-        return self.partyID
+        return partyID
     }
     
     func addSong(song: [String: AnyObject]) {
+        socketHelper.addSong(partyID: self.partyID, song: song)
+    }
+    
+    func addSong(song: [String: AnyObject], success: () -> ()) {
         socketHelper.addSong(partyID: self.partyID, song: song)
     }
     
@@ -87,6 +93,10 @@ class SongManager {
     
     func playSong() {
         socketHelper.playSong(partyID: self.partyID, song: self.songs[0], sessionID: user.sessionid)
+    }
+    
+    func playSong(song: [String: AnyObject]) {
+        socketHelper.playSong(partyID: partyID, song: song, sessionID: user.sessionid)
     }
     
     func deleteSong(index: Int) {
@@ -170,6 +180,11 @@ extension SongManager: SocketHelperDelegate {
     
     func socketHelper(socketHelper socketHelper: SocketHelper!, didUpdateSongs data: [String: AnyObject]) {
         self.songs = data["songs"] as! Array<[String: AnyObject]>
+        
+        for song in songs {
+            songIDs.insert((song["songID"] as? String)!)
+        }
+        
         self.delegate?.songManager!(songsDidUpdate: ["data": "songs"])
     }
     

@@ -24,6 +24,10 @@ class UISearchTableViewCell: UITableViewCell {
         
         songArtist.text = self.song["songartist"] as? String
         songTitle.text = self.song["songname"] as? String
+        
+        if (songManager != nil) {
+            addSongPressed.selected = (songManager?.songIDs.contains(song["songID"] as! String))!
+        }
     }
     
     @IBAction func addSong(sender: AnyObject) {
