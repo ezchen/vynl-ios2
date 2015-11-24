@@ -8,18 +8,23 @@
 
 class ProgressButton: VynlDefaultButton {
 
-    let spinner = UIActivityIndicatorView()
+    let spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setImage(UIImage(), forState: UIControlState.Disabled)
+    }
     
     func startSpinner() {
-        spinner.center = self.center
+        self.enabled = false
+        spinner.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2)
         addSubview(spinner)
-        if self.imageView != nil {
-            self.imageView!.hidden = true
-        }
+        self.bringSubviewToFront(spinner)
         spinner.startAnimating()
     }
     
     func stopSpinner() {
+        self.enabled = true
         spinner.removeFromSuperview()
         spinner.stopAnimating()
     }

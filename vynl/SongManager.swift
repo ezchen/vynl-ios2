@@ -15,6 +15,7 @@ import RealmSwift
     optional func songManager(didJoin data:[String: AnyObject])
     optional func songManager(didDisconnect data:[String: AnyObject])
     optional func songManager(didConnect data:[String: AnyObject])
+    optional func songManager(didAttemptReconnect data:[String: AnyObject])
     optional func songManager(onError data:[String: AnyObject])
 }
 
@@ -136,8 +137,12 @@ extension SongManager: SocketHelperDelegate {
         self.delegate?.songManager!(didDisconnect: ["error": error])
     }
     
-    func socketHelper(socketHelper socketHelper: SocketHelper!, onError error: NSError!) {
-        self.delegate?.songManager!(onError: ["error": error])
+    func socketDidAttemptReconnect(socketHelper socketHelper: SocketHelper!, data: [String : AnyObject]) {
+        self.delegate?.songManager!(didAttemptReconnect: ["data": "success"])
+    }
+    
+    func socketHelper(socketHelper socketHelper: SocketHelper!, onError data: String) {
+        self.delegate?.songManager!(onError: ["error": data])
     }
     
     func socketHelper(socketHelper socketHelper: SocketHelper!, didReceiveMessage data: [String: AnyObject]) {

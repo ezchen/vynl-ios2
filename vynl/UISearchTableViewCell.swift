@@ -11,7 +11,10 @@ class UISearchTableViewCell: UITableViewCell {
     @IBOutlet var songArtist: UILabel!
     @IBOutlet var songTitle: UILabel!
 
-    @IBOutlet var addSongPressed: UIButton!
+    @IBOutlet var addSongPressed: ProgressButton!
+    
+    /** true if ProgressButton is currently spinning */
+    var spinning = false
     
     var song: [String: AnyObject]!
     var songManager: SongManager?
@@ -25,6 +28,8 @@ class UISearchTableViewCell: UITableViewCell {
         songArtist.text = self.song["songartist"] as? String
         songTitle.text = self.song["songname"] as? String
         
+        (spinning ? addSongPressed.startSpinner() : addSongPressed.stopSpinner())
+        
         if (songManager != nil) {
             addSongPressed.selected = (songManager?.songIDs.contains(song["songID"] as! String))!
         }
@@ -32,12 +37,19 @@ class UISearchTableViewCell: UITableViewCell {
     
     @IBAction func addSong(sender: AnyObject) {
         func success() {
-            print("success")
+            spinning = false
+            addSongPressed.stopSpinner()
+            addSongPressed.selected = true
         }
         func error() {
-            print("error")
+            spinning = false
+            addSongPressed.stopSpinner()
+            addSongPressed.selected = false
+        }
+        
+        if !addSongPressed.selected {
+            addSongPressed.startSpinner()
         }
         songManager?.addSong(self.song, success: success, error: error)
-        self.addSongPressed.selected = true
     }
 }

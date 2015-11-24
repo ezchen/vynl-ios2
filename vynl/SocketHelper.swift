@@ -12,7 +12,8 @@ import Socket_IO_Client_Swift
 protocol SocketHelperDelegate {
     func socketDidConnect(socketHelper socketHelper: SocketHelper!);
     func socketDidDisconnect(socketHelper socketHelper:SocketHelper!, disconnectedWithError error:NSError!)
-    func socketHelper(socketHelper socketHelper: SocketHelper!, onError error: NSError!);
+    func socketDidAttemptReconnect(socketHelper socketHelper: SocketHelper!, data: [String: AnyObject])
+    func socketHelper(socketHelper socketHelper: SocketHelper!, onError data: String)
     func socketHelper(socketHelper socketHelper: SocketHelper!, didReceiveMessage data: [String: AnyObject]);
     func socketHelper(socketHelper socketHelper: SocketHelper!, didReceiveJSON data: [String: AnyObject]);
     func socketHelper(socketHelper socketHelper: SocketHelper!, didSendMessage data: [String: AnyObject]);
@@ -140,12 +141,14 @@ extension SocketHelper {
 }
 
 extension SocketHelper {
-    /** Converts JSON Array [AnyObject] into Dictionary<String, AnyObject>
+    /** Converts JSON Array, [AnyObject], into Dictionary<String, AnyObject>
         returns an empty dictionary if there is no JSON data */
     private func initializeDictionary(data data: [AnyObject]) -> Dictionary<String, AnyObject> {
         var dict: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
         if (data.count != 0) {
-            dict = data[0] as! Dictionary
+            if let newDict = data[0] as? Dictionary<String, AnyObject> {
+                dict = newDict
+            }
         }
 
         return dict
@@ -158,6 +161,28 @@ extension SocketHelper {
             // let dict = self.initializeDictionary(data: data)
             
             self.socketHelperDelegate.socketDidConnect(socketHelper: self);
+        }
+        
+        socket.on("disconnect") {data, ack in
+            print("socketHelper: calling disconnect on socketHelperDelegate")
+            
+            self.socketHelperDelegate.socketDidDisconnect(socketHelper: self, disconnectedWithError: nil)
+        }
+        
+        socket.on("error") {data, ack in
+            if let errorMessage = data[0] as? String {
+                self.socketHelperDelegate.socketHelper(socketHelper: self, onError: data[0] as! String)
+            } else {
+                self.socketHelperDelegate.socketHelper(socketHelper: self, onError: "")
+            }
+        }
+        
+        socket.on("reconnect") {data, ack in
+        }
+        
+        socket.on("reconnectAttempt") {data, ack in
+            let dict = self.initializeDictionary(data: data)
+            self.socketHelperDelegate.socketDidAttemptReconnect(socketHelper: self, data: dict)
         }
         
         socket.on("connected") {data, ack in

@@ -122,7 +122,11 @@ extension SocketHelperTest: SocketHelperDelegate {
         }
     }
     
-    func socketHelper(socketHelper socketHelper: SocketHelper!, onError error: NSError!) {
+    
+    func socketDidAttemptReconnect(socketHelper socketHelper: SocketHelper!, data: [String : AnyObject]) {
+    }
+    
+    func socketHelper(socketHelper socketHelper: SocketHelper!, onError data: String) {
     }
     
     func socketHelper(socketHelper socketHelper: SocketHelper!, didReceiveMessage data: [String: AnyObject]) {

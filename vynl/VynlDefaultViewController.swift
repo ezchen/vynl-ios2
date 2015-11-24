@@ -9,10 +9,19 @@
 import UIKit
 import CRToast
 
+enum CRToastState {
+    case None
+    case Reconnecting
+    case Connected
+    case Disconnected
+}
+
 class VynlDefaultViewController: UIViewController {
 
     var songManager: SongManager!
     var delegate: DefaultModalDelegate?
+    
+    var toastState: CRToastState = CRToastState.None
     
     var reconnectAttempts = 0
     var reconnectingOptions: NSDictionary = [
@@ -27,7 +36,7 @@ class VynlDefaultViewController: UIViewController {
     ]
     
     var disconnectedOptions: NSMutableDictionary = [
-        kCRToastTextKey: "Failed to connect. Tap here to try again",
+        kCRToastTextKey: "disconnected",
         kCRToastTextAlignmentKey: NSTextAlignment.Center.rawValue,
         kCRToastBackgroundColorKey : UIColor.redColor(),
         kCRToastAnimationInTypeKey: CRToastAnimationType.Gravity.rawValue,
@@ -74,6 +83,7 @@ class VynlDefaultViewController: UIViewController {
 extension VynlDefaultViewController: SongManagerDelegate {
     /* after toast finished */
     func finished() {
+        toastState = CRToastState.None
     }
     
     func reconnect() {
@@ -105,27 +115,28 @@ extension VynlDefaultViewController: SongManagerDelegate {
         
     }
     
+    func songManager(didAttemptReconnect data: [String : AnyObject]) {
+        if toastState != CRToastState.Reconnecting {
+            toastState = CRToastState.Reconnecting
+            CRToastManager.dismissNotification(true)
+            CRToastManager.showNotificationWithOptions(reconnectingOptions as [NSObject : AnyObject], completionBlock: finished)
+        }
+    }
+        
+    
     func songManager(onError data: [String : AnyObject]) {
-        let error = data["error"] as! NSError
-        print(error.code)
-        if (error.code == 57) {
-            let interactionResponder = [CRToastInteractionResponder(interactionType: CRToastInteractionType.Tap, automaticallyDismiss: true, block: {(CRToastInteractionType) in
-                self.reconnect()
-            })]
-            disconnectedOptions[kCRToastInteractionRespondersKey] = interactionResponder
-            CRToastManager.showNotificationWithOptions(disconnectedOptions as [NSObject : AnyObject], completionBlock: finished)
-        } else if (error.code == -6) {
-            let interactionResponder = [CRToastInteractionResponder(interactionType: CRToastInteractionType.Tap, automaticallyDismiss: true, block: {(CRToastInteractionType) in
-                self.reconnect()
-            })]
-            disconnectedOptions[kCRToastInteractionRespondersKey] = interactionResponder
+        if toastState != CRToastState.Disconnected {
+            toastState = CRToastState.Disconnected
             CRToastManager.dismissNotification(true)
             CRToastManager.showNotificationWithOptions(disconnectedOptions as [NSObject : AnyObject], completionBlock: finished)
         }
     }
     
     func songManager(didConnect data: [String : AnyObject]) {
-        CRToastManager.dismissNotification(true)
-        CRToastManager.showNotificationWithOptions(connectedOptions as [NSObject : AnyObject], completionBlock: finished)
+        if toastState != CRToastState.Connected {
+            toastState = CRToastState.Connected
+            CRToastManager.dismissNotification(true)
+            CRToastManager.showNotificationWithOptions(connectedOptions as [NSObject : AnyObject], completionBlock: finished)
+        }
     }
 }

@@ -80,6 +80,7 @@
 		0763F7631B645CBB00489945 /* YoutubeDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D98E71B64351C00A44A17 /* YoutubeDataHelper.swift */; };
 		0763F7651B646A2600489945 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0763F7641B646A2600489945 /* SearchViewController.swift */; };
 		076A83811BF2FB4E0062EF91 /* addWithAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076A83801BF2FB4E0062EF91 /* addWithAck.swift */; };
+		076A83821BF304140062EF91 /* ProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717FC381BF03A71009F3C2A /* ProgressButton.swift */; };
 		076B91921BB9A8DA007B551E /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076B91911BB9A8DA007B551E /* ToggleButton.swift */; };
 		076B91951BB9AA4C007B551E /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 076B91931BB9AA4C007B551E /* play.png */; };
 		076B91961BB9AA4C007B551E /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 076B91941BB9AA4C007B551E /* play@2x.png */; };
@@ -900,6 +901,7 @@
 				07D2FDFA1B5218DE00B40899 /* SocketIOTransportXHR.m in Sources */,
 				073FE54D1BE1617D00531464 /* JoinPartyViewController.swift in Sources */,
 				07D2FDF91B5218DB00B40899 /* SocketIOTransportWebsocket.m in Sources */,
+				076A83821BF304140062EF91 /* ProgressButton.swift in Sources */,
 				07A4FA4A1B4EDD9C004D3FBF /* vynlTests.swift in Sources */,
 				076A83811BF2FB4E0062EF91 /* addWithAck.swift in Sources */,
 			);
