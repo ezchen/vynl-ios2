@@ -252,9 +252,7 @@ static CGFloat const CRStatusBarDefaultHeight = 44.0f;
 static CGFloat const CRStatusBariPhoneLandscape = 33.0f;
 
 static CGFloat CRGetStatusBarHeight() {
-    return (UIDeviceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) ?
-    [[UIApplication sharedApplication] statusBarFrame].size.width :
-    [[UIApplication sharedApplication] statusBarFrame].size.height;
+    return 20;
 }
 
 static CGFloat CRGetStatusBarWidth() {

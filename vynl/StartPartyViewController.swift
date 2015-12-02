@@ -62,6 +62,7 @@ class StartPartyViewController: VynlDefaultViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Make A Party"
         self.songManager.delegate = self
         self.partyIDTextField.placeholder = self.songManager.randomStringWithLength(8)
         // Do any additional setup after loading the view.

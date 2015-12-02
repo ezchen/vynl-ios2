@@ -79,11 +79,13 @@ extension VideoHeaderView {
     }
     
     func nextSong() {
-        if currentPlaylist!.count > 0 {
+        if UIApplication.sharedApplication().applicationState == UIApplicationState.Active {
+            self.newVideo = true
+            loadVideos()
+        } else if currentPlaylist!.count > 0 {
             loadNextVideo()
             play()
         } else if songManager.songs.count > 0 {
-            loadVideos()
         }
     }
     
@@ -119,6 +121,7 @@ extension VideoHeaderView: YTPlayerViewDelegate {
         // Video Ended
         if Int(playTime) == Int(playerView.duration()) {
             self.newVideo = true
+            loadVideos()
         }
     }
     
@@ -152,6 +155,7 @@ extension VideoHeaderView: YTPlayerViewDelegate {
                 self.newVideo = true
                 if (self.songManager.songs.count > 0) {
                     loadVideos()
+                    self.play()
                 }
                 print("ended")
                 break

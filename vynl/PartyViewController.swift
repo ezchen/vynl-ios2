@@ -96,7 +96,7 @@ class PartyViewController: VynlDefaultViewController {
                 if (isOtherButton) {
                     SweetAlert().showAlert("Welcome Back!", subTitle: "keep on partying!", style: AlertStyle.Success)
                 } else {
-                    SweetAlert().showAlert("You Left Your Party :(", subTitle: "you can always rejoin using the 8 digit code", style: AlertStyle.None)
+                    SweetAlert().showAlert("You Left Your Party :(", subTitle: "you can always rejoin using the party ID", style: AlertStyle.None)
                     
                     if (self.songManager.dj!) {
                         self.pausePressed()
@@ -223,7 +223,6 @@ extension PartyViewController {
         if UIApplication.sharedApplication().applicationState != UIApplicationState.Active {
             let notification = UILocalNotification()
             notification.alertTitle = "Keep Vynl open to update the song queue!"
-            notification.fireDate = NSDate.init(timeIntervalSinceNow: 5)
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
         self.toggleEmptyView(songManager.songs.count == 0)

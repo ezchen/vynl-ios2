@@ -188,6 +188,7 @@ extension SongManager: SocketHelperDelegate {
     func socketHelper(socketHelper socketHelper: SocketHelper!, didUpdateSongs data: [String: AnyObject]) {
         self.songs = data["songs"] as! Array<[String: AnyObject]>
         
+        songIDs.removeAll()
         for song in songs {
             songIDs.insert((song["songID"] as? String)!)
         }
