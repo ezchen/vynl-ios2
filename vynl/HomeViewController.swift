@@ -11,6 +11,8 @@ import UIKit
 
 class HomeViewController: VynlDefaultViewController {
     
+    @IBOutlet var joinPartyButton: VynlDefaultButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad();
         UINavigationBar.appearance().barTintColor = UIColor.blackColor()
@@ -44,7 +46,6 @@ class HomeViewController: VynlDefaultViewController {
             controller.delegate = self
         }
     }
-
 }
 
 extension HomeViewController: DefaultModalDelegate {

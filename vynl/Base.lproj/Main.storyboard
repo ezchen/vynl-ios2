@@ -113,14 +113,18 @@
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="KBJ-BD-s9O" secondAttribute="bottom" constant="20" id="12O-UD-P1g"/>
                             <constraint firstItem="KBJ-BD-s9O" firstAttribute="top" secondItem="dXz-R9-vLG" secondAttribute="bottom" constant="100" id="1gS-os-Aqd"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Y9d-Q0-Dm4" secondAttribute="bottom" constant="100" id="5bT-Yl-u0A"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Y9d-Q0-Dm4" secondAttribute="bottom" constant="100" id="5bT-Yl-u0A">
+                                <variation key="heightClass=compact-widthClass=compact" constant="20"/>
+                            </constraint>
                             <constraint firstItem="dXz-R9-vLG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="200" id="8oR-yE-EET"/>
                             <constraint firstItem="Y9d-Q0-Dm4" firstAttribute="leading" secondItem="KBJ-BD-s9O" secondAttribute="trailing" constant="20" id="8sE-hA-bmz"/>
                             <constraint firstItem="b46-NV-Wkx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9mF-Bm-7rX"/>
                             <constraint firstItem="KBJ-BD-s9O" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="CrH-AP-BY4"/>
                             <constraint firstAttribute="centerX" secondItem="Y9d-Q0-Dm4" secondAttribute="centerX" id="FZX-o8-h9M"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Y9d-Q0-Dm4" secondAttribute="bottom" constant="20" id="HHQ-AF-PcZ"/>
-                            <constraint firstItem="dXz-R9-vLG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="170" id="HKv-gH-Xia"/>
+                            <constraint firstItem="dXz-R9-vLG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="170" id="HKv-gH-Xia">
+                                <variation key="heightClass=compact-widthClass=compact" constant="140"/>
+                            </constraint>
                             <constraint firstAttribute="bottom" secondItem="b46-NV-Wkx" secondAttribute="bottom" id="Ic2-lF-4Vb"/>
                             <constraint firstAttribute="centerY" secondItem="KBJ-BD-s9O" secondAttribute="centerY" id="JHQ-fY-0Rt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Y9d-Q0-Dm4" secondAttribute="trailing" constant="20" id="Q04-06-jus"/>
@@ -134,6 +138,9 @@
                             <constraint firstItem="Y9d-Q0-Dm4" firstAttribute="leading" secondItem="KBJ-BD-s9O" secondAttribute="trailing" constant="20" id="mfZ-Bu-tKA"/>
                             <constraint firstAttribute="centerX" secondItem="KBJ-BD-s9O" secondAttribute="centerX" id="pWE-sv-duv"/>
                             <constraint firstItem="Y9d-Q0-Dm4" firstAttribute="top" secondItem="KBJ-BD-s9O" secondAttribute="bottom" constant="20" id="rdo-Zx-hLX"/>
+                            <constraint firstItem="KBJ-BD-s9O" firstAttribute="top" secondItem="dXz-R9-vLG" secondAttribute="bottom" constant="55" id="vz2-AL-hSu">
+                                <variation key="heightClass=compact-widthClass=compact" constant="60"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="b46-NV-Wkx" secondAttribute="trailing" id="wqT-9K-tFH"/>
                             <constraint firstItem="KBJ-BD-s9O" firstAttribute="width" secondItem="Y9d-Q0-Dm4" secondAttribute="width" id="y0k-De-TFn"/>
                         </constraints>
@@ -147,6 +154,7 @@
                                 <exclude reference="WOa-Hq-uR1"/>
                                 <exclude reference="Z5e-aN-5hT"/>
                                 <exclude reference="dlJ-uU-lIo"/>
+                                <exclude reference="vz2-AL-hSu"/>
                                 <exclude reference="y0k-De-TFn"/>
                                 <exclude reference="8sE-hA-bmz"/>
                                 <exclude reference="Q04-06-jus"/>
@@ -156,12 +164,19 @@
                                 <exclude reference="HHQ-AF-PcZ"/>
                             </mask>
                         </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="HKv-gH-Xia"/>
+                                <include reference="vz2-AL-hSu"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="c7O-SC-25k"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="joinPartyButton" destination="Y9d-Q0-Dm4" id="XV4-Fg-chl"/>
                         <segue destination="H3H-Po-SS9" kind="presentation" identifier="startAParty" modalTransitionStyle="crossDissolve" id="ic1-se-2lf"/>
-                        <segue destination="0rv-OW-nig" kind="presentation" identifier="join" modalTransitionStyle="crossDissolve" id="LBQ-ga-h5g"/>
+                        <segue destination="0rv-OW-nig" kind="presentation" identifier="join" id="LBQ-ga-h5g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -201,6 +216,27 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bd6-S4-yPA">
+                                <rect key="frame" x="440" y="401" width="160" height="90"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="E1G-E0-ZNY"/>
+                                    <constraint firstAttribute="width" constant="160" id="hFf-7l-WAI"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="sWR-su-mbo" appends="YES" id="CPM-sg-4Ek"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="urs-RO-Vam" customClass="VideoControlsView" customModule="vynl">
+                                <rect key="frame" x="0.0" y="494" width="600" height="42"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="9OK-x1-Amq"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zT0-vc-eDE">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
                                 <animations/>
@@ -325,23 +361,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bd6-S4-yPA">
-                                <rect key="frame" x="440" y="401" width="160" height="90"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="E1G-E0-ZNY"/>
-                                    <constraint firstAttribute="width" constant="160" id="hFf-7l-WAI"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="urs-RO-Vam" customClass="VideoControlsView" customModule="vynl">
-                                <rect key="frame" x="0.0" y="494" width="600" height="42"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="9OK-x1-Amq"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -353,6 +372,7 @@
                             <constraint firstItem="urs-RO-Vam" firstAttribute="leading" secondItem="mVf-Tx-JEa" secondAttribute="leading" id="Q0x-o4-e17"/>
                             <constraint firstItem="Bd6-S4-yPA" firstAttribute="top" secondItem="zT0-vc-eDE" secondAttribute="bottom" id="Tja-R8-yEd"/>
                             <constraint firstItem="zT0-vc-eDE" firstAttribute="top" secondItem="Riv-ND-vLJ" secondAttribute="bottom" id="XDc-ua-qLd"/>
+                            <constraint firstItem="Bd6-S4-yPA" firstAttribute="top" secondItem="Riv-ND-vLJ" secondAttribute="bottom" constant="401" id="gzZ-mv-0Wv"/>
                             <constraint firstAttribute="bottom" secondItem="urs-RO-Vam" secondAttribute="bottom" id="h90-AR-ttg"/>
                             <constraint firstItem="uun-ax-UuL" firstAttribute="top" secondItem="zT0-vc-eDE" secondAttribute="bottom" id="iWE-Aq-n5E"/>
                             <constraint firstAttribute="bottom" secondItem="Bd6-S4-yPA" secondAttribute="bottom" constant="45" id="qAi-cx-80S"/>
@@ -360,6 +380,7 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Tja-R8-yEd"/>
+                                <exclude reference="gzZ-mv-0Wv"/>
                             </mask>
                         </variation>
                     </view>
@@ -381,11 +402,21 @@
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="partyCollectionView" destination="zT0-vc-eDE" id="voT-O0-lhO"/>
+                        <outlet property="partyCollectionViewTopSpaceConstraint" destination="XDc-ua-qLd" id="UnK-8E-rLy"/>
                         <outlet property="videoControlsView" destination="urs-RO-Vam" id="7lC-KJ-ckW"/>
+                        <outlet property="videoControlsViewBottomSpaceConstraint" destination="h90-AR-ttg" id="nDO-mg-Hey"/>
                         <outlet property="videoView" destination="Bd6-S4-yPA" id="bpc-FL-MBh"/>
+                        <outlet property="videoViewBottomSpaceConstraint" destination="qAi-cx-80S" id="D9B-yR-vAN"/>
+                        <outlet property="videoViewHeightConstraint" destination="E1G-E0-ZNY" id="cx6-M5-lSc"/>
+                        <outlet property="videoViewWidthConstraint" destination="hFf-7l-WAI" id="Sqo-cO-ulB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pp5-92-7Nn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="sWR-su-mbo">
+                    <connections>
+                        <action selector="handleTap:" destination="kwg-P0-O7k" id="oo3-ng-e30"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-142" y="2534"/>
         </scene>
@@ -540,7 +571,7 @@
                                     <constraint firstAttribute="height" constant="40" id="T4O-UK-a99"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="join"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQL-Xn-dbx" customClass="VynlDefaultButton" customModule="vynl">
                                 <rect key="frame" x="223" y="140" width="155" height="40"/>
@@ -630,7 +661,7 @@
                                     <constraint firstAttribute="height" constant="40" id="P8x-Fv-B6G"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="join"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfH-b8-TtM" customClass="VynlDefaultButton" customModule="vynl">
                                 <rect key="frame" x="223" y="140" width="155" height="40"/>

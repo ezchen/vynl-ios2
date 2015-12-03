@@ -23,6 +23,21 @@ class PartyViewController: VynlDefaultViewController {
     /** Table View With list of Song Queue */
     @IBOutlet var partyCollectionView: UITableView!
     
+    /** Video View Width Constraint */
+    @IBOutlet var videoViewWidthConstraint: NSLayoutConstraint!
+    
+    /** Video View Bottom Space Constraint */
+    @IBOutlet var videoViewBottomSpaceConstraint: NSLayoutConstraint!
+    
+    /** Video View Height Constraint */
+    @IBOutlet var videoViewHeightConstraint: NSLayoutConstraint!
+    
+    /** Video Controls View bottom space constraint */
+    @IBOutlet var videoControlsViewBottomSpaceConstraint: NSLayoutConstraint!
+    
+    /** party collection view top space constraint */
+    @IBOutlet var partyCollectionViewTopSpaceConstraint: NSLayoutConstraint!
+    
     /** True when user is dragging the video panning handle. Used so that the
     video controls view doesn't jump around when user is panning */
     var userIsSeeking: Bool = false
@@ -46,8 +61,10 @@ class PartyViewController: VynlDefaultViewController {
             self.videoHeaderView.songManager = self.songManager
             self.videoHeaderView.delegate = self
             videoView.addSubview(videoHeaderView)
+            videoHeaderView.userInteractionEnabled = false
             self.videoControlsView.xibSetup()
             self.videoControlsView.delegate = self
+            
             
             setupBackgroundPlaybackButtons()
         } else {
@@ -159,6 +176,28 @@ class PartyViewController: VynlDefaultViewController {
         commandCenter.pauseCommand.removeTarget(self, action: "pausePressed")
         commandCenter.nextTrackCommand.removeTarget(self, action: "skipPressed")
     }
+    
+    @IBAction func handleTap(recognizer: UITapGestureRecognizer) {
+        let screenRect = UIScreen.mainScreen().bounds
+        let screenWidth = screenRect.size.width
+        let screenHeight = screenRect.size.height
+        
+        let navbarHeight = self.navigationController!.navigationBar.frame.size.height
+        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+        
+        self.videoViewWidthConstraint.constant = screenWidth
+        let newVideoHeight = screenWidth * (9.0/16.0)
+        self.videoViewHeightConstraint.constant = newVideoHeight
+        
+        let newBottomSpaceConstraint = screenHeight - newVideoHeight - navbarHeight - statusBarHeight
+        self.videoViewBottomSpaceConstraint.constant = newBottomSpaceConstraint
+        self.videoControlsViewBottomSpaceConstraint.constant = newBottomSpaceConstraint - videoControlsView.frame.size.height
+        
+        partyCollectionViewTopSpaceConstraint.constant = screenHeight - newBottomSpaceConstraint - statusBarHeight
+        UIView.animateWithDuration(0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
 }
 
 extension PartyViewController: DefaultModalDelegate {
@@ -223,6 +262,9 @@ extension PartyViewController {
         if UIApplication.sharedApplication().applicationState != UIApplicationState.Active {
             let notification = UILocalNotification()
             notification.alertTitle = "Keep Vynl open to update the song queue!"
+            notification.alertAction = "Test"
+            notification.soundName = UILocalNotificationDefaultSoundName
+            notification.fireDate = NSDate(timeIntervalSinceNow: 5)
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
         self.toggleEmptyView(songManager.songs.count == 0)
