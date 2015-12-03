@@ -325,14 +325,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bd6-S4-yPA">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bd6-S4-yPA">
                                 <rect key="frame" x="440" y="401" width="160" height="90"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="E1G-E0-ZNY"/>
                                     <constraint firstAttribute="width" constant="160" id="hFf-7l-WAI"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="LDH-fk-NEs" appends="YES" id="t8I-cX-g2e"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="urs-RO-Vam" customClass="VideoControlsView" customModule="vynl">
                                 <rect key="frame" x="0.0" y="494" width="600" height="42"/>
@@ -381,11 +385,21 @@
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="partyCollectionView" destination="zT0-vc-eDE" id="voT-O0-lhO"/>
+                        <outlet property="partyCollectionViewTopSpaceConstraint" destination="XDc-ua-qLd" id="H2r-2e-uBU"/>
                         <outlet property="videoControlsView" destination="urs-RO-Vam" id="7lC-KJ-ckW"/>
+                        <outlet property="videoControlsViewBottomSpaceConstraint" destination="h90-AR-ttg" id="DWy-2p-A08"/>
                         <outlet property="videoView" destination="Bd6-S4-yPA" id="bpc-FL-MBh"/>
+                        <outlet property="videoViewBottomSpaceConstraint" destination="qAi-cx-80S" id="aVX-LR-ZQB"/>
+                        <outlet property="videoViewHeightConstraint" destination="E1G-E0-ZNY" id="u8t-cg-Me2"/>
+                        <outlet property="videoViewWidthConstraint" destination="hFf-7l-WAI" id="zER-mX-WEf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pp5-92-7Nn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LDH-fk-NEs">
+                    <connections>
+                        <action selector="handleTap:" destination="kwg-P0-O7k" id="UD4-mO-Rcu"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-142" y="2534"/>
         </scene>
