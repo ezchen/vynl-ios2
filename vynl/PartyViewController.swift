@@ -38,6 +38,8 @@ class PartyViewController: VynlDefaultViewController {
     /** party collection view top space constraint */
     @IBOutlet var partyCollectionViewTopSpaceConstraint: NSLayoutConstraint!
     
+    var fullScreen = false
+    
     /** True when user is dragging the video panning handle. Used so that the
     video controls view doesn't jump around when user is panning */
     var userIsSeeking: Bool = false
@@ -177,25 +179,47 @@ class PartyViewController: VynlDefaultViewController {
     }
     
     @IBAction func handleTap(recognizer: UITapGestureRecognizer) {
-        let screenRect = UIScreen.mainScreen().bounds
-        let screenWidth = screenRect.size.width
-        let screenHeight = screenRect.size.height
-        
-        let navbarHeight = self.navigationController!.navigationBar.frame.size.height
-        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-        
-        self.videoViewWidthConstraint.constant = screenWidth
-        let newVideoHeight = screenWidth * (9.0/16.0)
-        self.videoViewHeightConstraint.constant = newVideoHeight
-        
-        let newBottomSpaceConstraint = screenHeight - newVideoHeight - navbarHeight - statusBarHeight
-        self.videoViewBottomSpaceConstraint.constant = newBottomSpaceConstraint
-        self.videoControlsViewBottomSpaceConstraint.constant = newBottomSpaceConstraint - videoControlsView.frame.size.height
-        
-        partyCollectionViewTopSpaceConstraint.constant = screenHeight - newBottomSpaceConstraint - statusBarHeight
-        UIView.animateWithDuration(0.5, animations: {
-            self.view.layoutIfNeeded()
-        })
+        if (!fullScreen) {
+            let screenRect = UIScreen.mainScreen().bounds
+            let screenWidth = screenRect.size.width
+            let screenHeight = screenRect.size.height
+            
+            let navbarHeight = self.navigationController!.navigationBar.frame.size.height
+            let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+            
+            self.videoViewWidthConstraint.constant = screenWidth
+            let newVideoHeight = screenWidth * (9.0/16.0)
+            self.videoViewHeightConstraint.constant = newVideoHeight
+            
+            let newBottomSpaceConstraint = screenHeight - newVideoHeight - navbarHeight - statusBarHeight
+            self.videoViewBottomSpaceConstraint.constant = newBottomSpaceConstraint
+            self.videoControlsViewBottomSpaceConstraint.constant = newBottomSpaceConstraint - videoControlsView.frame.size.height
+            
+            partyCollectionViewTopSpaceConstraint.constant = screenHeight - newBottomSpaceConstraint - statusBarHeight
+            
+            self.videoHeaderView.playerView.frame.size.width = screenWidth
+            self.videoHeaderView.playerView.frame.size.height = newVideoHeight
+            fullScreen = true
+            UIView.animateWithDuration(0.5, animations: {
+                self.view.layoutIfNeeded()
+            })
+        } else {
+            self.videoViewWidthConstraint.constant = 160
+            self.videoViewHeightConstraint.constant = 90
+            self.videoViewBottomSpaceConstraint.constant = 45
+            self.videoControlsViewBottomSpaceConstraint.constant = 0
+            
+            partyCollectionViewTopSpaceConstraint.constant = 0
+            fullScreen = false
+            
+            func finished(completed: Bool) {
+                self.videoHeaderView.playerView.frame.size.width = 160
+                self.videoHeaderView.playerView.frame.size.height = 90
+            }
+            UIView.animateWithDuration(0.5, animations: {
+                self.view.layoutIfNeeded()
+                }, completion: finished)
+        }
     }
 }
 
