@@ -37,6 +37,7 @@ class VideoHeaderView: UIView {
                               "showinfo": 0,
                               "playsinline": 1,
                               "modestbranding": 1,
+                              "rel": 0,
                               "origin": "http://vynl.party"]
     
     override func awakeFromNib() {
@@ -62,7 +63,7 @@ extension VideoHeaderView {
                 songs.append(song["songID"] as! String)
             }
             currentPlaylist = songs
-            self.playerView.loadPlaylistByVideos(songs, index: 0, startSeconds: 0, suggestedQuality: YTPlaybackQuality.Default)
+            self.playerView.loadPlaylistByVideos(songs, index: 0, startSeconds: 0, suggestedQuality: YTPlaybackQuality.HD720)
         }
     }
     

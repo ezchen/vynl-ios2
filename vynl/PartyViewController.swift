@@ -38,6 +38,10 @@ class PartyViewController: VynlDefaultViewController {
     /** party collection view top space constraint */
     @IBOutlet var partyCollectionViewTopSpaceConstraint: NSLayoutConstraint!
     
+    /** orientation of the current view */
+    var orientations:UIInterfaceOrientation = UIApplication.sharedApplication().statusBarOrientation
+    
+    /** Flag to determine whether the videoheaderview is full screen */
     var fullScreen = false
     
     /** True when user is dragging the video panning handle. Used so that the
@@ -84,9 +88,46 @@ class PartyViewController: VynlDefaultViewController {
         partyCollectionView.dataSource = self
         partyCollectionView.delegate = self
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "orientationChanged:", name: UIDeviceOrientationDidChangeNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
+    }
+    
+    func orientationChanged (notification: NSNotification) {
+        adjustViewsForOrientation(UIApplication.sharedApplication().statusBarOrientation)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func adjustViewsForOrientation(orientation: UIInterfaceOrientation) {
+        if (orientation == UIInterfaceOrientation.Portrait || orientation == UIInterfaceOrientation.PortraitUpsideDown)
+        {
+            if(orientation != orientations) {
+                if (fullScreen) {
+                    maximizeVideoPortrait()
+                } else {
+                    minimizeVideo()
+                }
+                orientations = orientation
+            }
+        }
+        else if (orientation == UIInterfaceOrientation.LandscapeLeft || orientation == UIInterfaceOrientation.LandscapeRight)
+        {
+            if(orientation != orientations) {
+                if (fullScreen) {
+                    maximizeVideoLandscape()
+                } else {
+                    minimizeVideo()
+                }
+                orientations = orientation
+            }
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -118,6 +159,7 @@ class PartyViewController: VynlDefaultViewController {
                     
                     if (self.songManager.dj!) {
                         self.pausePressed()
+                        self.deleteBackgroundPlaybackButtons()
                         //self.videoHeaderView.removeFromSuperview()
                         self.videoHeaderView.playerView.clearVideo()
                         
@@ -178,47 +220,110 @@ class PartyViewController: VynlDefaultViewController {
         commandCenter.nextTrackCommand.removeTarget(self, action: "skipPressed")
     }
     
-    @IBAction func handleTap(recognizer: UITapGestureRecognizer) {
+    private func minimizeVideo() {
+        self.videoViewWidthConstraint.constant = 160
+        self.videoViewHeightConstraint.constant = 90
+        self.videoViewBottomSpaceConstraint.constant = 45
+        self.videoControlsViewBottomSpaceConstraint.constant = 0
+        
+        partyCollectionViewTopSpaceConstraint.constant = 0
+        fullScreen = false
+        
+        func finished(completed: Bool) {
+            self.videoHeaderView.playerView.frame.size.width = 160
+            self.videoHeaderView.playerView.frame.size.height = 90
+        }
+        
+        videoControlsView.alpha = 1.0
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        UIView.animateWithDuration(0.5, animations: {
+            self.view.layoutIfNeeded()
+            }, completion: finished)
+    }
+    
+    private func maximizeVideoPortrait() {
+        let screenRect = UIScreen.mainScreen().bounds
+        let screenWidth = screenRect.size.width
+        let screenHeight = screenRect.size.height
+        
+        let navbarHeight = self.navigationController!.navigationBar.frame.size.height
+        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+        
+        self.videoViewWidthConstraint.constant = screenWidth
+        let newVideoHeight = screenWidth * (9.0/16.0)
+        self.videoViewHeightConstraint.constant = newVideoHeight
+        
+        let newBottomSpaceConstraint = screenHeight - newVideoHeight - navbarHeight - statusBarHeight
+        self.videoViewBottomSpaceConstraint.constant = newBottomSpaceConstraint
+        self.videoControlsViewBottomSpaceConstraint.constant = newBottomSpaceConstraint - videoControlsView.frame.size.height
+        
+        partyCollectionViewTopSpaceConstraint.constant = screenHeight - newBottomSpaceConstraint - statusBarHeight
+        
+        self.videoHeaderView.playerView.frame.size.width = screenWidth
+        self.videoHeaderView.playerView.frame.size.height = newVideoHeight
+        fullScreen = true
+        
+        videoControlsView.alpha = 1.0
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        UIView.animateWithDuration(0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    private func maximizeVideoLandscape() {
+        let screenRect = UIScreen.mainScreen().bounds
+        let screenWidth = screenRect.size.width
+        let screenHeight = screenRect.size.height
+        
+        let navbarHeight = self.navigationController!.navigationBar.frame.size.height
+        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+        
+        self.videoViewWidthConstraint.constant = screenWidth
+        self.videoViewHeightConstraint.constant = screenHeight
+        
+        self.videoViewBottomSpaceConstraint.constant = 0
+        self.videoControlsViewBottomSpaceConstraint.constant = 0
+        
+        self.videoHeaderView.playerView.frame.size.width = screenWidth
+        self.videoHeaderView.playerView.frame.size.height = screenHeight
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        fullScreen = true
+        
+        func finished(completed: Bool) {
+            self.videoControlsView.alpha = 0.5
+        }
+        
+        UIView.animateWithDuration(0.5, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: finished)
+        
+    }
+    
+    private func toggleFullScreenPortrait(fullscreen: Bool) {
         if (!fullScreen) {
-            let screenRect = UIScreen.mainScreen().bounds
-            let screenWidth = screenRect.size.width
-            let screenHeight = screenRect.size.height
-            
-            let navbarHeight = self.navigationController!.navigationBar.frame.size.height
-            let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-            
-            self.videoViewWidthConstraint.constant = screenWidth
-            let newVideoHeight = screenWidth * (9.0/16.0)
-            self.videoViewHeightConstraint.constant = newVideoHeight
-            
-            let newBottomSpaceConstraint = screenHeight - newVideoHeight - navbarHeight - statusBarHeight
-            self.videoViewBottomSpaceConstraint.constant = newBottomSpaceConstraint
-            self.videoControlsViewBottomSpaceConstraint.constant = newBottomSpaceConstraint - videoControlsView.frame.size.height
-            
-            partyCollectionViewTopSpaceConstraint.constant = screenHeight - newBottomSpaceConstraint - statusBarHeight
-            
-            self.videoHeaderView.playerView.frame.size.width = screenWidth
-            self.videoHeaderView.playerView.frame.size.height = newVideoHeight
-            fullScreen = true
-            UIView.animateWithDuration(0.5, animations: {
-                self.view.layoutIfNeeded()
-            })
+            maximizeVideoPortrait()
         } else {
-            self.videoViewWidthConstraint.constant = 160
-            self.videoViewHeightConstraint.constant = 90
-            self.videoViewBottomSpaceConstraint.constant = 45
-            self.videoControlsViewBottomSpaceConstraint.constant = 0
-            
-            partyCollectionViewTopSpaceConstraint.constant = 0
-            fullScreen = false
-            
-            func finished(completed: Bool) {
-                self.videoHeaderView.playerView.frame.size.width = 160
-                self.videoHeaderView.playerView.frame.size.height = 90
-            }
-            UIView.animateWithDuration(0.5, animations: {
-                self.view.layoutIfNeeded()
-                }, completion: finished)
+            minimizeVideo()
+        }
+    }
+    
+    private func toggleFullScreenLandscape(fullscreen: Bool) {
+        if (!fullScreen) {
+            maximizeVideoLandscape()
+        } else {
+            minimizeVideo()
+        }
+    }
+    
+    @IBAction func handleTap(recognizer: UITapGestureRecognizer) {
+        if (orientations == UIInterfaceOrientation.Portrait ||
+            orientations == UIInterfaceOrientation.PortraitUpsideDown) {
+            toggleFullScreenPortrait(fullScreen);
+        } else {
+            toggleFullScreenLandscape(fullScreen);
         }
     }
 }
