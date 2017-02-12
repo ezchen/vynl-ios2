@@ -90,11 +90,23 @@ class PartyViewController: VynlDefaultViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "orientationChanged:", name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "orientationChanged:",
+            name: UIDeviceOrientationDidChangeNotification,
+            object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "controllerWillEnterBackground:",
+            name: UIApplicationDidEnterBackgroundNotification,
+            object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self,
+            name: UIDeviceOrientationDidChangeNotification,
+            object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self,
+            name: UIApplicationDidEnterBackgroundNotification,
+            object: nil)
     }
     
     func orientationChanged (notification: NSNotification) {
@@ -326,6 +338,18 @@ class PartyViewController: VynlDefaultViewController {
             toggleFullScreenLandscape(fullScreen);
         }
     }
+    
+    func controllerWillEnterBackground(notification: NSNotification) {
+        if (songManager.dj!) {
+            let notification = UILocalNotification()
+            notification.alertTitle = "Queue Updated"
+            notification.fireDate = NSDate(timeIntervalSinceNow: 10)
+            notification.soundName = UILocalNotificationDefaultSoundName
+            notification.timeZone = NSTimeZone.defaultTimeZone()
+            notification.alertBody = "Leave Vynl open to keep the queue updated!"
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        }
+    }
 }
 
 extension PartyViewController: DefaultModalDelegate {
@@ -337,7 +361,8 @@ extension PartyViewController: DefaultModalDelegate {
         self.partyCollectionView.reloadData()
         toggleEmptyView(songManager.songs.count == 0)
         if (self.songManager.dj!) {
-            if (songManager.songs.count != 0 && videoHeaderView.state == YTPlayerState.Ended) {
+            if (songManager.songs.count != 0 &&
+                (videoHeaderView.state == YTPlayerState.Ended || videoHeaderView.state == YTPlayerState.Unstarted)) {
                 videoHeaderView.nextSong()
             }
         }
@@ -387,11 +412,6 @@ extension PartyViewController {
         print("SongManager's songs: ", terminator: "")
         print(songManager.songs, terminator: "")
         
-        if UIApplication.sharedApplication().applicationState != UIApplicationState.Active {
-            let notification = UILocalNotification()
-            notification.alertTitle = "Keep Vynl open to update the song queue!"
-            UIApplication.sharedApplication().scheduleLocalNotification(notification)
-        }
         self.toggleEmptyView(songManager.songs.count == 0)
         self.partyCollectionView.reloadData()
         
@@ -402,7 +422,8 @@ extension PartyViewController {
                     songs.append(videoID)
                 }
             }
-            if (videoHeaderView.state == YTPlayerState.Ended) {
+            if (videoHeaderView.state == YTPlayerState.Ended ||
+                videoHeaderView.state == YTPlayerState.Unstarted) {
                 videoHeaderView.nextSong()
             }
         }

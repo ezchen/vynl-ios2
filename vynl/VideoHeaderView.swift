@@ -108,7 +108,8 @@ extension VideoHeaderView {
         if self.playerViewIsReady {
             self.playerView.playVideo()
             pausePressed = false
-            if self.state == YTPlayerState.Unknown || self.state == YTPlayerState.Ended {
+            if self.state == YTPlayerState.Unknown || self.state == YTPlayerState.Ended
+                || self.state == YTPlayerState.Unstarted {
                 loadVideos()
             }
         }
@@ -158,7 +159,7 @@ extension VideoHeaderView: YTPlayerViewDelegate {
                     loadVideos()
                     self.play()
                 }
-                print("ended")
+                playerViewIsReady = false
                 break
             case YTPlayerState.Paused:
                 print("video is paused")
@@ -173,6 +174,9 @@ extension VideoHeaderView: YTPlayerViewDelegate {
             case YTPlayerState.Buffering:
                 print("video buffering")
                 self.playerView.playVideo()
+            case YTPlayerState.Unstarted:
+                playerViewIsReady = false
+                break
             default:
                 print(state)
                 break

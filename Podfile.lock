@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (2.0.2)
   - CRToast (0.0.7)
+  - Instabug (4.1.10)
   - PureLayout (3.0.0)
   - Realm (0.95.1):
     - Realm/Headers (= 0.95.1)
@@ -19,6 +20,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 2.0)
   - CRToast (~> 0.0.7)
+  - Instabug
   - Realm (from `https://github.com/realm/realm-cocoa.git`, branch `swift-2.0`)
   - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `swift-2.0`)
   - SDWebImage (~> 3.7)
@@ -46,6 +48,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
   CRToast: 99a28f4387def43b439ad88f957ce31357ff7373
+  Instabug: 67d01dc94d780a3eb787563fc7a1c32ef5dd8a1f
   PureLayout: 270dfee2236f697ab1d5e2771c2e5c248495fa0d
   Realm: 6888430917b197eed845dcce9a1f99c9c4bd9cd1
   RealmSwift: 01ecf1cd1a6cc7cd05eed53c6bfaec21b0db6bf8

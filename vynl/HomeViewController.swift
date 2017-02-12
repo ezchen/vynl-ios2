@@ -31,6 +31,10 @@ class HomeViewController: VynlDefaultViewController {
         self.performSegueWithIdentifier("join", sender: self)
     }
     
+    @IBAction func sendFeedbackPressed(sender: AnyObject) {
+        Instabug.invoke()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "startAParty") {
             let navigationController = segue.destinationViewController as! UINavigationController

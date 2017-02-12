@@ -17,3 +17,5 @@
 #import "YTPlayerView.h"
 
 #import <VGParallaxHeader/UIScrollView+VGParallaxHeader.h>
+
+#import <Instabug/Instabug.h>

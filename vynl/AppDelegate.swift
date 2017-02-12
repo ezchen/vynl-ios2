@@ -10,7 +10,6 @@ import UIKit
 import AVFoundation
 
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -27,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         } catch _ {
         };
+        Instabug.setWillShowStartAlert(true)
+        Instabug.startWithToken("3aec3adf82642721195e272e85802c3a", captureSource: IBGCaptureSourceUIKit, invocationEvent: IBGInvocationEventShake)
         return true
     }
 
